@@ -1,0 +1,24 @@
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    {% if user and not user.is_anonymous %}
+        <h3>
+            <a href="{% url 'userpanal:pnr_status' %}" > PNR status</a>
+        </h3>
+
+     {% else %}
+         <div id="background" >
+            <img src={% static "images/Lighthouse.jpg" %} id="bg_img" alt="" class="img-responsive center-block">
+            <div id="content" >
+                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+                    <img src={% static "images/login-with-facebook.png" %} id="fb_img" alt="" class="img-responsive center-block">
+
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

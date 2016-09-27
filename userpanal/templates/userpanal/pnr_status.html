@@ -1,0 +1,116 @@
+
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+    <style>
+
+        .table .td .th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        th, td {
+            padding: 1px;
+        }
+    </style>
+
+
+
+
+    <div class="container">
+        <h3>PNR- {{ pnr }}</h3>
+
+        {% if error == True %}
+                <h3>{{ response_code }} - {{ Error_str }}</h3>
+        {% else %}
+            <table class="table table-bordered">
+                <tr>
+                  <th colspan="3"><h5>Journey Details</h5></th>
+                </tr>
+
+                <tbody>
+                    <tr>
+                      <th scope="row">Train Name:</th>
+                      <td>{{ train_name }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Train Number:</th>
+                      <td>{{ train_num }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">From Station:</th>
+                      <td>{{from_station.name}} ({{from_station.code}})</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">To Station:</th>
+                      <td>{{to_station.name}} ({{to_station.code}})</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">Class:</th>
+                      <td>{{ train_class }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Date Of Journey:</th>
+                      <td>{{ doj }}</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">Reserved Upto:</th>
+                      <td>{{reservation_upto.name}} ({{reservation_upto.code}})</td>
+                    </tr>
+
+                    <tr>
+                      <th scope="row">Boarding Point:</th>
+                      <td>{{boarding_point.name}} ({{boarding_point.code}})</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Sr.No</th>
+                  <th>Booking Status</th>
+                  <th>Current Status</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {% for i in passengers %}
+                <tr>
+                  <th scope="row">Pasenger {{ i.no }}</th>
+                  <td>{{ i.booking_status}}</td>
+                  <td>{{ i.current_status}}</td>
+                </tr>
+                {% endfor %}
+
+                <tr>
+                  <th scope="row">Charting Status</th>
+                  {% if chart_prepared == 'N' %}
+                    <td colspan="3">CHART NOT PREPARED</td>
+                  {% else %}
+                    <td colspan="3">CHART PREPARED</td>
+                  {% endif %}
+                </tr>
+              </tbody>
+            </table>
+
+        {% endif %}
+
+        <h4>
+            <a href="{% url 'userpanal:pnrNotification' %}" > Start PNR Notification</a>
+        </h4>
+
+    </div>
+
+
+{% endblock %}

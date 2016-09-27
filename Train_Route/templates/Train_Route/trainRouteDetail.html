@@ -1,0 +1,70 @@
+
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    <style>
+
+        .table .td .th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 1px;
+        }
+    </style>
+
+<body>
+<div class="container">
+
+<table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th colspan="10"><h3>Train Route : {{ train_name }} ({{ train_number }})</h3></th>
+    </tr>
+
+    <tr>
+      <th>No</th>
+      <th>Station Code</th>
+      <th>Station Name</th>
+      <th>Arrival</th>
+      <th>Departure</th>
+      <th>Day</th>
+      <th>Route</th>
+      <th>Halt</th>
+      <th>Distance</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for i in train_route %}
+    <tr>
+      <th scope="row">{{ i.no }}</th>
+      <td>{{ i.code}}</td>
+      <td>{{ i.fullname}}</td>
+      <td>{{ i.scharr}}</td>
+      <td>{{ i.schdep}}</td>
+      <td>{{ i.day}}</td>
+      <td>{{ i.route}}</td>
+      <td>{{ i.halt}} min</td>
+      <td>{{ i.distance}}</td>
+      <td>{{ i.state}}</td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}

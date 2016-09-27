@@ -1,0 +1,59 @@
+
+
+
+body {
+    background: white url("../images/background.jpg");
+}
+
+ul.errorlist {
+    padding-left: 0;
+}
+
+ul.errorlist > li {
+    list-style: none;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-backgrnd {
+    color: red;
+    min-height: 80px;
+}
+
+.navbar-header {
+    color: #d6d6d6;
+}
+
+.navbar-default .navbar-brand {
+    font-family: 'Satisfy', cursive;
+    font-size: 50px;
+    color : saddlebrown;
+}
+
+.glyphicon-star {
+    color: #CCCCCC;
+    font-size: 16px;
+}
+
+.glyphicon-star.active {
+    color: #FDB230;
+}
+
+#background{
+    width: 100%;
+    height: 100%;
+}
+
+#bg_img{
+    width: 100%;
+    position: absolute;
+}
+
+#content{
+    width: 100%;
+    height: 100%;
+    color: aqua;
+    position: relative;
+}

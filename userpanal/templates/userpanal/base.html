@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Niraj{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="http://fonts.googleapis.com/css?family=Satisfy" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'userpanal/style.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="http://www.tutorialspoint.com/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'userpanal/one-page-wonder.css' %}" />
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fnt navbar-backgrnd">
+        <div class="container-fluid">
+            <!-- Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tapNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <i class="fa fa-train" aria-hidden="true"></i>
+                <a class="navbar-brand" href="{% url 'userpanal:index' %}"> Train Status Online </a>
+            </div>
+
+            <!-- Items -->
+
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+              {% if user and not user.is_anonymous %}
+              <li>
+                  <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+              </li>
+              <li>
+                   <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+              </li>
+              {% endif %}
+        </ul>
+    </nav>
+
+    {% if user and not user.is_anonymous %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- First Featurette -->
+        <div class="featurette" id="about">
+            <!------------------------code---------------start---------------->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Nav tabs -->
+                        <div class="card">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="{% url 'userpanal:home' %}" >Home</a></li>
+                                <li role="presentation"><a href="{% url 'userpanal:pnr_status' %}"  >PNR Status</a></li>
+                                <li role="presentation"><a href="{% url 'Train_Route:trainRoute' %}">Train Route</a></li>
+                                <li role="presentation"><a href="{% url 'Live_Train_Status:liveTrainStatus' %}" >Live Train Status</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----Code------end----------------------------------->
+        </div>
+
+        <!-- jQuery -->
+        <script src="http://www.tutorialspoint.com/bootstrap/scripts/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="http://www.tutorialspoint.com/bootstrap/js/bootstrap.min.js"></script>
+
+    {% endif %}
+
+
+{% block body %}
+{% endblock %}
+</body>
+</html>

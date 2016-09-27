@@ -1,0 +1,33 @@
+
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    <h3>
+        PNR Notification
+    </h3>
+
+    <form role = "form" action="" method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       <div class = "form-group">
+          <input class = "form-control input-lg" type = "text" name="pnrno" placeholder ="Enter PNR Number">
+
+           <select name='notification_type' id="js-notify-via" class="form-control">
+            <option value="email" selected=True>Email</option>
+            <option value="phone">Phone</option>
+          </select>
+
+          <input class = "form-control input-lg" type = "text" name="notification_type_value" placeholder ="Enter email or mobile no">
+          <input class = "form-control input-lg" type = "text" value="3" name="notification_frequency_value" placeholder ="Notify me every after 3 ">
+          <select name='notification_frequency' class="form-control">
+                <option value="minutes">Minutes</option>
+                <option value="hours" selected=True>Hours</option>
+                <option value="days">Days</option>
+          </select>
+       </div>
+       <button type = "submit" class = "btn btn-default">Submit</button>
+    </form>
+
+
+{% endblock %}
