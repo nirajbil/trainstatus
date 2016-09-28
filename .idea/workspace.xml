@@ -67,7 +67,7 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/railway/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="73.333336">
+            <state vertical-scroll-proportion="-5.892857">
               <caret line="15" column="87" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="87" />
               <folding />
             </state>
@@ -77,7 +77,7 @@
       <file leaf-file-name="local.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/railway/settings/local.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-13.888889">
               <caret line="15" column="87" selection-start-line="15" selection-start-column="87" selection-end-line="15" selection-end-column="87" />
               <folding />
             </state>
@@ -87,8 +87,8 @@
       <file leaf-file-name="settings_old.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/railway/settings_old.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.407408">
-              <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+            <state vertical-scroll-proportion="26.875">
+              <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -97,8 +97,8 @@
       <file leaf-file-name="production.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/railway/settings/production.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7751196">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.57416266">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -549,14 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/railway/settings/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="87" selection-start-line="15" selection-start-column="87" selection-end-line="15" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.51724">
@@ -573,42 +565,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/railway/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.555555">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/railway/settings_old.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.407408">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/railway/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="73.333336">
-          <caret line="15" column="87" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="87" />
           <folding />
         </state>
       </provider>
@@ -623,10 +583,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/railway/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.555555">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/railway/settings/local.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.888889">
+          <caret line="15" column="87" selection-start-line="15" selection-start-column="87" selection-end-line="15" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/railway/settings_old.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="26.875">
+          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/railway/settings/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.892857">
+          <caret line="15" column="87" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/railway/settings/production.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7751196">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.57416266">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
