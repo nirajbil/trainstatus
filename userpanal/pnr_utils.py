@@ -1123,3 +1123,84 @@ def get_train_live_status_Niraj(train_no,train_date):
  u'train_number': u'12722'}
 >>>
 """
+
+
+
+
+def get_seat_availability_Niraj(trainno,Source_station_code,
+                                Destination_station_code,train_date,
+                                train_class,train_quota):
+    print "trainno=%s" %trainno
+    print "Source_station_code=%s" %Source_station_code
+    print "Destination_station_code=%s" %Destination_station_code
+    print "train_date=%s" %train_date
+    print "train_class=%s" %train_class
+    print "train_quota=%s" %train_quota
+
+    #http://api.railwayapi.com/check_seat/train/<train number>/source/<source code>/dest/<dest code>/date/<doj in DD-MM-YYYY>/class/<class code>/quota/<quota code>/apikey/<apikey>/
+
+
+    url_pnr = "http://api.railwayapi.com/check_seat/train/"
+    url_pnr = url_pnr + trainno + "/source/" + Source_station_code + "/dest/" + Destination_station_code + "/date/" + train_date + "/class/" + train_class + "/quota/" + train_quota + "/apikey/" + RailwayAPI_APIKEY + "/"
+
+    print "url_pnr=%s " %url_pnr
+    request_data = {}
+    context = {}
+    response = urllib2.urlopen(url_pnr)
+    headers = response.info()
+    data_file = response.read()
+    #print "data_file=%s " %data_file
+    request_data = json.loads(data_file)
+    pprint(request_data)
+
+
+    response_code = request_data['response_code']
+    from_station = request_data['from']
+    to_station = request_data['to']
+    train_class = request_data['class']
+    train_name = request_data['train_name']
+    train_number = request_data['train_number']
+    availability = request_data['availability']
+    last_updated = request_data['last_updated']
+    quota = request_data['quota']
+
+    context = {
+               'response_code': response_code,
+               'from_station': from_station,
+               'to_station': to_station,
+               'train_class': train_class,
+               'train_name': train_name,
+               'train_number': train_number,
+               'availability': availability,
+               'last_updated': last_updated,
+               'quota' : quota,
+
+
+               }
+
+    return context
+"""
+url_pnr=http://api.railwayapi.com/check_seat/train/12771/source/sc/dest/ngp/date/30-09-2016/class/SL/quota/GN/apikey/joymo1655/
+{u'availability': [{u'date': u'30-9-2016', u'status': u'GNWL111/WL63'},
+                   {u'date': u'3-10-2016', u'status': u'RAC55/RAC 47'},
+                   {u'date': u'5-10-2016', u'status': u'AVAILABLE 61'},
+                   {u'date': u'7-10-2016', u'status': u'GNWL196/WL144'},
+                   {u'date': u'10-10-2016', u'status': u'RAC6/RAC 6'},
+                   {u'date': u'12-10-2016', u'status': u'AVAILABLE 89'}],
+ u'class': {u'class_code': u'SL', u'class_name': u'SLEEPER CLASS'},
+ u'error': u'',
+ u'failure_rate': 52.43128964059197,
+ u'from': {u'code': u'SC',
+           u'lat': 0.0,
+           u'lng': 0.0,
+           u'name': u'SECUNDERABAD JN'},
+ u'last_updated': {u'date': u'2016-09-28', u'time': u'18:34'},
+ u'quota': {u'quota_code': u'GN', u'quota_name': u'GENERAL QUOTA'},
+ u'response_code': 200,
+ u'to': {u'code': u'NGP',
+         u'lat': 21.152187,
+         u'lng': 79.0887588,
+         u'name': u'NAGPUR'},
+ u'train_name': u'SC NGP SUP EXP',
+ u'train_number': u'12771'}
+"""

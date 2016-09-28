@@ -1,0 +1,86 @@
+
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+    <script type="text/javascript">
+            $(document).ready(function(){
+             setInterval(findYellow,1000);
+             function findYellow(){
+              $("tr.blinkYellow").each(function(){
+                   $(this).toggleClass("background-color-yellow");
+                 })
+                }
+            });
+    </script>
+
+    <style>
+
+        .table .td .th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 1px;
+        }
+
+        .background-color-yellow { background-color: palegreen; }
+    </style>
+
+
+    <div class="container">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Train Number</th>
+              <th>Train Name</th>
+              <th>Date</th>
+              <th>Source Station</th>
+              <th>Destination Station</th>
+              <th>Quota Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ train_number}}</td>
+              <td>{{ train_name}}</td>
+              <td>{{ last_updated.date }}</td>
+              <td>{{ from_station.name }} ({{ from_station.code }})</td>
+              <td>{{ to_station.name }} ({{ to_station.code }})</td>
+              <td>{{ quota.quota_name }} ({{ quota.quota_code }})</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Date (DD-MM-YYYY)</th>
+              <th>Class - {{ train_class.class_name }} ({{ train_class.class_code }})</th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+            {% for i in availability %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ i.date }}</td>
+                  <td>{{ i.status }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}

@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^', include('userpanal.url',namespace='userpanal')),
     url(r'^', include('Train_Route.url',namespace='Train_Route')),
     url(r'^', include('Live_Train_Status.url',namespace='Live_Train_Status')),
-
+    url(r'^', include('Seat_Availability.url',namespace='Seat_Availability')),
 
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
