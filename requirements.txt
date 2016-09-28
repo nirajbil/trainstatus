@@ -11,4 +11,4 @@ dj_static==0.0.6
 gunicorn==19.4.5
 psycopg2==2.6.1
 whitenoise==2.0.6
-
+python-social-auth==0.2.21
