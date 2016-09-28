@@ -1,5 +1,6 @@
 .DS_Store
 db.sqlite3
+railway/settings/local.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
