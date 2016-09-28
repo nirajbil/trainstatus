@@ -131,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 SOCIAL_AUTH_FACEBOOK_KEY = '551427151707901'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'a22757f54b932098a2a1e8aabb9c1f3b'
