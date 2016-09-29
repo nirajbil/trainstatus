@@ -1163,6 +1163,7 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
     availability = request_data['availability']
     last_updated = request_data['last_updated']
     quota = request_data['quota']
+    error = request_data['error']
 
     context = {
                'response_code': response_code,
@@ -1174,6 +1175,8 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
                'availability': availability,
                'last_updated': last_updated,
                'quota' : quota,
+                'error' : error,
+
 
 
                }

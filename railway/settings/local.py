@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Train_Between_Stations.apps.TrainBetweenStationsConfig',
     'Seat_Availability.apps.SeatAvailabilityConfig',
     'Live_Train_Status.apps.LiveTrainStatusConfig',
     'Train_Route.apps.TrainRouteConfig',

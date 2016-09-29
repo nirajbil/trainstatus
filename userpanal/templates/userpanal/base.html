@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <title>{% block title %}Niraj{% endblock %}</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="http://www.tutorialspoint.com/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Satisfy" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{% static 'userpanal/style.css' %}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="http://www.tutorialspoint.com/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'userpanal/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'userpanal/one-page-wonder.css' %}" />
 
 
@@ -28,23 +27,28 @@
                     <span class="icon-bar"></span>
                 </button>
                 <i class="fa fa-train" aria-hidden="true"></i>
-                <a class="navbar-brand" href="{% url 'userpanal:index' %}"> Train Status Online </a>
+                <!--
+                <div class="fb_img">
+                    <img src={% static "images/login-with-facebook.png" %} alt="" >
+                </div>
+                -->
+                <a class="navbar-brand" href="{% url 'userpanal:index' %}">
+
+                    Train Status Online </a>
             </div>
 
-            <!-- Items -->
+            <ul class="nav navbar-nav navbar-right">
+                  {% if user and not user.is_anonymous %}
+                  <li>
+                      <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+                  </li>
+                  <li>
+                       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+                  </li>
+                  {% endif %}
+            </ul>
 
-        </div>
-
-        <ul class="nav navbar-nav navbar-right">
-              {% if user and not user.is_anonymous %}
-              <li>
-                  <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-              </li>
-              <li>
-                   <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
-              </li>
-              {% endif %}
-        </ul>
+         </div>
     </nav>
 
     {% if user and not user.is_anonymous %}
@@ -81,8 +85,17 @@
 
     {% endif %}
 
+    {% block body %}
+    {% endblock %}
 
-{% block body %}
-{% endblock %}
+    <div class="col-xs-3 " id="add_space">
+        <div class="container-fluid img-responsive">
+            <!--
+            <h3> space for adds</h3>
+            <img src={% static "images/login-with-facebook.png" %} alt="" class="img-responsive center-block">
+            -->
+        </div>
+    </div>
+
 </body>
 </html>
