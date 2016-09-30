@@ -22,7 +22,7 @@ ul.errorlist > li {
     min-height: 50px;
 }
 
-.navbar-header {
+.navbar-header{
     color: #d6d6d6;
 }
 
@@ -70,4 +70,17 @@ ul.errorlist > li {
     height: 100%;
 
 
+}
+
+
+
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #d6d6d6;
+  text-align: center;
 }
