@@ -10,6 +10,6 @@ urlpatterns = [
 
     url(r'^$', views.index,name="index" ),
     url(r'home/$', views.home,name="home" ),
-    url(r'pnr/$', views.pnr_status,name="pnr_status" ),
+    url(r'pnr_status/$', views.pnr_status,name="pnr_status" ),
     url(r'pnrNotification/$', views.pnrNotification,name="pnrNotification" ),
 ]

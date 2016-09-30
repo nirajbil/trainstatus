@@ -3,30 +3,29 @@
 {% load staticfiles %}
 {% block body %}
 
-      {% if user and not user.is_anonymous %}
-        <h3>
-            <a href="{% url 'userpanal:pnr_status' %}" > PNR status</a>
-        </h3>
-
-     {% else %}
 
         <div class="col-xs-9 img-responsive">
-            <div class="jumbotron">
-                <div class="container-fluid">
-                    <h3> Free Login</h3>
-                    <p><a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"  class="btn btn-success btn-lg center-block">Log In With Facebook</a></p>
+
+            {% if user and not user.is_anonymous %}
+            {% else %}
+                <div class="jumbotron">
+                    <div class="container-fluid">
+                        <h3> Free Login</h3>
+                        <p><a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"  class="btn btn-success btn-lg center-block">Log In With Facebook</a></p>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="{% url 'userpanal:pnr_status' %}" class="btn btn-success  center-block"><h3>PNR Status</h3></a></p>
+                        <a href="{% url 'userpanal:pnr_status' %}" class="btn btn-primary  center-block"><h3>PNR Status</h3></a></p>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{% url 'Train_Route:trainRoute' %}" class="btn btn-success  center-block"><h3>Train Route</h3></a></p>
+                        <a href="{% url 'Train_Route:trainRoute' %}" class="btn btn-primary  center-block"><h3>Train Route</h3></a></p>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{% url 'Live_Train_Status:liveTrainStatus' %}" class="btn btn-success  center-block"><h3>Live Train Status</h3></a></p>
+                        <a href="{% url 'Live_Train_Status:liveTrainStatus' %}" class="btn btn-primary  center-block"><h3>Live Train Status</h3></a></p>
                     </div>
                 </div>
                 <hr>
@@ -34,13 +33,13 @@
             <div class="container-fluid img-responsive ">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="{% url 'Seat_Availability:seatAvailability' %}" class="btn btn-success  center-block"><h3>Seat Availability</h3></a></p>
+                        <a href="{% url 'Seat_Availability:seatAvailability' %}" class="btn btn-primary  center-block"><h3>Seat Availability</h3></a></p>
                     </div>
                     <div class="col-xs-4">
-                        <a href="#" class="btn btn-success  center-block"><h3>Train Route</h3></a></p>
+                        <a href="#" class="btn btn-primary  center-block"><h3>Train Route</h3></a></p>
                     </div>
                     <div class="col-xs-4">
-                        <a href="#" class="btn btn-success  center-block"><h3>Live Train Status</h3></a></p>
+                        <a href="#" class="btn btn-primary  center-block"><h3>Live Train Status</h3></a></p>
                     </div>
                 </div>
                 <hr>
@@ -52,6 +51,5 @@
 
 
 
-    {% endif %}
 
 {% endblock %}
