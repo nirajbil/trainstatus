@@ -3,32 +3,103 @@
 
 {% load staticfiles %}
 {% block body %}
+
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+
     {% include 'userpanal/Detail.html' %}
+    <div class="col-xs-9">
+        <div class="container-fluid">
+            <div class="page-header">
+                <h2>PNR Notification</h2>
+            </div>
 
-    <h3>
-        PNR Notification
-    </h3>
+            <form role = "form" action="" method="post" enctype="multipart/form-data">
+               {% csrf_token %}
+               <div class = "form-group">
+                   <div class="row col-xs-9">
+                        <input class = "form-control input-lg" type = "text" name="pnrno" placeholder ="Enter PNR Number">
+                    </div>
 
-    <form role = "form" action="" method="post" enctype="multipart/form-data">
-       {% csrf_token %}
-       <div class = "form-group">
-          <input class = "form-control input-lg" type = "text" name="pnrno" placeholder ="Enter PNR Number">
+                   <div class="row col-xs-9 " >
+                        <h5>Send Alert On: </h5>
+                        <input type="radio" style="margin: 7px 10px 0 20px;" onclick="EmailAlert()" name="notification_type" value="Email" >Email
+                        <input type="radio" style="margin: 7px 10px 0 20px;" onclick="MobileAlert()" name="notification_type" value="Mobile" >Mobile
+                        <div id="SendAlert"></div>
+                        <hr>
+                  </div>
 
-           <select name='notification_type' id="js-notify-via" class="form-control">
-            <option value="email" selected=True>Email</option>
-            <option value="phone">Phone</option>
-          </select>
+                   <div class="row col-xs-9" >
+                         <h5>Alert Interval: </h5>
+                         <input type="radio" style="margin: 7px 10px 0 20px;" onclick="MinuteInterval()" name="notification_frequency" value="Minutes" >Minute
+                         <input type="radio" style="margin: 7px 10px 0 20px;" onclick="HourInterval()" name="notification_frequency" value="Hours" >Hour
+                         <input type="radio" style="margin: 7px 10px 0 20px;" onclick="DaysInterval()" name="notification_frequency" value="Days" >Days
+                         <input type="radio" style="margin: 7px 10px 0 20px;" onclick="OnDateInterval()" name="notification_frequency" value="OnDate" >On Date
+                         <div id="AlertInterval"></div>
+                        <hr>
+                  <button type = "submit" class = "btn btn-default">Submit</button>
+                  </div>
+               </div>
+            </form>
+        </div>
+    </div>
 
-          <input class = "form-control input-lg" type = "text" name="notification_type_value" placeholder ="Enter email or mobile no">
-          <input class = "form-control input-lg" type = "text" value="3" name="notification_frequency_value" placeholder ="Notify me every after 3 ">
-          <select name='notification_frequency' class="form-control">
-                <option value="minutes">Minutes</option>
-                <option value="hours" selected=True>Hours</option>
-                <option value="days">Days</option>
-          </select>
-       </div>
-       <button type = "submit" class = "btn btn-default">Submit</button>
-    </form>
+    <script type="text/javascript">
+        function EmailAlert()
+		{
+		    document.getElementById("SendAlert").innerHTML = '<input class = "form-control input-lg" type = "text" name="notification_type_value" placeholder ="Enter Email Address">';
+		}
+        function MobileAlert()
+		{
+		    document.getElementById("SendAlert").innerHTML = '<input class = "form-control input-lg" type = "text" name="notification_type_value" placeholder ="Enter Mobile Number">';
+		}
+
+        function MinuteInterval()
+		{
+		    document.getElementById("AlertInterval").innerHTML = '<input class = "form-control input-lg" type = "text" name="notification_frequency_value" placeholder ="Enter Minutes">';
+		}
+
+        function HourInterval()
+		{
+		    document.getElementById("AlertInterval").innerHTML = '<input class = "form-control input-lg" type = "text" name="notification_frequency_value" placeholder ="Enter Hours">';
+		}
+        function DaysInterval()
+		{
+		    document.getElementById("AlertInterval").innerHTML = '<input class = "form-control input-lg" type = "text" name="notification_frequency_value" placeholder ="Enter Days">';
+		}
+        function OnDateInterval()
+		{
+            document.getElementById("AlertInterval").innerHTML = '\
+               <div class="input-group"> \
+                <div class="input-group-addon"> \
+                 <i class="fa fa-calendar"></i> \
+                </div> \
+                <input class="form-control" id="notification_frequency_value" name="notification_frequency_value" placeholder="DD-MM-YYYY" type="text"/> \
+               </div>';
+
+            $(document).ready(function(){
+                var date_input=$('input[name="notification_frequency_value"]'); //our date input has the name "date"
+                var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                date_input.datepicker({
+                    format: 'dd-mm-yyyy',
+                    container: container,
+                    todayHighlight: true,
+                    autoclose: true,
+                })
+            })
+		}
+
+    </script>
+
+        <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+        <!-- Include jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
 
 
 {% endblock %}

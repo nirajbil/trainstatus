@@ -12,7 +12,7 @@ from datetime import timedelta
 from exception_handler import log_exception
 
 from pnrapi import pnrapi
-from pnr_utils import get_pnr_status, caluclate_timedelta, get_pnr_status_Niraj
+from pnr_utils import get_pnr_status, caluclate_timedelta, get_pnr_status_Niraj, send_Email
 from .tasks import send_pnr_notification
 from .models import PNRNotification
 
@@ -80,12 +80,18 @@ def pnrNotification(request):
         print "notification_type_value=%s" %notification_type_value
         print "notification_frequency=%s" %notification_frequency
         print "notification_frequency_value=%s" %notification_frequency_value
-
         timenow = datetime.datetime.now()
 
         next_schedule_time =  timenow + caluclate_timedelta(notification_frequency,notification_frequency_value)
-
         print "next_schedule_time=%s" %next_schedule_time
+
+        """
+        send_Email(
+            message=u'this is test msg',
+            subject='www.trainstatusonline.in Error!',
+            to_addr='niraj.bilaimare@gmail.com'
+        )
+        """
 
         pnr_no = pnr_no[:10]
         try:
@@ -96,10 +102,12 @@ def pnrNotification(request):
             pnr_notify.notification_frequency_value = notification_frequency_value
             pnr_notify.next_schedule_time = next_schedule_time
             pnr_notify.save()
+            print "--- PNR Data Saved ---- "
         except PNRNotification.DoesNotExist:
             pnr_notify = PNRNotification.objects.create( pnr_no=pnr_no, notification_type=notification_type,
                 notification_type_value=notification_type_value, notification_frequency=notification_frequency,
                 notification_frequency_value=notification_frequency_value, next_schedule_time=next_schedule_time )
+
         pnr_status = get_pnr_status(pnr_notify)
         if not pnr_status.get('error'):
             send_pnr_notification(pnr_notify=pnr_notify, pnr_status_dict=pnr_status)
@@ -108,3 +116,4 @@ def pnrNotification(request):
         #return HttpResponseRedirect('/')
         return render(request,template_name, context)
 
+    return render(request,template_name, context)

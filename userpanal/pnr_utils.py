@@ -30,11 +30,11 @@ def check_if_ticket_cancelled(passengers):
 
 def caluclate_timedelta(notification_frequency, notification_frequency_value):
     notification_frequency_value = int(notification_frequency_value)
-    if notification_frequency == 'minutes':
+    if notification_frequency == 'Minutes':
         timedelta = datetime.timedelta(minutes=notification_frequency_value)
-    elif notification_frequency == 'hours':
+    elif notification_frequency == 'Hours':
         timedelta = datetime.timedelta(hours=notification_frequency_value)
-    elif notification_frequency == 'days':
+    elif notification_frequency == 'Days':
         timedelta = datetime.timedelta(days=notification_frequency_value)
     return timedelta
 
@@ -120,16 +120,31 @@ def get_current_status_sms(passengers):
         i+=1
     return temp
 
-
+"""
 def send_email(message, subject, to_addr):
     print 'sending'
     requests.post('https://api.mailgun.net/v2/pypnrstatus.in/messages',
         auth=("api", "key-3du65990xbf63jlr5ihvlpir2k82jqr5"),
-        data={"from": "Py-PNR-Status <info@pypnrstatus.in>",
+        data={"from": "TrainStatusOnline.in <info@TrainStatusOnline.in>",
             "to": [to_addr],
             "subject": subject,
             "html": message,
             "text": message})
+    print 'sent :)'
+"""
+#"https://api.mailgun.net/v3/sandbox89e4eae13fb8486e805592b6d3605e83.mailgun.org/messages",
+def send_Email(message, subject, to_addr):
+    print 'sending'
+    success = requests.post(
+        "https://api.mailgun.net/v3/sandbox89e4eae13fb8486e805592b6d3605e83.mailgun.org/messages",
+        auth=("api", "key-5e1158e1344872a19a4d9b1560e8b4a7"),
+        data={"from": "TrainStatusOnline.in <info@TrainStatusOnline.in> ",
+              "to": [to_addr],
+              "subject": subject,
+              "html": message,
+              "text": message })
+    print success['responce']
+
     print 'sent :)'
 
 
