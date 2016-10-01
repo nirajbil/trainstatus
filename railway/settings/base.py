@@ -31,11 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Cancelled_Trains.apps.CancelledTrainsConfig',
+    'Train_Arrivals_At_Station.apps.TrainArrivalsAtStationConfig',
+    'Train_Fair_Enquiry.apps.TrainFairEnquiryConfig',
+    'Train_Name_Number.apps.TrainNameNumberConfig',
     'Train_Between_Stations.apps.TrainBetweenStationsConfig',
     'Seat_Availability.apps.SeatAvailabilityConfig',
     'Live_Train_Status.apps.LiveTrainStatusConfig',
     'Train_Route.apps.TrainRouteConfig',
     'userpanal.apps.UserpanalConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -3,6 +3,9 @@
 
 {% load staticfiles %}
 {% block body %}
+
+
+
     <script type="text/javascript">
             $(document).ready(function(){
              setInterval(findYellow,1000);
@@ -33,7 +36,7 @@
         .background-color-yellow { background-color: palegreen; }
     </style>
 
-<body>
+{% include 'userpanal/Detail.html' %}
 <div class="container">
 
 <table class="table table-bordered">

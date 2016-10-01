@@ -1180,8 +1180,8 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
 
 
                }
-
     return context
+
 """
 url_pnr=http://api.railwayapi.com/check_seat/train/12771/source/sc/dest/ngp/date/30-09-2016/class/SL/quota/GN/apikey/joymo1655/
 {u'availability': [{u'date': u'30-9-2016', u'status': u'GNWL111/WL63'},
@@ -1207,3 +1207,430 @@ url_pnr=http://api.railwayapi.com/check_seat/train/12771/source/sc/dest/ngp/date
  u'train_name': u'SC NGP SUP EXP',
  u'train_number': u'12771'}
 """
+
+
+
+def get_Train_Between_Stations_Niraj(Source_station_code,Destination_station_code,train_date):
+    url_pnr = "http://api.railwayapi.com/between/source/"
+    url_pnr = url_pnr + Source_station_code + "/dest/" + Destination_station_code + "/date/" + train_date + "/apikey/" + RailwayAPI_APIKEY + "/"
+
+    print "url_pnr=%s " %url_pnr
+    request_data = {}
+    context = {}
+    response = urllib2.urlopen(url_pnr)
+    headers = response.info()
+    data_file = response.read()
+    #print "data_file=%s " %data_file
+    request_data = json.loads(data_file)
+    pprint(request_data)
+
+
+    response_code = request_data['response_code']
+    train = request_data['train']
+    total = request_data['total']
+    error = request_data['error']
+
+    #print "==>%s" %train[0]['classes'][0]['class-code']
+
+    for trainvar in train:
+        for classesvar in trainvar['classes']:
+            append_class = {'class_code':classesvar['class-code']}
+            classesvar.update(append_class)
+            #print "1==>%s" %classesvar
+
+        for daysvar in trainvar['days']:
+            append_day = {'day_code':daysvar['day-code']}
+            daysvar.update(append_day)
+            #print "1==>%s" %daysvar
+        #print "endl"
+
+       #if trainvar['classes']['available']=='Y':
+       #     print "==>%s" %trainvar['classes']['class-code']
+
+    context = {
+               'response_code': response_code,
+               'train': train,
+               'total': total,
+                'error': error,
+               }
+
+    return context
+
+
+"""
+url_pnr=http://api.railwayapi.com/between/source/sc/dest/ngp/date/30-09/apikey/joymo1655/
+{u'error': u'',
+ u'response_code': 200,
+ u'total': 9,
+ u'train': [{u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'Y', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'N'},
+                       {u'day-code': u'TUE', u'runs': u'N'},
+                       {u'day-code': u'WED', u'runs': u'N'},
+                       {u'day-code': u'THU', u'runs': u'N'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'N'},
+                       {u'day-code': u'SUN', u'runs': u'Y'}],
+             u'dest_arrival_time': u'11:05',
+             u'from': {u'code': u'KCG', u'name': u'KACHEGUDA'},
+             u'name': u'MYS-JP EXPRESS',
+             u'no': 1,
+             u'number': u'12975',
+             u'src_departure_time': u'02:10',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'08:55'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'Y', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'Y'},
+                       {u'day-code': u'TUE', u'runs': u'Y'},
+                       {u'day-code': u'WED', u'runs': u'Y'},
+                       {u'day-code': u'THU', u'runs': u'Y'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'Y'},
+                       {u'day-code': u'SUN', u'runs': u'Y'}],
+             u'dest_arrival_time': u'15:40',
+             u'from': {u'code': u'SC', u'name': u'SECUNDERABAD JN'},
+             u'name': u'TELANGANA EXPRESS',
+             u'no': 2,
+             u'number': u'12723',
+             u'src_departure_time': u'06:50',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'08:50'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'N', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'N'},
+                       {u'day-code': u'TUE', u'runs': u'N'},
+                       {u'day-code': u'WED', u'runs': u'N'},
+                       {u'day-code': u'THU', u'runs': u'N'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'N'},
+                       {u'day-code': u'SUN', u'runs': u'N'}],
+             u'dest_arrival_time': u'17:00',
+             u'from': {u'code': u'SC', u'name': u'SECUNDERABAD JN'},
+             u'name': u'SC-GKP EXP',
+             u'no': 3,
+             u'number': u'12590',
+             u'src_departure_time': u'07:20',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'09:40'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'N', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'Y', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'Y'},
+                       {u'day-code': u'TUE', u'runs': u'Y'},
+                       {u'day-code': u'WED', u'runs': u'N'},
+                       {u'day-code': u'THU', u'runs': u'Y'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'N'},
+                       {u'day-code': u'SUN', u'runs': u'N'}],
+             u'dest_arrival_time': u'15:20',
+             u'from': {u'code': u'SC', u'name': u'SECUNDERABAD JN'},
+             u'name': u'BANGALORE RAJDHANI EXPRES',
+             u'no': 4,
+             u'number': u'22691',
+             u'src_departure_time': u'07:50',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'07:30'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'N', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'Y'},
+                       {u'day-code': u'TUE', u'runs': u'Y'},
+                       {u'day-code': u'WED', u'runs': u'Y'},
+                       {u'day-code': u'THU', u'runs': u'Y'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'Y'},
+                       {u'day-code': u'SUN', u'runs': u'Y'}],
+             u'dest_arrival_time': u'19:15',
+             u'from': {u'code': u'SC', u'name': u'SECUNDERABAD JN'},
+             u'name': u'SC-DNR EXP',
+             u'no': 5,
+             u'number': u'12791',
+             u'src_departure_time': u'10:00',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'09:15'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'N', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'N'},
+                       {u'day-code': u'TUE', u'runs': u'N'},
+                       {u'day-code': u'WED', u'runs': u'N'},
+                       {u'day-code': u'THU', u'runs': u'N'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'N'},
+                       {u'day-code': u'SUN', u'runs': u'N'}],
+             u'dest_arrival_time': u'00:45',
+             u'from': {u'code': u'KCG', u'name': u'KACHEGUDA'},
+             u'name': u'YPR-GKP-EXP',
+             u'no': 6,
+             u'number': u'15024',
+             u'src_departure_time': u'10:40',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'14:05'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'N', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'Y'},
+                       {u'day-code': u'TUE', u'runs': u'N'},
+                       {u'day-code': u'WED', u'runs': u'Y'},
+                       {u'day-code': u'THU', u'runs': u'N'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'N'},
+                       {u'day-code': u'SUN', u'runs': u'N'}],
+             u'dest_arrival_time': u'02:00',
+             u'from': {u'code': u'KCG', u'name': u'KACHEGUDA'},
+             u'name': u'TPTY-NZM AP SAMPRK KRANTI',
+             u'no': 7,
+             u'number': u'12707',
+             u'src_departure_time': u'17:15',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'08:45'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'N', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'Y'},
+                       {u'day-code': u'TUE', u'runs': u'N'},
+                       {u'day-code': u'WED', u'runs': u'Y'},
+                       {u'day-code': u'THU', u'runs': u'N'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'N'},
+                       {u'day-code': u'SUN', u'runs': u'N'}],
+             u'dest_arrival_time': u'08:15',
+             u'from': {u'code': u'SC', u'name': u'SECUNDERABAD JN'},
+             u'name': u'SC-NGP  EXP',
+             u'no': 8,
+             u'number': u'12771',
+             u'src_departure_time': u'22:00',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'10:15'},
+            {u'classes': [{u'available': u'Y', u'class-code': u'3A'},
+                          {u'available': u'N', u'class-code': u'3E'},
+                          {u'available': u'Y', u'class-code': u'SL'},
+                          {u'available': u'N', u'class-code': u'FC'},
+                          {u'available': u'N', u'class-code': u'1A'},
+                          {u'available': u'Y', u'class-code': u'2A'},
+                          {u'available': u'N', u'class-code': u'CC'},
+                          {u'available': u'N', u'class-code': u'2S'}],
+             u'days': [{u'day-code': u'MON', u'runs': u'Y'},
+                       {u'day-code': u'TUE', u'runs': u'Y'},
+                       {u'day-code': u'WED', u'runs': u'Y'},
+                       {u'day-code': u'THU', u'runs': u'Y'},
+                       {u'day-code': u'FRI', u'runs': u'Y'},
+                       {u'day-code': u'SAT', u'runs': u'Y'},
+                       {u'day-code': u'SUN', u'runs': u'Y'}],
+             u'dest_arrival_time': u'09:05',
+             u'from': {u'code': u'SC', u'name': u'SECUNDERABAD JN'},
+             u'name': u'HYB-NZM DAKSHIN EXP',
+             u'no': 9,
+             u'number': u'12721',
+             u'src_departure_time': u'23:00',
+             u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+             u'travel_time': u'10:05'}]}
+
+
+"""
+
+
+def get_train_Name_Number_Niraj(train_Name_Number):
+    url_pnr = "http://api.railwayapi.com/name_number/train/"
+    url_pnr = url_pnr + train_Name_Number + "/apikey/" + RailwayAPI_APIKEY + "/"
+
+    print "url_pnr=%s " %url_pnr
+    request_data = {}
+    context = {}
+    response = urllib2.urlopen(url_pnr)
+    headers = response.info()
+    data_file = response.read()
+    #print "data_file=%s " %data_file
+    request_data = json.loads(data_file)
+    pprint(request_data)
+
+
+    response_code = request_data['response_code']
+    train = request_data['train']
+    #total = request_data['total']
+    #error = request_data['error']
+
+    #print "==>%s" %train[0]['classes'][0]['class-code']
+
+    for trainvar in train['days']:
+        append_class = {'day_code':trainvar['day-code']}
+        trainvar.update(append_class)
+        #print "1==>%s" %trainvar
+        #print "endl"
+
+    context = {
+               'response_code': response_code,
+               'train': train,
+               }
+
+    return context
+"""
+url_pnr=http://api.railwayapi.com/name_number/train/12771/apikey/joymo1655/
+{u'response_code': 200,
+ u'train': {u'days': [{u'day-code': u'SUN', u'runs': u'N'},
+                      {u'day-code': u'MON', u'runs': u'Y'},
+                      {u'day-code': u'TUE', u'runs': u'N'},
+                      {u'day-code': u'WED', u'runs': u'Y'},
+                      {u'day-code': u'THU', u'runs': u'N'},
+                      {u'day-code': u'FRI', u'runs': u'Y'},
+                      {u'day-code': u'SAT', u'runs': u'N'}],
+            u'name': u'SC NGP SUP EXP',
+            u'number': u'12771'}}
+"""
+
+def get_Train_Fair_Enquiry_Niraj(Source_station_code,Destination_station_code,
+                                                   trainno, Age_of_the_passenger,train_quota,
+                                                   train_date):
+
+
+    url_pnr = "http://api.railwayapi.com/fare/train/"
+    url_pnr = url_pnr + trainno + "/source/"+ Source_station_code + "/dest/" + Destination_station_code + "/age/" + Age_of_the_passenger + "/quota/" + train_quota + "/doj/" + train_date  + "/apikey/" + RailwayAPI_APIKEY + "/"
+
+    print "url_pnr=%s " %url_pnr
+    request_data = {}
+    context = {}
+    response = urllib2.urlopen(url_pnr)
+    headers = response.info()
+    data_file = response.read()
+    #print "data_file=%s " %data_file
+    request_data = json.loads(data_file)
+    pprint(request_data)
+
+
+    response_code = request_data['response_code']
+    train = request_data['train']
+    fare = request_data['fare']
+    from_train = request_data['from']
+    quota = request_data['quota']
+    to_train = request_data['to']
+
+
+    context = {
+               'response_code': response_code,
+               'train': train,
+               'fare':fare,
+               'from_train':from_train,
+               'quota':quota,
+               'to_train':to_train,
+
+               }
+    return context
+
+
+"""
+url_pnr=http://api.railwayapi.com/fare/train/12771/source/sc/dest/ngp/age/27/quota/GN/doj/07-10-2016/apikey/joymo1655/
+{u'failure_rate': 14.885496183206106,
+ u'fare': [{u'code': u'2A', u'fare': u'1305', u'name': u'SECOND AC'},
+           {u'code': u'3A', u'fare': u'925', u'name': u'THIRD AC'},
+           {u'code': u'SL', u'fare': u'355', u'name': u'SLEEPER CLASS'}],
+ u'from': {u'code': u'SC', u'name': u'SECUNDERABAD JN'},
+ u'quota': {u'code': u'GN', u'name': u'GENERAL QUOTA'},
+ u'response_code': 200,
+ u'to': {u'code': u'NGP', u'name': u'NAGPUR'},
+ u'train': {u'name': u'SC NGP SUP EXP', u'number': u'12771'}}
+"""
+
+
+def get_train_Arrivals_At_Station_Niraj(stationCode):
+    url_pnr = "http://api.railwayapi.com/arrivals/station/"
+    url_pnr = url_pnr + stationCode + "/hours/" + "2" + "/apikey/" + RailwayAPI_APIKEY + "/"
+
+    #url_pnr = "http://api.railwayapi.com/cancelled/date/01-10-2016/apikey/joymo1655/"
+    print "url_pnr=%s " %url_pnr
+    request_data = {}
+    context = {}
+    response = urllib2.urlopen(url_pnr)
+    headers = response.info()
+    data_file = response.read()
+    #print "data_file=%s " %data_file
+    request_data = json.loads(data_file)
+    pprint(request_data)
+
+
+    response_code = request_data['response_code']
+    #train = request_data['train']
+    #total = request_data['total']
+    #error = request_data['error']
+
+    context = {
+               'response_code': response_code,
+               #'train': train,
+               }
+
+    return context
+
+
+
+
+def get_cancelled_Trains_Niraj(train_date):
+    url_pnr = "http://api.railwayapi.com/cancelled/date/"
+    url_pnr = url_pnr + train_date + "/apikey/" + RailwayAPI_APIKEY + "/"
+
+    #url_pnr = "http://api.railwayapi.com/cancelled/date/01-10-2016/apikey/joymo1655/"
+    print "url_pnr=%s " %url_pnr
+    request_data = {}
+    context = {}
+    response = urllib2.urlopen(url_pnr)
+    headers = response.info()
+    data_file = response.read()
+    #print "data_file=%s " %data_file
+    request_data = json.loads(data_file)
+    pprint(request_data)
+
+
+    response_code = request_data['response_code']
+    last_updated = request_data['last_updated']
+    trains = request_data['trains']
+    #error = request_data['error']
+
+    context = {
+               'response_code': response_code,
+               'last_updated': last_updated,
+               'trains':trains,
+               }
+
+    return context

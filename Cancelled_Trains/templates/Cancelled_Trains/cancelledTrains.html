@@ -1,0 +1,67 @@
+
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    <style>
+
+        .table .td .th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 1px;
+        }
+    </style>
+
+{% include 'userpanal/Detail.html' %}
+<div class="container">
+
+<table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th colspan="10"><h3>Cancelled Trains</h3></th>
+    </tr>
+    <tr>
+      <th colspan="10"><h4>Last Update : {{ last_updated.date }} {{ last_updated.time }}</h4></th>
+    </tr>
+
+    <tr>
+      <th>No</th>
+      <th>Train Number</th>
+      <th>Train name</th>
+      <th>Train Type</th>
+      <th>Start Time</th>
+      <th>Source</th>
+      <th>Destination</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for i in trains %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td> {{ i.train.number }}</td>
+      <td>{{ i.train.name }}</td>
+      <td>{{ i.train.type }}</td>
+      <td>{{ i.train.start_time}}</td>
+      <td>{{ i.source.name}} ({{ i.source.code }})</td>
+      <td>{{ i.dest.name }} ({{ i.dest.code }})</td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}

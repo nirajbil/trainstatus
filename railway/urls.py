@@ -22,6 +22,13 @@ urlpatterns = [
     url(r'^', include('Train_Route.url',namespace='Train_Route')),
     url(r'^', include('Live_Train_Status.url',namespace='Live_Train_Status')),
     url(r'^', include('Seat_Availability.url',namespace='Seat_Availability')),
+    url(r'^', include('Train_Between_Stations.url',namespace='Train_Between_Stations')),
+    url(r'^', include('Train_Name_Number.url',namespace='Train_Name_Number')),
+    url(r'^', include('Train_Fair_Enquiry.url',namespace='Train_Fair_Enquiry')),
+    url(r'^', include('Train_Arrivals_At_Station.url',namespace='Train_Arrivals_At_Station')),
+    url(r'^',include('Cancelled_Trains.url',namespace='Cancelled_Trains')),
+
+
 
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),

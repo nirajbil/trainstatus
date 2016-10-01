@@ -19,13 +19,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="{% url 'userpanal:pnr_status' %}" class="btn btn-primary  center-block"><h3>PNR Status</h3></a></p>
+                        <a href="{% url 'userpanal:pnr_status' %}" class="btn btn-primary  center-block"><h4>PNR Status</h4></a></p>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{% url 'Train_Route:trainRoute' %}" class="btn btn-primary  center-block"><h3>Train Route</h3></a></p>
+                        <a href="{% url 'Train_Route:trainRoute' %}" class="btn btn-primary  center-block"><h4>Train Route</h4></a></p>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{% url 'Live_Train_Status:liveTrainStatus' %}" class="btn btn-primary  center-block"><h3>Live Train Status</h3></a></p>
+                        <a href="{% url 'Live_Train_Status:liveTrainStatus' %}" class="btn btn-primary  center-block"><h4>Live Train Status</h4></a></p>
                     </div>
                 </div>
                 <hr>
@@ -33,14 +33,29 @@
             <div class="container-fluid img-responsive ">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="{% url 'Seat_Availability:seatAvailability' %}" class="btn btn-primary  center-block"><h3>Seat Availability</h3></a></p>
+                        <a href="{% url 'Seat_Availability:seatAvailability' %}" class="btn btn-primary  center-block"><h4>Seat Availability</h4></a></p>
                     </div>
+
                     <div class="col-xs-4">
-                        <a href="#" class="btn btn-primary  center-block"><h3>Train Route</h3></a></p>
+                        <a href="{% url 'Train_Between_Stations:trainBetweenStations' %}" class="btn btn-primary  center-block"><h4>Trains Between Stations</h4></a></p>
                     </div>
+
                     <div class="col-xs-4">
-                        <a href="#" class="btn btn-primary  center-block"><h3>Live Train Status</h3></a></p>
+                        <a href="{% url 'Train_Name_Number:trainNameNumber' %}" class="btn btn-primary  center-block"><h4>Train Name/Number</h4></a></p>
                     </div>
+                </div>
+                <hr>
+            </div>
+            <div class="container-fluid img-responsive ">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a href="{% url 'Train_Fair_Enquiry:trainFairEnquiry' %}" class="btn btn-primary  center-block"><h4>Train Fair Enquiry</h4></a></p>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <a href="{% url 'Cancelled_Trains:cancelledTrains' %}" class="btn btn-primary  center-block"><h4>Cancelled Trains</h4></a></p>
+                    </div>
+
                 </div>
                 <hr>
             </div>

@@ -4,9 +4,9 @@ from . import views
 from django.views.generic.base import TemplateView
 
 
-app_name  = 'Train_Between_Station' #name space if we have more apps
+app_name  = 'Train_Between_Stations' #name space if we have more apps
 
 urlpatterns = [
-    url(r'trainBetweenStation/$', views.trainBetweenStation,name="trainBetweenStation" ),
+    url(r'trainBetweenStations/$', views.trainBetweenStations,name="trainBetweenStations"),
 
 ]

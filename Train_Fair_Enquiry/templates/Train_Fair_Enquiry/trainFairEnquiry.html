@@ -1,0 +1,111 @@
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    <style>
+        form{
+            border-collapse: collapse;
+            width: 50%;
+        }
+    </style>
+
+<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+<!--
+<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+-->
+<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+<!--
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+-->
+
+<!--Font Awesome (added because you use icons in your prepend/append) to show calender icon-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<!--
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+-->
+
+  {% include 'userpanal/Detail.html' %}
+
+  <div class="col-xs-9">
+    <div class="container-fluid">
+        <div class="page-header"><h2>Train Fair Enquiry</h2></div>
+
+        <form role = "form" action="" method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+           <div class = "form-group">
+              <input class = "form-control input-lg" type = "text" name="trainno" placeholder ="Enter Train Number">
+              <input class = "form-control input-lg" type = "text" name="Source_station_code" placeholder ="Enter Source station code.">
+              <input class = "form-control input-lg" type = "text" name="Destination_station_code" placeholder ="Enter Destination station code.">
+              <input class = "form-control input-lg" type = "text" name="Age_of_the_passenger" placeholder ="Enter Age of the passenger.">
+
+
+               <div class="input-group">
+                <div class="input-group-addon">
+                 <i class="fa fa-calendar"></i>
+                </div>
+                <input class="form-control" id="date" name="date" placeholder="Date of journey in dd-mm-yyyy format." type="text"/>
+               </div>
+
+                <!-------------------- Drop Down For Quota ---------------------------------------------->
+
+                  <select class="form-control" id="sel1" name="train_quota">
+                    <option value="GN">General Quota</option>
+                    <option value="LD">Ladies Quota</option>
+                    <option value="DF">Defence Quota</option>
+                    <option value="PH">Parliament house Quota</option>
+                    <option value="FT">Foreign Tourist Quota</option>
+                    <option value="DP">Duty Pass Quota</option>
+                    <option value="CK">Tatkal Quota</option>
+                    <option value="PT">Premium Tatkal Quota</option>
+                    <option value="HP">Physically Handicapped Quota</option>
+                    <option value="LB">Lower Berth</option>
+                    <option value="YU">Yuva</option>
+                  </select>
+                  <br>
+
+
+                <!--------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+           </div>
+           <button type = "submit" class = "btn btn-default">Submit</button>
+        </form>
+
+    </div>
+  </div>
+
+                <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+                <!-- Include jQuery -->
+                <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+                <!-- Include Date Range Picker -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+                <script>
+                    $(document).ready(function(){
+                        var date_input=$('input[name="date"]'); //our date input has the name "date"
+                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                        date_input.datepicker({
+                            format: 'dd-mm-yyyy',
+                            container: container,
+                            todayHighlight: true,
+                            autoclose: true,
+                        })
+                    })
+                </script>
+
+
+
+{% endblock %}
+

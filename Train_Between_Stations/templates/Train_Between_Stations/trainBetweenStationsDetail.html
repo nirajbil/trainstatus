@@ -1,0 +1,98 @@
+
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    <style>
+
+        .table .td .th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 1px;
+        }
+    </style>
+
+{% include 'userpanal/Detail.html' %}
+<div class="container">
+
+<table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th colspan="10"><h3>Train Between Stations</h3></th>
+    </tr>
+
+    <tr>
+      <th colspan="3"><h4>From: {{ Source_station_code }}</h4></th>
+      <th colspan="3"><h4>To: {{ Destination_station_code }}</h4></th>
+      <th colspan="4"><h4>Date: {{ train_date }}</h4></th>
+    </tr>
+
+
+    <tr>
+      <th>No</th>
+      <th>Train No</th>
+      <th>Train Name</th>
+      <th>From Station</th>
+      <th>Departure Time</th>
+      <th>To Station</th>
+
+      <th>Arrival Time</th>
+      <th>Travel Time</th>
+      <th>Running Days</th>
+      <th>classes Available</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for i in train %}
+    <tr>
+      <th scope="row">{{ i.no }}</th>
+      <td>{{ i.number}}</td>
+      <td>{{ i.name}}</td>
+      <td>{{ i.from.name}}</td>
+      <td>{{ i.src_departure_time}}</td>
+
+      <td>{{ i.to.name}}</td>
+      <td>{{ i.dest_arrival_time}}</td>
+
+      <td>{{ i.travel_time}}</td>
+
+      <td>
+      {% for week_days in i.days %}
+          {% if week_days.runs == 'Y' %}
+              {{ week_days.day_code }}
+          {% endif %}
+      {% endfor %}
+      </td>
+
+      <td>
+      {% for Tclasses in i.classes %}
+          {% if Tclasses.available == 'Y' %}
+              {{ Tclasses.class_code }}
+          {% endif %}
+      {% endfor %}
+      </td>
+
+
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+</div>
+
+
+
+
+{% endblock %}

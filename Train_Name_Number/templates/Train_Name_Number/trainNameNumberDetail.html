@@ -1,0 +1,75 @@
+
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    <style>
+
+        .table .td .th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 1px;
+        }
+    </style>
+
+    {% include 'userpanal/Detail.html' %}
+
+    {% if response_code == 200 %}
+        <div class="container-fluid">
+
+            <table class="table table-bordered">
+
+              <thead>
+                <tr>
+                  <th colspan="10"><h3>Train Name / Number</h3></th>
+                </tr>
+
+                <tr>
+                  <th>Train Number</th>
+                  <th>Train Name</th>
+                  <th>Days</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td scope="row">{{ train.number  }}</td>
+                  <td>{{ train.name }}</td>
+                  <td>
+
+                      {% for day in train.days %}
+                          {% if day.runs == 'Y' %}
+                           {{ day.day_code }}
+                          {% endif %}
+                      {% endfor %}
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="container-fluid">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th colspan="10"><h3>Train Name / Number</h3></th>
+                </tr>
+                    <tr>
+                      <th>Error Responce</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock %}
