@@ -24,12 +24,14 @@
 {% include 'userpanal/Detail.html' %}
 <div class="container">
 
-<table class="table table-bordered">
+<table class="table table-sm table-bordered " style="height:20px;font-size:12px">
 
   <thead>
     <tr>
       <th colspan="10"><h3>Cancelled Trains</h3></th>
     </tr>
+
+
     <tr>
       <th colspan="10"><h4>Last Update : {{ last_updated.date }} {{ last_updated.time }}</h4></th>
     </tr>
@@ -44,6 +46,7 @@
       <th>Destination</th>
     </tr>
   </thead>
+    {% if response_code == 200 %}
   <tbody>
 
     {% for i in trains %}
@@ -57,9 +60,14 @@
       <td>{{ i.dest.name }} ({{ i.dest.code }})</td>
     </tr>
     {% endfor %}
-
-
   </tbody>
+    {% else %}
+          <tbody>
+            <tr>
+              <td colspan="10">{{ error }} </td>
+            </tr>
+          </tbody>
+    {% endif %}
 </table>
 </div>
 

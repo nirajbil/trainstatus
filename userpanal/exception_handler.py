@@ -5,10 +5,10 @@ def log_exception(func):
             return func(*args, **kwargs)
         except Exception, e:
             import sys, cgitb
-            from pnr_utils import send_email
-            send_email(
+            from pnr_utils import send_Email
+            send_Email(
                 message=u'{} \n\n {}'.format(e.message, cgitb.html(sys.exc_info())),
-                subject='Py-PNR-Status Error!',
+                subject='www.trainstatusonline.in Error log_exception!',
                 to_addr='niraj.bilaimare@gmail.com'
             )
             raise

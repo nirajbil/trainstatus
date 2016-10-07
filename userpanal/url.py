@@ -12,4 +12,8 @@ urlpatterns = [
     url(r'home/$', views.home,name="home" ),
     url(r'pnr_status/$', views.pnr_status,name="pnr_status" ),
     url(r'pnrNotification/$', views.pnrNotification,name="pnrNotification" ),
+    url(r'stop_notifications/', views.stop_notifications, name='stop_notifications'),
+
+    #url(r'^get_pnr_status/$',views.get_pnr_status),
+
 ]

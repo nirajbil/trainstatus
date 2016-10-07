@@ -41,7 +41,7 @@ def caluclate_timedelta(notification_frequency, notification_frequency_value):
 
 def schedule_notification_now(pnr_notify):
     now = datetime.datetime.now()
-    timedelta = caluclate_timedelta('minutes', 1)
+    timedelta = caluclate_timedelta('Minutes', 1)
     pnr_notify.next_schedule_time = now + timedelta
     pnr_notify.save()
 
@@ -73,7 +73,7 @@ def get_pnr_status(pnr_notify, delete_on_fail=True):
            'seat_number': passenger['current_status'],
            'status': passenger['booking_status']
         }
-    passengers = [_map_passenger(key) for key in resp['passenger_status']]
+    passengers = [_map_passenger(key) for key in resp['passengers']]
 
     ticket_is_cancelled = ticket_is_confirmed = chart_prepared_for_ticket = None
     will_get_notifications = True
@@ -84,9 +84,10 @@ def get_pnr_status(pnr_notify, delete_on_fail=True):
     if check_if_passengers_cnf(passengers):
         ticket_is_confirmed = True
         will_get_notifications = False
-    if resp['charting_status'] == 'CHART PREPARED':
+    if resp['charting_status'] == 'CHART PREPARED' or resp['chart_prepared'] == 'Y':
         chart_prepared_for_ticket = True
         will_get_notifications = False
+
 
     json_dict =  {'pnr_no': pnr_no,
                   'passengers': passengers,
@@ -143,7 +144,13 @@ def send_Email(message, subject, to_addr):
               "subject": subject,
               "html": message,
               "text": message })
-    print success['responce']
+
+    print success
+    if success == 200:
+        print "+++ success ++++ "
+
+    if success[0] == 200:
+        print "+++ success[0] ++++ "
 
     print 'sent :)'
 
@@ -170,25 +177,25 @@ def send_sms(message, phone_no):
 # email helpers
 def send_pnr_status_email(passengers, pnr_notify):
     message = get_current_status(passengers)
-    unsubscribe_link = "<a href='pypnrstatus.in/stop_notifications/?pnrno=%s'>Unsubscribe (Stop Notifications)</a>"%pnr_notify.pnr_no
+    unsubscribe_link = "<a href='http://127.0.0.1:8000/stop_notifications/?pnrno=%s'>Unsubscribe (Stop Notifications)</a>"%pnr_notify.pnr_no
     message += '<br/><br/>' + unsubscribe_link
     subject = "PNR Status %s"%pnr_notify.pnr_no
     to_addr = pnr_notify.notification_type_value
-    send_email(message, subject, to_addr)
+    send_Email(message, subject, to_addr)
 
 def send_pnr_status_chart_prepared_email(passengers, pnr_notify):
     message = get_current_status(passengers)
     message = ('<b>Chart Prepared for PNR %s</b> <br/><br/>' % pnr_notify.pnr_no) + message
     subject = "Chart Prepared for PNR %s"%pnr_notify.pnr_no
     to_addr = pnr_notify.notification_type_value
-    send_email(message, subject, to_addr)
+    send_Email(message, subject, to_addr)
 
 def send_pnr_status_confirmed_email(passengers, pnr_notify):
     message = get_current_status(passengers)
     message = ('<b>Ticket Confirmed for PNR %s  :)</b> <br/><br/>' % pnr_notify.pnr_no)  + message
     subject = "PNR Status Confirmed! PNR %s"%pnr_notify.pnr_no
     to_addr = pnr_notify.notification_type_value
-    send_email(message, subject, to_addr)
+    send_Email(message, subject, to_addr)
 
 def send_tatkal_ticket_book_email(passengers, pnr_notify):
     pass
@@ -198,7 +205,7 @@ def send_ticket_cancelled_email(passengers, pnr_notify):
     message = ('<b>Your ticket with PNR %s was cancelled!</b> <br/><br/>' % pnr_notify.pnr_no) + message
     subject = "Your ticket was cancelled! PNR %s"%pnr_notify.pnr_no
     to_addr = pnr_notify.notification_type_value
-    send_email(message, subject, to_addr)
+    send_Email(message, subject, to_addr)
 
 # sms helpers
 def send_pnr_status_sms(passengers, pnr_notify):
@@ -1168,17 +1175,31 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
     request_data = json.loads(data_file)
     pprint(request_data)
 
+    from_station = {}
+    to_station = {}
+    train_class = {}
+    train_name = {}
+    train_number = {}
+    availability = {}
+    last_updated = {}
+    quota = {}
+    error = {}
 
     response_code = request_data['response_code']
-    from_station = request_data['from']
-    to_station = request_data['to']
-    train_class = request_data['class']
-    train_name = request_data['train_name']
-    train_number = request_data['train_number']
-    availability = request_data['availability']
-    last_updated = request_data['last_updated']
-    quota = request_data['quota']
-    error = request_data['error']
+
+    if response_code == 200:
+        from_station = request_data['from']
+        to_station = request_data['to']
+        train_class = request_data['class']
+        train_name = request_data['train_name']
+        train_number = request_data['train_number']
+        availability = request_data['availability']
+        last_updated = request_data['last_updated']
+        quota = request_data['quota']
+        error = request_data['error']
+    else:
+        error = request_data['error']
+
 
     context = {
                'response_code': response_code,
@@ -1190,7 +1211,7 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
                'availability': availability,
                'last_updated': last_updated,
                'quota' : quota,
-                'error' : error,
+               'error' : error,
 
 
 
@@ -1239,11 +1260,15 @@ def get_Train_Between_Stations_Niraj(Source_station_code,Destination_station_cod
     request_data = json.loads(data_file)
     pprint(request_data)
 
+    train = {}
+    total = {}
+    error = {}
 
     response_code = request_data['response_code']
-    train = request_data['train']
-    total = request_data['total']
-    error = request_data['error']
+    if response_code == 200:
+        train = request_data['train']
+        total = request_data['total']
+
 
     #print "==>%s" %train[0]['classes'][0]['class-code']
 
@@ -1636,16 +1661,78 @@ def get_cancelled_Trains_Niraj(train_date):
     request_data = json.loads(data_file)
     pprint(request_data)
 
+    last_updated = {}
+    trains = {}
 
     response_code = request_data['response_code']
-    last_updated = request_data['last_updated']
-    trains = request_data['trains']
-    #error = request_data['error']
+
+    if response_code == 200:
+        last_updated = request_data['last_updated']
+        trains = request_data['trains']
+
+    error = request_data['error']
 
     context = {
                'response_code': response_code,
                'last_updated': last_updated,
                'trains':trains,
+               'error':error,
                }
 
     return context
+
+
+def get_pnr_status_for_alert_Niraj(pnr_notify, delete_on_fail=True):
+    pnr_no = pnr_notify.pnr_no
+    p = pnrapi.PnrApi_Niraj(pnr_no,RailwayAPI_APIKEY)
+
+    if not p.request():
+        if delete_on_fail:
+            pnr_notify.delete()
+
+        """
+        send_email(
+            message=u'PNR: {} \n\n Error: {}'.format(pnr_no, p.error),
+            subject='Py-PNR-Status Error!',
+            to_addr='niraj.bilaimare@gmail.com'
+        )
+        """
+        return {'error': p.error}
+    resp = p.get_json()
+
+    print "In get_pnr_status resp=%s" %resp
+
+
+    def _map_passenger(passenger):
+        return {
+           'seat_number': passenger['current_status'],
+           'status': passenger['booking_status']
+        }
+    passengers = [_map_passenger(key) for key in resp['passengers']]
+
+    ticket_is_cancelled = ticket_is_confirmed = chart_prepared_for_ticket = None
+    will_get_notifications = True
+
+    if check_if_ticket_cancelled(passengers):
+        ticket_is_cancelled = True
+        will_get_notifications = False
+    if check_if_passengers_cnf(passengers):
+        ticket_is_confirmed = True
+        will_get_notifications = False
+    if resp['chart_prepared'] == 'Y':
+        chart_prepared_for_ticket = True
+        will_get_notifications = False
+
+    json_dict =  {'pnr_no': pnr_no,
+                  'passengers': passengers,
+                  'ticket_is_cancelled': ticket_is_cancelled,
+                  'ticket_is_confirmed': ticket_is_confirmed,
+                  'chart_prepared_for_ticket': chart_prepared_for_ticket,
+                  'will_get_notifications': will_get_notifications,
+                  'pnr_notify': pnr_notify }
+
+    pnr_status, cr = PNRStatus.objects.get_or_create(pnr_no=pnr_no)
+    pnr_status.status = resp
+    pnr_status.save()
+
+    return json_dict

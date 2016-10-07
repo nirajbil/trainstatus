@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    <link rel="shortcut icon" href="http://www.iconj.com/ico/k/b/kb1xnnwnmo.ico" type="image/x-icon" />
+</head>
+<body>
+   <div class="container">
+      {% if message %}
+        <div class="jumbotron">
+            <h3>{{ message }}</h3>
+        </div>
+      {% else %}
+      <form class="form-signin" role="form" action="/stop_notifications" method="GET">
+        <div class="form-group">
+            <h4>Stop Notifications for PNR</h4>
+            <input type="text" class="form-control" name="pnrno" placeholder="PNR Number" required autofocus>
+        </div>
+        <button class="btn btn-lg btn-danger btn-block" type="submit">Stop Notifications</button>
+      </form>
+      {% endif %}
+    </div> <!-- /container -->
+</body>
+{% include "userpanal/ga_track.html" %}
+</html>

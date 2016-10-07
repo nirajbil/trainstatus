@@ -1,0 +1,187 @@
+{% extends 'userpanal/base.html' %}
+
+{% load staticfiles %}
+{% block body %}
+
+    <style>
+        form{
+            border-collapse: collapse;
+            width: 50%;
+        }
+    </style>
+
+<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+<!--
+<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+-->
+<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+<!--
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+-->
+
+<!--Font Awesome (added because you use icons in your prepend/append) to show calender icon-->
+
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script type="text/javascript" src="http://railwayapi.com/jquery-ui-1.8.2.custom.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="http://railwayapi.com/autocomplete.js"></script>
+
+  <style scoped>
+  .ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+	width: 500px;
+	cursor: pointer;
+
+	font-weight: bolder;
+	color: gray;
+	list-style-position: inside;
+	font-size: 1.2em
+  }
+  </style>
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<!--
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+-->
+
+{% include 'userpanal/Detail.html' %}
+
+    <div class="container-fluid text-center">
+  <div class="row content">
+  <table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td align="center" class="ads"></td>
+    </tr>
+    <tr>
+      <td class="eform">
+      		<div class="col-sm-5 form-group">
+              <input type="text" class="form-control dd_user_input" id="source" placeholder="Source Station" >
+            </div>
+            <div class="col-sm-5 form-group">
+              <input type="text" class="form-control dd_user_input " id="dest" placeholder="Destination Station" >
+            </div>
+            <div class="col-sm-5 form-group">
+              <input type="date" class="form-control dd_user_input " id="date" placeholder="mm/dd/yyyy" >
+            </div>
+
+            <div class="col-sm-2"><button type="button" class="btn btn-info" onclick="loadPNRStatus();">Go</button></div>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" class="ads"></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+  <div class="col-xs-9">
+    <div class="container-fluid">
+        <div class="page-header"><h2>Seat Availability</h2></div>
+
+        <form role = "form" action="" method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+           <div class = "form-group">
+              <input class = "form-control input-lg" type = "text" name="trainno" placeholder ="Enter Train Number">
+
+      		<div class="col-sm-5 form-group">
+              <input type="text" class="form-control dd_user_input" id="source" placeholder="Source Station" >
+            </div>
+
+              <input type="text" class="form-control dd_user_input " id="dest" placeholder="Destination Station" >
+
+
+               <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                    <input class="form-control" id="date" name="date" placeholder="DD-MM-YYYY" type="text"/>
+                </div>
+               </div>
+
+                <!-------------------- Drop Down For Class---------------------------------------------->
+              <label for="sel1">Select list (select one):</label>
+                  <select class="form-control" id="sel1" name="train_class" placeholder="Class">
+                    <option value="1A">FIRST AC</option>
+                    <option value="2A">SECOND AC</option>
+                    <option value="3A">THIRD AC</option>
+                    <option value="3E">3 AC Economy</option>
+                    <option value="FC">FIRST CLASS</option>
+                    <option value="CC">AC CHAIR CAR</option>
+                    <option value="SL">SLEEPER CLASS</option>
+                    <option value="2S">SECOND SEATING</option>
+                  </select>
+                  <br>
+                <!--------------------------------------------------------------------------------------->
+
+
+                <!-------------------- Drop Down For Quota ---------------------------------------------->
+                  <label for="sel1">Select list (select one):</label>
+                  <select class="form-control" id="sel1" name="train_quota">
+                    <option value="GN">General Quota</option>
+                    <option value="LD">Ladies Quota</option>
+                    <option value="DF">Defence Quota</option>
+                    <option value="PH">Parliament house Quota</option>
+                    <option value="FT">Foreign Tourist Quota</option>
+                    <option value="DP">Duty Pass Quota</option>
+                    <option value="CK">Tatkal Quota</option>
+                    <option value="PT">Premium Tatkal Quota</option>
+                    <option value="HP">Physically Handicapped Quota</option>
+                    <option value="LB">Lower Berth</option>
+                    <option value="YU">Yuva</option>
+                  </select>
+                  <br>
+
+
+                <!--------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+           </div>
+           <button type = "submit" class = "btn btn-default">Submit</button>
+        </form>
+
+    </div>
+  </div>
+
+    <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+    <!-- Include jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+                format: 'dd-mm-yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            })
+        })
+    </script>
+
+
+
+
+
+
+{% endblock %}
+

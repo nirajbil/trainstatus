@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import os
 import sys
+import multiprocessing
+from railway import Main as Timerclient
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "railway.settings")
