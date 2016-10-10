@@ -9,4 +9,5 @@ app_name  = 'Live_Train_Status' #name space if we have more apps
 urlpatterns = [
 
     url(r'liveTrainStatus/$', views.liveTrainStatus,name="liveTrainStatus" ),
+    url(r'live_train_status_detail/$', views.live_train_status_detail),
 ]

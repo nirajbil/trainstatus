@@ -3,12 +3,6 @@
 {% load staticfiles %}
 {% block body %}
 
-    <style>
-        form{
-            border-collapse: collapse;
-            width: 50%;
-        }
-    </style>
 
 <!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
 <!--
@@ -19,47 +13,93 @@
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 -->
 
-<!--Font Awesome (added because you use icons in your prepend/append) to show calender icon-->
-<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+<!--Font Awesome (added because you use icons in your prepend/append) to show calender icon
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />-->
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://railwayapi.com/jquery-ui-1.8.2.custom.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/humanity/jquery-ui.css">
+<script type="text/javascript" src="http://railwayapi.com/autocomplete.js"></script>
 
-<!-- Inline CSS based on choices in "Settings" tab -->
-<!--
-<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
--->
+<style scoped>
+  .ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+	width: 500px;
+	cursor: pointer;
 
+	font-weight: bolder;
+	color: gray;
+	list-style-position: inside;
+	font-size: 1.2em
 
+  }
+
+table#myTable,#myTable2 {
+    align:"left";
+    border: 1px solid black;
+    height: 8px;
+    width: 95%;
+    text-align: left;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+</style>
 
 {% include 'userpanal/Detail.html' %}
 
-  <div class="col-xs-9">
-    <div class="container-fluid">
-        <div class="page-header"><h2>Trains Between Stations</h2></div>
 
-        <form role = "form" action="" method="post" enctype="multipart/form-data">
-           {% csrf_token %}
-           <div class = "form-group">
+<div class="container-fluid text-center">
+  <div class="row content">
+  <form  id="train_station">
+  {% csrf_token %}
+  <table width="85%" border="0">
+  <tbody>
+    <tr>
+      <td class="eform" >
+      		<div class="col-md-10 form-group">
+                <p><font size="5">Trains Between Stations</font></p>
+            </div>
 
-              <input class = "form-control input-lg" type = "text" name="Source_station_code" placeholder ="Enter Source station code.">
-              <input class = "form-control input-lg" type = "text" name="Destination_station_code" placeholder ="Enter Destination station code.">
+      		<div class="col-md-4 form-group">
+              <input type="text" class="form-control dd_user_input" id="source" name="Source_station_code" placeholder="Source Station" >
+            </div>
+            <div class="col-md-4 form-group">
+              <input type="text" class="form-control dd_user_input " id="dest" name="Destination_station_code" placeholder="Destination Station" >
+            </div>
+            <div class="col-md-2 form-group">
+              <input type="date" class="form-control dd_user_input " id="date" name="date" placeholder="DD-MM-YYYY" >
+            </div>
+
+            <div class="col-md-1 form-group">
+                <button type = "submit" class = "btn btn-info">Submit</button>
+            </div>
+      </td>
+    </tr>
+
+  </tbody>
+  </table>
+</form>
+      <div class="col-sm-10" id="train_station_output"></div>
+</div>
+</div>
 
 
-               <div class="input-group">
-                <div class="input-group-addon">
-                 <i class="fa fa-calendar"></i>
-                </div>
-                <input class="form-control" id="date" name="date" placeholder="DD-MM" type="text"/>
-               </div>
 
-           </div>
-           <button type = "submit" class = "btn btn-default">Submit</button>
-        </form>
 
-    </div>
-  </div>
+
+
+
+
+
+
+
 
                 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
                 <!-- Include jQuery -->
-                <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+                <!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
 
                 <!-- Include Date Range Picker -->
                 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
@@ -70,7 +110,7 @@
                         var date_input=$('input[name="date"]'); //our date input has the name "date"
                         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                         date_input.datepicker({
-                            format: 'dd-mm',
+                            format: 'dd-mm-yyyy',
                             container: container,
                             todayHighlight: true,
                             autoclose: true,
@@ -78,6 +118,117 @@
                     })
                 </script>
 
+<script type="text/javascript">
+    $(document).on('submit','#train_station', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url : '/train_between/',
+            data:{
+                source:$('#source').val(),
+                dest:$('#dest').val(),
+                date:$('#date').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+
+            success:function(data){
+
+                console.log(data.response_code);
+                if(data.response_code == 200)
+                {
+                    $('#train_station_output').html(trainAvailable(data));
+                }
+                else
+                {
+                    alert(data.response_code);
+                }
+            },
+            failure: function() {
+                    alert('Got an error dude');
+            },
+
+        })
+
+        function trainAvailable(data){
+            /*alert(data.response_code);*/
+            var httpresonce="";
+        httpresonce += '<table class="table table-bordered table-sm " id="myTable">';
+        httpresonce += '<thead>';
+        httpresonce += ' <tr>';
+        httpresonce += ' <th>Train No</th>';
+        httpresonce += '<th>Train Name</th>';
+        httpresonce += '      <th>From Station</th>';
+        httpresonce += '      <th>Departure Time</th>';
+        httpresonce += '      <th>To Station</th>';
+        httpresonce += '      <th>Arrival Time</th>';
+        httpresonce += '      <th>Travel Time</th>';
+        httpresonce += '      <th>Running Days</th>';
+        httpresonce += '      <th>classes Available</th>';
+        httpresonce += '    </tr>';
+        httpresonce += '  </thead>';
+        httpresonce += '  <tbody>';
+
+
+
+            for(i=0;i<data.train.length;i++)
+            {
+                console.log(data.train[i].number);
+                httpresonce += '<td id="number-' + i + '">' + data.train[i].number + '</td>';
+
+                console.log(data.train[i].name);
+                httpresonce += '<td id="tname-' + i + '">' + data.train[i].name + '</td>';
+
+                console.log(data.train[i].from);
+                httpresonce += '<td id="from_name-' + i + '">' + data.train[i].from.name+ ' - ' + data.train[i].from.code + '</td>';
+
+                console.log(data.train[i].src_departure_time);
+                httpresonce += '<td id="src_departure_time-' + i + '">' + data.train[i].src_departure_time + '</td>';
+
+                console.log(data.train[i].to);
+                httpresonce += '<td id="to_name-' + i + '">' + data.train[i].to.name + ' - ' + data.train[i].to.code + '</td>';
+
+                console.log(data.train[i].dest_arrival_time);
+                httpresonce += '<td id="dest_arrival_time-' + i + '">' + data.train[i].dest_arrival_time + '</td>';
+
+                console.log(data.train[i].travel_time);
+                httpresonce += '<td id="travel_time-' + i + '">' + data.train[i].travel_time + '</td>';
+
+                httpresonce += '<td>';
+                $.each(data.train[i].days, function () {
+                    if(this.runs == 'Y')
+                    {
+                        console.log(this.day_code);
+                        httpresonce += this.day_code + ' ';
+                    }
+                    /*console.log(this.runs);console.log(this.day_code);*/
+                });
+                httpresonce += '</td>';
+
+                httpresonce += '<td>';
+                $.each(data.train[i].classes, function () {
+                    if(this.available == 'Y')
+                    {
+                        console.log(this.class_code);
+                        httpresonce += '<a href="#" class="collectionlist" name="'+ this.class_code +'" id="' + i + '">' + this.class_code + '</a>' +' ';
+
+                    }
+                    /*console.log(this.available);console.log(this.class_code);*/
+                });
+                httpresonce += '</td>';
+                httpresonce += '</tr>';
+            }
+
+              httpresonce += '</tbody></table>';
+
+
+
+            return httpresonce;
+        }
+    });
+
+
+
+</script>
 
 
 {% endblock %}

@@ -50,6 +50,8 @@ def pnr_status(request):
 
 def pnr_status(request):
     print "get_pnr_status(request):"
+    template_name = 'userpanal/pnr.html'
+    context = {}
     if request.method == 'POST':
         url_pnr = "http://api.railwayapi.com/pnr_status/pnr/"
         print "1url_pnr=%s " %url_pnr
@@ -71,7 +73,7 @@ def pnr_status(request):
         #    print "=== Return from else part with response_code=%d" %context['response_code']
         #    return render(request,'userpanal/pnr_status.html', context)
 
-
+    return render(request,template_name, context)
 
 
 

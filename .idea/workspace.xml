@@ -3,23 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="978a93d4-50e6-4e37-8304-c61cad444156" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" afterPath="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" afterPath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatusDetail.html" afterPath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatusDetail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Live_Train_Status/url.py" afterPath="$PROJECT_DIR$/Live_Train_Status/url.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Live_Train_Status/views.py" afterPath="$PROJECT_DIR$/Live_Train_Status/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" afterPath="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Seat_Availability/url.py" afterPath="$PROJECT_DIR$/Seat_Availability/url.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Seat_Availability/views.py" afterPath="$PROJECT_DIR$/Seat_Availability/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStationsDetail.html" afterPath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStationsDetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/exception_handler.py" afterPath="$PROJECT_DIR$/userpanal/exception_handler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/models.py" afterPath="$PROJECT_DIR$/userpanal/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" afterPath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Between_Stations/url.py" afterPath="$PROJECT_DIR$/Train_Between_Stations/url.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Between_Stations/views.py" afterPath="$PROJECT_DIR$/Train_Between_Stations/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRoute.html" afterPath="$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRoute.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Route/url.py" afterPath="$PROJECT_DIR$/Train_Route/url.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Route/views.py" afterPath="$PROJECT_DIR$/Train_Route/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/pnr_utils.py" afterPath="$PROJECT_DIR$/userpanal/pnr_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/pnrapi/pnrapi.py" afterPath="$PROJECT_DIR$/userpanal/pnrapi/pnrapi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/tasks.py" afterPath="$PROJECT_DIR$/userpanal/tasks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/static/userpanal/style.css" afterPath="$PROJECT_DIR$/userpanal/static/userpanal/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/templates/userpanal/index.html" afterPath="$PROJECT_DIR$/userpanal/templates/userpanal/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/url.py" afterPath="$PROJECT_DIR$/userpanal/url.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html" afterPath="$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/views.py" afterPath="$PROJECT_DIR$/userpanal/views.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/userpanal/static/images/Lighthouse.jpg" afterPath="$PROJECT_DIR$/userpanal/static/userpanal/images/Lighthouse.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/userpanal/static/images/background_1.jpg" afterPath="$PROJECT_DIR$/userpanal/static/userpanal/images/background_1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/userpanal/static/images/login-with-facebook.png" afterPath="$PROJECT_DIR$/userpanal/static/userpanal/images/login-with-facebook.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/userpanal/static/images/train.png" afterPath="$PROJECT_DIR$/userpanal/static/userpanal/images/train.png" />
     </list>
     <ignored path="trainstatus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,42 +48,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.193548">
-              <caret line="125" column="65" selection-start-line="125" selection-start-column="51" selection-end-line="125" selection-end-column="65" />
+            <state vertical-scroll-proportion="-25.653847">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cancelledTrains.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html">
+      <file leaf-file-name="seatAvailability.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57780457">
-              <caret line="66" column="43" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
-              <folding>
-                <element signature="e#462#496#0#HTML" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.025089607">
+              <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Cancelled_Trains/views.py">
+      <file leaf-file-name="pnr.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pnr_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/userpanal/pnr_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1668" column="28" selection-start-line="1668" selection-start-column="28" selection-end-line="1668" selection-end-column="28" />
+            <state vertical-scroll-proportion="-28.192308">
+              <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -91,9 +81,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -103,21 +93,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Train_Name_Number/url.py" />
-        <option value="$PROJECT_DIR$/Train_Name_Number/templates/Train_Name_Number/trainNameNumber.html" />
-        <option value="$PROJECT_DIR$/Train_Name_Number/views.py" />
-        <option value="$PROJECT_DIR$/Train_Name_Number/templates/Train_Name_Number/trainNameNumberDetail.html" />
-        <option value="$PROJECT_DIR$/Train_Fair_Enquiry/url.py" />
-        <option value="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatusDetail.html" />
-        <option value="$PROJECT_DIR$/Train_Fair_Enquiry/views.py" />
-        <option value="$PROJECT_DIR$/Train_Fair_Enquiry/templates/Train_Fair_Enquiry/trainFairEnquiry.html" />
-        <option value="$PROJECT_DIR$/Train_Fair_Enquiry/templates/Train_Fair_Enquiry/trainFairEnquiryDetail.html" />
-        <option value="$PROJECT_DIR$/Train_Arrivals_at_Station/templates/Train_Arrivals_at_Station/trainArrivalsatStation.html" />
-        <option value="$PROJECT_DIR$/Train_Arrivals_at_Station/templates/Train_Arrivals_at_Station/trainArrivalsatStationDetail.html" />
-        <option value="$PROJECT_DIR$/Train_Route/url.py" />
         <option value="$PROJECT_DIR$/Train_Arrivals_at_Station/url.py" />
         <option value="$PROJECT_DIR$/Train_Arrivals_at_Station/views.py" />
-        <option value="$PROJECT_DIR$/Train_Route/views.py" />
         <option value="$PROJECT_DIR$/Train_Arrivals_At_Station/url.py" />
         <option value="$PROJECT_DIR$/Train_Arrivals_At_Station/templates/Train_Arrivals_At_Station/trainArrivalsAtStation.html" />
         <option value="$PROJECT_DIR$/Train_Arrivals_At_Station/views.py" />
@@ -128,7 +105,6 @@
         <option value="$PROJECT_DIR$/Cancelled_Trains/url.py" />
         <option value="$PROJECT_DIR$/Cancelled_Trains/views.py" />
         <option value="$PROJECT_DIR$/userpanal/templates/userpanal/pnr_status.html" />
-        <option value="$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html" />
         <option value="$PROJECT_DIR$/userpanal/templates/userpanal/pnrNotification.html" />
         <option value="$PROJECT_DIR$/userpanal/worker.py" />
         <option value="$PROJECT_DIR$/userpanal/templates/userpanal/pnrNotificationStatus.html" />
@@ -148,12 +124,26 @@
         <option value="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStationsDetail.html" />
         <option value="$PROJECT_DIR$/Seat_Availability/url.py" />
         <option value="$PROJECT_DIR$/Seat_Availability/views.py" />
-        <option value="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" />
-        <option value="$PROJECT_DIR$/userpanal/views.py" />
-        <option value="$PROJECT_DIR$/userpanal/templates/userpanal/index.html" />
         <option value="$PROJECT_DIR$/userpanal/url.py" />
-        <option value="$PROJECT_DIR$/userpanal/pnr_utils.py" />
         <option value="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" />
+        <option value="$PROJECT_DIR$/Train_Between_Stations/url.py" />
+        <option value="$PROJECT_DIR$/Train_Between_Stations/views.py" />
+        <option value="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" />
+        <option value="$PROJECT_DIR$/Train_Route/url.py" />
+        <option value="$PROJECT_DIR$/Train_Route/views.py" />
+        <option value="$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRoute.html" />
+        <option value="$PROJECT_DIR$/userpanal/views.py" />
+        <option value="$PROJECT_DIR$/userpanal/static/userpanal/js/userpanal.js" />
+        <option value="$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html" />
+        <option value="$PROJECT_DIR$/userpanal/templates/userpanal/index.html" />
+        <option value="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatusDetail.html" />
+        <option value="$PROJECT_DIR$/Live_Train_Status/url.py" />
+        <option value="$PROJECT_DIR$/Live_Train_Status/views.py" />
+        <option value="$PROJECT_DIR$/userpanal/pnr_utils.py" />
+        <option value="$PROJECT_DIR$/Train_Route/static/Train_Route/js/liveTrainStatus.js" />
+        <option value="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" />
+        <option value="$PROJECT_DIR$/Live_Train_Status/static/Live_Train_Status/js/liveTrainStatus.js" />
+        <option value="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" />
       </list>
     </option>
   </component>
@@ -221,7 +211,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userpanal" />
+              <option name="myItemId" value="Seat_Availability" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -235,7 +225,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userpanal" />
+              <option name="myItemId" value="Seat_Availability" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -243,43 +233,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userpanal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trainstatus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trainstatus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cancelled_Trains" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trainstatus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trainstatus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cancelled_Trains" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cancelled_Trains" />
+              <option name="myItemId" value="Seat_Availability" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -297,6 +251,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\pylab\trainstatus\Live_Train_Status\static" />
+      <recent name="D:\pylab\trainstatus\userpanal\static\userpanal" />
       <recent name="D:\pylab\trainstatus" />
       <recent name="D:\pylab\trainstatus\railway" />
       <recent name="D:\pylab\trainstatus\Seat_Availability\templates\Seat_Availability" />
@@ -567,10 +523,11 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -582,7 +539,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -626,99 +582,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/userpanal/pnrapi/train_schedule_fetch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12230216">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/railway/settings/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47601917">
-          <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/stop_notifications.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37815127">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/pnrNotificationStatus.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-44.46154">
-          <caret line="68" column="39" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/core/management/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1494787">
-          <caret line="139" column="8" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/-762174762/sys.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.373117">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/railway/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6602871">
-          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12200957">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/railway/settings_old.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3588517">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/railway/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31517962">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/railway/settings/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -794,9 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="22" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -829,64 +689,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Live_Train_Status/url.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19698726">
-          <caret line="10" column="74" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatusDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1983273">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRoute.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRouteDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.64874554">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20788531">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Train_Between_Stations/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4727694">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStationsDetail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1780168">
           <caret line="82" column="36" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.0">
-          <caret line="82" column="10" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -906,39 +712,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/pnr_status.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1827957">
           <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Seat_Availability/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.97682506">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Seat_Availability/url.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23174971">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -954,49 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17728853">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.0">
-          <caret line="98" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/url.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.193548">
-          <caret line="125" column="65" selection-start-line="125" selection-start-column="51" selection-end-line="125" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userpanal/pnr_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1668" column="28" selection-start-line="1668" selection-start-column="28" selection-end-line="1668" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1005,18 +740,239 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57780457">
+        <state vertical-scroll-proportion="0.71565115">
           <caret line="66" column="43" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
           <folding>
             <element signature="e#462#496#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Seat_Availability/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3059096">
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Seat_Availability/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Between_Stations/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25492468">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Route/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30127463">
+          <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Between_Stations/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.078794904">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11469534">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRouteDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.73077">
+          <caret line="59" column="20" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/static/userpanal/images/login-with-facebook.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/static/userpanal/images/background_1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/static/userpanal/images/Lighthouse.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/static/userpanal/images/train.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/Detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23684211">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15758981">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9455388">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.020310633">
+          <caret line="15" column="70" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Route/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.039397452">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Live_Train_Status/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27809966">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatusDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08124253">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Live_Train_Status/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/pnr_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26767093">
+          <caret line="454" column="26" selection-start-line="454" selection-start-column="24" selection-end-line="454" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRoute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="18" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Live_Train_Status/static/Live_Train_Status/js/liveTrainStatus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/static/userpanal/js/userpanal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+            <marker date="1476084709541" expanded="true" signature="982:1008" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.827587">
+          <caret line="75" column="55" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.192308">
+          <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.653847">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025089607">
+          <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

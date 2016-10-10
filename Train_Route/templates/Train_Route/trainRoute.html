@@ -8,6 +8,15 @@
             border-collapse: collapse;
             width: 50%;
         }
+    table#myTable {
+        align:"left";
+        border: 1px solid black;
+        height: 8px;
+        width: 80%;
+        text-align: left;
+        border-collapse: collapse;
+        font-size: 10px;
+    }
     </style>
 
     {% include 'userpanal/Detail.html' %}
@@ -18,14 +27,106 @@
                 <h2>Train Route</h2>
             </div>
 
-            <form role = "form" action="" method="post" enctype="multipart/form-data">
-               {% csrf_token %}
-               <div class = "form-group">
-                  <input class = "form-control input-lg" type = "text" name="trainno" placeholder ="Enter Train Number">
-               </div>
-               <button type = "submit" class = "btn btn-default">Submit</button>
-            </form>
         </div>
     </div>
+
+            <div class="container-fluid  img-responsive">
+                <div class="row">
+                    <div class="col-md-9">
+                        <form id="trainRoute">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group form-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary  center-block " type="button" ><strong>Train Number</strong></button>
+                                    </span>
+                                    <input class="form-control dd_user_input"  id="trainNumber" type="text" placeholder="Enter Train Number">
+                                    <span class="input-group-btn">
+                                        <button type = "submit" class = "btn btn-info">Submit</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="train_Route_html"></div>
+
+
+
+
+<script type="text/javascript">
+    $(document).on('submit','#trainRoute', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url : '/train_Route_detail/',
+            data:{
+                trainNumber:$('#trainNumber').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+
+            success:function(data){
+
+                console.log(data.response_code);
+                if(data.response_code == 200)
+                {
+                    $('#train_Route_html').html(trainRoute(data));
+                }
+                else
+                {
+                    alert(data.response_code);
+                }
+            },
+            failure: function() {
+                    alert('Got an error dude');
+            },
+
+        })
+
+        function trainRoute(data){
+            /*alert(data.response_code);*/
+            var httpresonce="";
+        httpresonce += '<table class="table table-bordered" id="myTable">';
+        httpresonce += '<thead>';
+        httpresonce += ' <tr>';
+        httpresonce += ' <th>No</th>';
+        httpresonce += '<th>Station Code</th>';
+        httpresonce += '      <th>Station Name</th>';
+        httpresonce += '      <th>Arrival</th>';
+        httpresonce += '      <th>Departure</th>';
+        httpresonce += '      <th>Day</th>';
+        httpresonce += '      <th>Route</th>';
+        httpresonce += '      <th>Halt</th>';
+        httpresonce += '      <th>Distance</th>';
+        httpresonce += '      <th>State</th>';
+        httpresonce += '    </tr>';
+        httpresonce += '  </thead>';
+        httpresonce += '  <tbody>';
+
+        $.each(data.train_route, function () {
+                httpresonce += '    <tr>';
+                httpresonce += '      <th scope="row">' + this.no + '</th>';
+                httpresonce += '      <td>' + this.code + '</td>';
+                httpresonce += '      <td>' + this.fullname + '</td>';
+                httpresonce += '      <td>' + this.scharr + '</td>';
+                httpresonce += '      <td>' + this.schdep + '</td>';
+                httpresonce += '      <td>' + this.day + '</td>';
+                httpresonce += '      <td>' + this.route + '</td>';
+                httpresonce += '      <td>' + this.halt + 'min</td>';
+                httpresonce += '      <td>' + this.distance + '</td>';
+                httpresonce += '      <td>' + this.state + '</td>';
+                httpresonce += '    </tr>';
+        });
+
+
+        httpresonce += '  </tbody>';
+            return httpresonce;
+        }
+    });
+</script>
 
 {% endblock %}

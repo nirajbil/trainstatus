@@ -419,6 +419,17 @@ def get_train_live_status_Niraj(train_no,train_date):
     start_date = request_data['start_date']
     train_number = request_data['train_number']
 
+
+    """
+    station_CN = {'station_CN':current_station['station_']}
+    current_station.update(station_CN)
+    print current_station
+    for routeloop in route:
+        station_CN = {'station_CN':routeloop['station_']}
+        routeloop.update(station_CN)
+    print route
+    """
+
     context = {
                'response_code': response_code,
                'current_station': current_station,
@@ -1663,14 +1674,15 @@ def get_cancelled_Trains_Niraj(train_date):
 
     last_updated = {}
     trains = {}
+    error = {}
 
     response_code = request_data['response_code']
 
     if response_code == 200:
         last_updated = request_data['last_updated']
         trains = request_data['trains']
-
-    error = request_data['error']
+    else:
+        error = request_data['error']
 
     context = {
                'response_code': response_code,

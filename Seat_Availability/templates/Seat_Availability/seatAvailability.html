@@ -25,7 +25,6 @@
   }
 table#myTable,#myTable2 {
     align:"left";
-
     border: 1px solid black;
     height: 10px;
     width: 80%;
@@ -363,7 +362,7 @@ $(document).on('click', '.collectionlist', function(e){
         httpresonce+= '      </tbody>';
         httpresonce+= '    </table>';
 
-        httpresonce+= '    <table class="table table-bordered">';
+        httpresonce+= '    <table class="table table-bordered"  id="myTable2" >';
         httpresonce+= '      <thead>';
         httpresonce+= '        <tr>';
         httpresonce+= '          <th>No</th>';
