@@ -8,5 +8,6 @@ app_name  = 'Train_Arrivals_At_Station' #name space if we have more apps
 
 urlpatterns = [
     url(r'trainArrivalsAtStation/$', views.trainArrivalsAtStation,name="trainArrivalsAtStation" ),
+    url(r'train_Arrival/$', views.train_Arrival),
 
 ]

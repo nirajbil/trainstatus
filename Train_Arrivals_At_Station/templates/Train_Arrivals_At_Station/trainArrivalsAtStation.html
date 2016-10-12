@@ -3,29 +3,69 @@
 {% load staticfiles %}
 {% block body %}
 
-    <style>
-        form{
-            border-collapse: collapse;
-            width: 50%;
-        }
-    </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://railwayapi.com/jquery-ui-1.8.2.custom.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/humanity/jquery-ui.css">
+<script type="text/javascript" src="http://railwayapi.com/autocomplete.js"></script>
 
+<style scoped>
+  .ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+	width: 500px;
+	cursor: pointer;
+
+	font-weight: bolder;
+	color: gray;
+	list-style-position: inside;
+	font-size: 1.2em
+
+  }
+
+table#myTable,#myTable2 {
+    align:"left";
+    border: 1px solid black;
+    height: 8px;
+    width: 95%;
+    text-align: left;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+</style>
     {% include 'userpanal/Detail.html' %}
 
-    <div class="col-xs-9">
-        <div class="container-fluid">
+    <div class="col-xs-9 col-md-9">
             <div class="page-header">
-                <h2>Train Arrivals At Station</h2>
+                <h3>Train Arrivals At Station</h3>
             </div>
 
-            <form role = "form" action="" method="post" enctype="multipart/form-data">
-               {% csrf_token %}
-               <div class = "form-group">
-                  <input class = "form-control input-lg" type = "text" name="stationCode" placeholder ="Enter Station code">
-               </div>
-               <button type = "submit" class = "btn btn-default">Submit</button>
-            </form>
-        </div>
+            <div class="container-fluid  img-responsive">
+                <div class="row">
+                    <div class="col-xs-9 col-md-9">
+                        <form id="trainArrival">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group form-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary  center-block " type="button" ><strong>Station Name</strong></button>
+                                    </span>
+                                    <input class="form-control dd_user_input"  id="source" type="text" placeholder="Enter Station Name">
+                                    <span class="input-group-btn">
+                                        <button type = "submit" class = "btn btn-info">Submit</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="train_Arrival_Detail"></div>
     </div>
+
+<script src="{% static 'Train_Arrivals_At_Station/js/trainArr.js' %}"></script>
+
 
 {% endblock %}

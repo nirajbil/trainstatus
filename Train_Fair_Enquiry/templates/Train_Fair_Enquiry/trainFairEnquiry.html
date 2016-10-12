@@ -3,55 +3,70 @@
 {% load staticfiles %}
 {% block body %}
 
-    <style>
-        form{
-            border-collapse: collapse;
-            width: 50%;
-        }
-    </style>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://railwayapi.com/jquery-ui-1.8.2.custom.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/humanity/jquery-ui.css">
+<script type="text/javascript" src="http://railwayapi.com/autocomplete.js"></script>
 
-<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
-<!--
-<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
--->
-<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
-<!--
-<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
--->
+<style scoped>
+  .ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+	width: 500px;
+	cursor: pointer;
 
-<!--Font Awesome (added because you use icons in your prepend/append) to show calender icon-->
-<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+	font-weight: bolder;
+	color: gray;
+	list-style-position: inside;
+	font-size: 1.2em
 
-<!-- Inline CSS based on choices in "Settings" tab -->
-<!--
-<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
--->
+  }
+table#myTable,#myTable2 {
+    align:"left";
+    border: 1px solid black;
+    height: 10px;
+    width: 90%;
+    text-align: left;
+    border-collapse: collapse;
+    font-size: 10px;
+}
 
-  {% include 'userpanal/Detail.html' %}
-
-  <div class="col-xs-9">
-    <div class="container-fluid">
-        <div class="page-header"><h2>Train Fair Enquiry</h2></div>
-
-        <form role = "form" action="" method="post" enctype="multipart/form-data">
-           {% csrf_token %}
-           <div class = "form-group">
-              <input class = "form-control input-lg" type = "text" name="trainno" placeholder ="Enter Train Number">
-              <input class = "form-control input-lg" type = "text" name="Source_station_code" placeholder ="Enter Source station code.">
-              <input class = "form-control input-lg" type = "text" name="Destination_station_code" placeholder ="Enter Destination station code.">
-              <input class = "form-control input-lg" type = "text" name="Age_of_the_passenger" placeholder ="Enter Age of the passenger.">
+</style>
 
 
-               <div class="input-group">
-                <div class="input-group-addon">
-                 <i class="fa fa-calendar"></i>
-                </div>
-                <input class="form-control" id="date" name="date" placeholder="Date of journey in dd-mm-yyyy format." type="text"/>
-               </div>
+{% include 'userpanal/Detail.html' %}
 
-                <!-------------------- Drop Down For Quota ---------------------------------------------->
 
-                  <select class="form-control" id="sel1" name="train_quota">
+<div class="container-fluid text-center">
+  <div class="row content">
+  <form  id="train_fair">
+  {% csrf_token %}
+  <table width="85%" border="0">
+  <tbody>
+    <tr>
+      <td class="eform" >
+      		<div class="col-sm-10 form-group">
+                <p><font size="5">Train Fair Enquiry</font></p>
+            </div>
+
+      		<div class="col-sm-5 form-group">
+              <input type="text" class="form-control dd_user_input" id="source" name="Source_station_code" placeholder="Source Station" >
+            </div>
+            <div class="col-sm-5 form-group">
+              <input type="text" class="form-control dd_user_input " id="dest" name="Destination_station_code" placeholder="Destination Station" >
+            </div>
+            <div class="col-sm-3 form-group">
+              <input type="date" class="form-control dd_user_input " id="date" name="date" placeholder="mm/dd/yyyy" >
+            </div>
+            <div class="col-sm-3 form-group">
+              <input type="date" class="form-control dd_user_input " id="Passenger_Age" name="Passenger_Age" placeholder="Passenger Age" >
+            </div>
+
+            <div class="col-sm-3 form-group">
+                  <select class="form-control" id="train_quota" name="train_quota">
                     <option value="GN">General Quota</option>
                     <option value="LD">Ladies Quota</option>
                     <option value="DF">Defence Quota</option>
@@ -64,46 +79,46 @@
                     <option value="LB">Lower Berth</option>
                     <option value="YU">Yuva</option>
                   </select>
-                  <br>
+            </div>
+
+            <div class="col-sm-1 form-group">
+                <button type = "submit" class = "btn btn-info">Submit</button>
+            </div>
+      </td>
+    </tr>
+
+  </tbody>
+  </table>
+</form>
+</div>
+
+<div class="col-sm-10" id="trainFairDetail"></div>
+<div class="col-sm-10" id="output"></div>
+
+</div>
 
 
-                <!--------------------------------------------------------------------------------------->
 
 
 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'dd-mm-yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
 
-
-
-
-
-           </div>
-           <button type = "submit" class = "btn btn-default">Submit</button>
-        </form>
-
-    </div>
-  </div>
-
-                <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-                <!-- Include jQuery -->
-                <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-                <!-- Include Date Range Picker -->
-                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-                <script>
-                    $(document).ready(function(){
-                        var date_input=$('input[name="date"]'); //our date input has the name "date"
-                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-                        date_input.datepicker({
-                            format: 'dd-mm-yyyy',
-                            container: container,
-                            todayHighlight: true,
-                            autoclose: true,
-                        })
-                    })
-                </script>
+<script src="{% static 'Train_Fair_Enquiry/js/trainFair.js' %}"></script>
 
 
 

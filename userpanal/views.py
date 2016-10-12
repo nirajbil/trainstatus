@@ -18,11 +18,6 @@ from pnr_utils import get_pnr_status, caluclate_timedelta, get_pnr_status_Niraj,
 from .tasks import send_pnr_notification
 from .models import PNRNotification
 
-RailwayAPI_APIKEY = "joymo1655"
-#RailwayAPI_APIKEY = getattr(settings, 'RailwayAPI_APIKEY', '')
-
-
-
 
 
 def index(request):
@@ -53,18 +48,9 @@ def pnr_status(request):
     template_name = 'userpanal/pnr.html'
     context = {}
     if request.method == 'POST':
-        url_pnr = "http://api.railwayapi.com/pnr_status/pnr/"
-        print "1url_pnr=%s " %url_pnr
-        print "RailwayAPI_APIKEY=%s" %str(RailwayAPI_APIKEY)
-
         pnr_no = request.POST.get('pnrno')
-        url_pnr = url_pnr + pnr_no + '/apikey/' #+ RailwayAPI_APIKEY #+ '/'
-        url_pnr = url_pnr + RailwayAPI_APIKEY + '/'
-
         print "pnr_no=%s" %pnr_no
-        print "url_pnr=%s " %url_pnr
-
-        Error_Flag, context = get_pnr_status_Niraj(url_pnr)
+        Error_Flag, context = get_pnr_status_Niraj(pnr_no)
         #if Error_Flag == False:
             #return render(request,'userpanal/pnr_status.html', context)
         return HttpResponse(json.dumps(context), content_type = "application/json")
