@@ -256,13 +256,13 @@ def get_pnr_status_Niraj(pnrno):
 
     response_code = request_data['response_code']
     error = request_data['error']
-    pnr = request_data['pnr']
 
     if response_code == 200:
         boarding_point = request_data['boarding_point']
         chart_prepared = request_data['chart_prepared']
         train_class = request_data['class']
         doj = request_data['doj']
+        pnr = request_data['pnr']
 
         from_station = request_data['from_station']
         reservation_upto = request_data['reservation_upto']
@@ -319,7 +319,7 @@ def get_pnr_status_Niraj(pnrno):
                    'response_code': response_code,
                    'error': error,
                    'Error_str': Error_str,
-                   'pnr': pnr,
+
                    }
 
          Error_Flag = True

@@ -3,6 +3,34 @@
  */
 
 $(document).on('submit','#train_fair', function (e) {
+    var source = $('#source').val();
+    if(source.length == 0){
+        alert('Please Enter Source Station');
+        return false;
+    }
+
+    var dest = $('#dest').val();
+    if(dest.length == 0){
+        alert('Please Enter Destination Station');
+        return false;
+    }
+
+    var date = $('#date').val();
+    if(date.length == 0){
+        alert('Please Enter Date Of Journey');
+        return false;
+    }
+
+    var Passenger_Age = $('#Passenger_Age').val();
+    if(Passenger_Age.length == 0){
+        alert('Please Enter Passenger Age');
+        return false;
+    }
+
+   /* alert('*********** correct ************');            isNaN(pnrno) ||  */
+
+
+
     e.preventDefault();
     $.ajax({
         type: 'POST',

@@ -3,8 +3,20 @@
 {% load staticfiles %}
 {% block body %}
 
+    <!--
+    <style>
+        .loader{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, .8) url("loading.gif") no-repeat 50%;
+        }
+    </style>
+    -->
 
-        <div class="col-xs-9 img-responsive">
+        <div class="col-xs-9 img-responsive loading_Img">
 
             {% if user and not user.is_anonymous %}
             {% else %}
@@ -26,9 +38,12 @@
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary  center-block " type="button" ><strong>PNR Status</strong></button>
                                     </span>
+
                                     <input class="form-control dd_user_input"  id="pnrno" type="text" placeholder="10 Digit PNR Number">
-                                    <span class="input-group-btn">
-                                        <button type = "submit" class = "btn btn-info">Submit</button>
+                                    <div id="pnr_error" class="val_error"></div>
+
+                                    <span class="input-group-btn ">
+                                        <button class ="btn btn-info center-block" type = "submit" >Submit</button>
                                     </span>
                                 </div>
                             </div>
@@ -89,7 +104,9 @@
         </div>
 
 
+
     <script src="{% static 'userpanal/js/userpanal.js' %}"></script>
+
 
 
 {% endblock %}

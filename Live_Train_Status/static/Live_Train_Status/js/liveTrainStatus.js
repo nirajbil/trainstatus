@@ -2,6 +2,13 @@
  * Created by Niraj on 10/10/2016.
  */
 $(document).on('submit','#livetrainstatus', function (e) {
+    var trainNumber = $('#trainNumber').val();
+
+    if(isNaN(trainNumber) || trainNumber.length != 5){
+        alert('Train Number Should Digit');
+        return false;
+    }
+
     e.preventDefault();
     $.ajax({
         type: 'POST',

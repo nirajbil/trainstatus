@@ -2,139 +2,158 @@
  * Created by Niraj on 10/12/2016.
  */
 
-    $(document).on('submit','#train_between_station', function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url : '/find_train/',
-            data:{
-                source:$('#source').val(),
-                dest:$('#dest').val(),
-                date:$('#date').val(),
-                train_quota:$('#train_quota').val(),
-                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-            },
+$(document).on('submit','#train_between_station', function (e) {
+    var source = $('#source').val();
+    if(source.length == 0){
+        alert('Please Enter Source Station');
+        return false;
+    }
 
-            success:function(data){
+    var dest = $('#dest').val();
+    if(dest.length == 0){
+        alert('Please Enter Destination Station');
+        return false;
+    }
 
-                console.log(data.response_code);
-                if(data.response_code == 200)
-                {
-                    $('#output').html(trainAvailable(data));
-                }
-                else
-                {
-                    alert(data.response_code);
-                }
-
-                /*
-                $.post('Train_Between_Stations/trainBetweenStations.html' ,
-                        {
-                            person_name : 'Niraj',
-                        } ,
-                        function(data){
-                            $('#output').html(data);
-                        }
-
-                    );
-                */
-                /*
-                $.each(data,function(key, value){
-                    $('ul').append("<li>" + value.train_number + "<li>");
-                });
-                */
-                /*
-                alert(data.response_code);
-                */
-                /*
-                $('.ajaxprogress').hide();
-                */
-               /* $('output').html("<h1> niraj</h1>");*/
-
-            },
-            failure: function() {
-                    alert('Got an error dude');
-            },
-
-        })
-
-        function trainAvailable(data){
-            /*alert(data.response_code);*/
-            var httpresonce="";
-        httpresonce = '\
-        <table class="table table-bordered" id="myTable">\
-          <thead>   \
-            <tr>    \
-              <th>Train No</th> \
-              <th>Train Name</th> \
-              <th>From Station</th> \
-              <th>Departure Time</th> \
-              <th>To Station</th> \
-              <th>Arrival Time</th> \
-              <th>Travel Time</th> \
-              <th>Running Days</th> \
-              <th>classes Available</th> \
-            </tr> \
-          </thead> \
-          <tbody>';
+    var date = $('#date').val();
+    if(date.length == 0){
+        alert('Please Enter Date Of Journey');
+        return false;
+    }
 
 
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url : '/find_train/',
+        data:{
+            source:$('#source').val(),
+            dest:$('#dest').val(),
+            date:$('#date').val(),
+            train_quota:$('#train_quota').val(),
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
 
-            for(i=0;i<data.train.length;i++)
+        success:function(data){
+
+            console.log(data.response_code);
+            if(data.response_code == 200)
             {
-                console.log(data.train[i].number);
-                httpresonce += '<td id="number-' + i + '">' + data.train[i].number + '</td>';
-
-                console.log(data.train[i].name);
-                httpresonce += '<td id="tname-' + i + '">' + data.train[i].name + '</td>';
-
-                console.log(data.train[i].from);
-                httpresonce += '<td id="from_name-' + i + '">' + data.train[i].from.name+ ' - ' + data.train[i].from.code + '</td>';
-
-                console.log(data.train[i].src_departure_time);
-                httpresonce += '<td id="src_departure_time-' + i + '">' + data.train[i].src_departure_time + '</td>';
-
-                console.log(data.train[i].to);
-                httpresonce += '<td id="to_name-' + i + '">' + data.train[i].to.name + ' - ' + data.train[i].to.code + '</td>';
-
-                console.log(data.train[i].dest_arrival_time);
-                httpresonce += '<td id="dest_arrival_time-' + i + '">' + data.train[i].dest_arrival_time + '</td>';
-
-                console.log(data.train[i].travel_time);
-                httpresonce += '<td id="travel_time-' + i + '">' + data.train[i].travel_time + '</td>';
-
-                httpresonce += '<td>';
-                $.each(data.train[i].days, function () {
-                    if(this.runs == 'Y')
-                    {
-                        console.log(this.day_code);
-                        httpresonce += this.day_code + ' ';
-                    }
-                    /*console.log(this.runs);console.log(this.day_code);*/
-                });
-                httpresonce += '</td>';
-
-                httpresonce += '<td>';
-                $.each(data.train[i].classes, function () {
-                    if(this.available == 'Y')
-                    {
-                        console.log(this.class_code);
-                        httpresonce += '<a href="#" class="collectionlist" name="'+ this.class_code +'" id="' + i + '">' + this.class_code + '</a>' +' ';
-
-                    }
-                    /*console.log(this.available);console.log(this.class_code);*/
-                });
-                httpresonce += '</td>';
-                httpresonce += '</tr>';
+                $('#output').html(trainAvailable(data));
+            }
+            else
+            {
+                alert(data.response_code);
             }
 
-              httpresonce += '</tbody></table>';
+            /*
+            $.post('Train_Between_Stations/trainBetweenStations.html' ,
+                    {
+                        person_name : 'Niraj',
+                    } ,
+                    function(data){
+                        $('#output').html(data);
+                    }
+
+                );
+            */
+            /*
+            $.each(data,function(key, value){
+                $('ul').append("<li>" + value.train_number + "<li>");
+            });
+            */
+            /*
+            alert(data.response_code);
+            */
+            /*
+            $('.ajaxprogress').hide();
+            */
+           /* $('output').html("<h1> niraj</h1>");*/
+
+        },
+        failure: function() {
+                alert('Got an error dude');
+        },
+
+    })
+
+    function trainAvailable(data){
+        /*alert(data.response_code);*/
+        var httpresonce="";
+    httpresonce = '\
+    <table class="table table-bordered" id="myTable">\
+      <thead>   \
+        <tr>    \
+          <th>Train No</th> \
+          <th>Train Name</th> \
+          <th>From Station</th> \
+          <th>Departure Time</th> \
+          <th>To Station</th> \
+          <th>Arrival Time</th> \
+          <th>Travel Time</th> \
+          <th>Running Days</th> \
+          <th>classes Available</th> \
+        </tr> \
+      </thead> \
+      <tbody>';
 
 
 
-            return httpresonce;
+        for(i=0;i<data.train.length;i++)
+        {
+            console.log(data.train[i].number);
+            httpresonce += '<td id="number-' + i + '">' + data.train[i].number + '</td>';
+
+            console.log(data.train[i].name);
+            httpresonce += '<td id="tname-' + i + '">' + data.train[i].name + '</td>';
+
+            console.log(data.train[i].from);
+            httpresonce += '<td id="from_name-' + i + '">' + data.train[i].from.name+ ' - ' + data.train[i].from.code + '</td>';
+
+            console.log(data.train[i].src_departure_time);
+            httpresonce += '<td id="src_departure_time-' + i + '">' + data.train[i].src_departure_time + '</td>';
+
+            console.log(data.train[i].to);
+            httpresonce += '<td id="to_name-' + i + '">' + data.train[i].to.name + ' - ' + data.train[i].to.code + '</td>';
+
+            console.log(data.train[i].dest_arrival_time);
+            httpresonce += '<td id="dest_arrival_time-' + i + '">' + data.train[i].dest_arrival_time + '</td>';
+
+            console.log(data.train[i].travel_time);
+            httpresonce += '<td id="travel_time-' + i + '">' + data.train[i].travel_time + '</td>';
+
+            httpresonce += '<td>';
+            $.each(data.train[i].days, function () {
+                if(this.runs == 'Y')
+                {
+                    console.log(this.day_code);
+                    httpresonce += this.day_code + ' ';
+                }
+                /*console.log(this.runs);console.log(this.day_code);*/
+            });
+            httpresonce += '</td>';
+
+            httpresonce += '<td>';
+            $.each(data.train[i].classes, function () {
+                if(this.available == 'Y')
+                {
+                    console.log(this.class_code);
+                    httpresonce += '<a href="#" class="collectionlist" name="'+ this.class_code +'" id="' + i + '">' + this.class_code + '</a>' +' ';
+
+                }
+                /*console.log(this.available);console.log(this.class_code);*/
+            });
+            httpresonce += '</td>';
+            httpresonce += '</tr>';
         }
-    });
+
+          httpresonce += '</tbody></table>';
+
+
+
+        return httpresonce;
+    }
+});
 
 
 

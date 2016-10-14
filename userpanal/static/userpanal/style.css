@@ -84,3 +84,15 @@ ul.errorlist > li {
   background-color: #d6d6d6;
   text-align: center;
 }
+
+
+
+
+.loader,.loader_1{
+    position: fixed;
+    top:50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .8) url("images/loading_1.gif") no-repeat 50% 50%;
+}

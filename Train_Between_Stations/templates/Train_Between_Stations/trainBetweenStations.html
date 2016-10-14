@@ -89,146 +89,28 @@ table#myTable,#myTable2 {
 
 
 
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-
-
-
-
-
-
-                <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-                <!-- Include jQuery -->
-                <!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
-
-                <!-- Include Date Range Picker -->
-                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-                <script>
-                    $(document).ready(function(){
-                        var date_input=$('input[name="date"]'); //our date input has the name "date"
-                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-                        date_input.datepicker({
-                            format: 'dd-mm-yyyy',
-                            container: container,
-                            todayHighlight: true,
-                            autoclose: true,
-                        })
-                    })
-                </script>
-
-<script type="text/javascript">
-    $(document).on('submit','#train_station', function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url : '/train_between/',
-            data:{
-                source:$('#source').val(),
-                dest:$('#dest').val(),
-                date:$('#date').val(),
-                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-            },
-
-            success:function(data){
-
-                console.log(data.response_code);
-                if(data.response_code == 200)
-                {
-                    $('#train_station_output').html(trainAvailable(data));
-                }
-                else
-                {
-                    alert(data.response_code);
-                }
-            },
-            failure: function() {
-                    alert('Got an error dude');
-            },
-
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'dd-mm-yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
         })
-
-        function trainAvailable(data){
-            /*alert(data.response_code);*/
-            var httpresonce="";
-        httpresonce += '<table class="table table-bordered table-sm " id="myTable">';
-        httpresonce += '<thead>';
-        httpresonce += ' <tr>';
-        httpresonce += ' <th>Train No</th>';
-        httpresonce += '<th>Train Name</th>';
-        httpresonce += '      <th>From Station</th>';
-        httpresonce += '      <th>Departure Time</th>';
-        httpresonce += '      <th>To Station</th>';
-        httpresonce += '      <th>Arrival Time</th>';
-        httpresonce += '      <th>Travel Time</th>';
-        httpresonce += '      <th>Running Days</th>';
-        httpresonce += '      <th>classes Available</th>';
-        httpresonce += '    </tr>';
-        httpresonce += '  </thead>';
-        httpresonce += '  <tbody>';
-
-
-
-            for(i=0;i<data.train.length;i++)
-            {
-                console.log(data.train[i].number);
-                httpresonce += '<td id="number-' + i + '">' + data.train[i].number + '</td>';
-
-                console.log(data.train[i].name);
-                httpresonce += '<td id="tname-' + i + '">' + data.train[i].name + '</td>';
-
-                console.log(data.train[i].from);
-                httpresonce += '<td id="from_name-' + i + '">' + data.train[i].from.name+ ' - ' + data.train[i].from.code + '</td>';
-
-                console.log(data.train[i].src_departure_time);
-                httpresonce += '<td id="src_departure_time-' + i + '">' + data.train[i].src_departure_time + '</td>';
-
-                console.log(data.train[i].to);
-                httpresonce += '<td id="to_name-' + i + '">' + data.train[i].to.name + ' - ' + data.train[i].to.code + '</td>';
-
-                console.log(data.train[i].dest_arrival_time);
-                httpresonce += '<td id="dest_arrival_time-' + i + '">' + data.train[i].dest_arrival_time + '</td>';
-
-                console.log(data.train[i].travel_time);
-                httpresonce += '<td id="travel_time-' + i + '">' + data.train[i].travel_time + '</td>';
-
-                httpresonce += '<td>';
-                $.each(data.train[i].days, function () {
-                    if(this.runs == 'Y')
-                    {
-                        console.log(this.day_code);
-                        httpresonce += this.day_code + ' ';
-                    }
-                    /*console.log(this.runs);console.log(this.day_code);*/
-                });
-                httpresonce += '</td>';
-
-                httpresonce += '<td>';
-                $.each(data.train[i].classes, function () {
-                    if(this.available == 'Y')
-                    {
-                        console.log(this.class_code);
-                        httpresonce += '<a href="#" class="collectionlist" name="'+ this.class_code +'" id="' + i + '">' + this.class_code + '</a>' +' ';
-
-                    }
-                    /*console.log(this.available);console.log(this.class_code);*/
-                });
-                httpresonce += '</td>';
-                httpresonce += '</tr>';
-            }
-
-              httpresonce += '</tbody></table>';
-
-
-
-            return httpresonce;
-        }
-    });
-
-
-
+    })
 </script>
+
+<script src="{% static 'Train_Between_Stations/js/trainBetweenStations.js' %}"></script>
 
 
 {% endblock %}

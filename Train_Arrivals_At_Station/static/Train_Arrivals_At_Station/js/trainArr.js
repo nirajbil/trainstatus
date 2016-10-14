@@ -4,6 +4,14 @@
 
 
 $(document).on('submit','#trainArrival', function (e) {
+
+    var source = $('#source').val();
+    if(source.length == 0){
+        alert('Please Enter Station Name');
+        return false;
+    }
+
+
     e.preventDefault();
     $.ajax({
         type: 'POST',
