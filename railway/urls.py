@@ -37,3 +37,10 @@ urlpatterns = [
     #url('', include('social.apps.django_app.urls', namespace='social')),
     #url('', include('django.contrib.auth.urls', namespace='auth')),
 ]
+
+
+
+#handler400 = 'railway.views.bad_request'
+#handler403 = 'railway.views.permission_denied'
+#handler404 = 'railway.views.page_not_found'
+#handler500 = 'railway.views.server_error'
