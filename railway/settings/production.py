@@ -3,7 +3,7 @@ from django.conf import settings
 
 
 DEBUG = False
-TEMPLATE_DEBUG = False
+TEMPLATES_DEBUG = False
 
 DATABASES = settings.DATABASES
 
