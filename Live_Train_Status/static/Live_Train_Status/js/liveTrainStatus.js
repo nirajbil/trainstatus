@@ -5,7 +5,7 @@ $(document).on('submit','#livetrainstatus', function (e) {
     var trainNumber = $('#trainNumber').val();
 
     if(isNaN(trainNumber) || trainNumber.length != 5){
-        alert('Train Number Should Digit');
+        alert('Train Number Should be Digit');
         return false;
     }
 

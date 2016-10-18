@@ -1,6 +1,10 @@
 from django.conf import settings
 
-#from settings import RailwayAPI_APIKEY
+from django.core.urlresolvers import reverse
+import urllib
+import logging
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import logout
 #if not settings.configured:
  #   settings.configure()
 
@@ -20,11 +24,21 @@ from .models import PNRNotification
 
 
 
+
 def index(request):
     template_name = 'userpanal/index.html'
-    context = {'request': request,'user': request.user}
+    #context = {'request': request,'user': request.user}
+    #print "user=%s" %request.user.username
+    #print "site=%s" %request.__dict__
+    #print json.dumps(request.__dict__, separators=(',',':'))
+    context = {}
     return render(request,template_name, context)
 
+
+def login_cancelled(request):
+    template_name = 'userpanal/index.html'
+    context = {}
+    return render(request,template_name, context)
 
 def home(request):
     template_name = 'userpanal/home.html'
@@ -60,16 +74,6 @@ def pnr_status(request):
         #    return render(request,'userpanal/pnr_status.html', context)
 
     return render(request,template_name, context)
-
-
-
-
-
-
-
-
-
-
 
 
 

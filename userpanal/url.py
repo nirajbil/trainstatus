@@ -1,8 +1,7 @@
 from django.conf.urls import url
 from . import views
-#from django.contrib.auth import views
-from django.views.generic.base import TemplateView
 
+from django.views.generic.base import TemplateView
 
 app_name  = 'userpanal' #name space if we have more apps
 
@@ -13,7 +12,4 @@ urlpatterns = [
     url(r'pnr_status/$', views.pnr_status,name="pnr_status" ),
     url(r'pnrNotification/$', views.pnrNotification,name="pnrNotification" ),
     url(r'stop_notifications/', views.stop_notifications, name='stop_notifications'),
-
-    #url(r'^get_pnr_status/$',views.get_pnr_status),
-
 ]

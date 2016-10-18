@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include,url
 from django.contrib import admin
+from userpanal.views import login_cancelled
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
     url(r'^', include('userpanal.url',namespace='userpanal')),
     url(r'^', include('Train_Route.url',namespace='Train_Route')),
     url(r'^', include('Live_Train_Status.url',namespace='Live_Train_Status')),
@@ -28,8 +31,9 @@ urlpatterns = [
     url(r'^', include('Train_Arrivals_At_Station.url',namespace='Train_Arrivals_At_Station')),
     url(r'^',include('Cancelled_Trains.url',namespace='Cancelled_Trains')),
 
+    url(r'^accounts/social/login/cancelled/$', login_cancelled),
+    url(r'^accounts/', include('allauth.urls')),
 
-
-    url('', include('social.apps.django_app.urls', namespace='social')),
-    url('', include('django.contrib.auth.urls', namespace='auth')),
+    #url('', include('social.apps.django_app.urls', namespace='social')),
+    #url('', include('django.contrib.auth.urls', namespace='auth')),
 ]

@@ -48,6 +48,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+
 ]
 
 MIDDLEWARE = [
@@ -140,7 +147,27 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+FACEBOOK_APP_ID = '525702034300871'
 SOCIAL_AUTH_FACEBOOK_KEY = '525702034300871'#'551427151707901'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'd98f13ab8e201ea59eabc85b55910aef'#'a22757f54b932098a2a1e8aabb9c1f3b'
 
 #RailwayAPI_APIKEY = "joymo1655"
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_QUERY_EMAIL = True
+
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
+
+#SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
