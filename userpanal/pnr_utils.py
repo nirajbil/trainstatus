@@ -1273,7 +1273,10 @@ def get_Train_Between_Stations_Niraj(Source_station_code,Destination_station_cod
     data_file = response.read()
     #print "data_file=%s " %data_file
     request_data = json.loads(data_file)
+
+    print "==============="
     pprint(request_data)
+    print "==============="
 
     train = {}
     total = {}
