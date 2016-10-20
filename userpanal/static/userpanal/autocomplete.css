@@ -1,0 +1,13 @@
+  .ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+	width: 300px;
+	cursor: pointer;
+
+	font-weight: normal;
+	color: gray;
+	list-style-position: inside;
+	font-size: 1.2em
+  }

@@ -96,3 +96,18 @@ ul.errorlist > li {
     height: 100%;
     background: rgba(255, 255, 255, .8) url("images/loading_1.gif") no-repeat 50% 50%;
 }
+
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    width: 300px;
+    cursor: pointer;
+
+    font-weight: bolder;
+    color: gray;
+    list-style-position: inside;
+    font-size: 1.2em
+}

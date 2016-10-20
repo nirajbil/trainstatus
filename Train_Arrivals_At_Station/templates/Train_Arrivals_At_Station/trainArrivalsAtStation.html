@@ -3,28 +3,9 @@
 {% load staticfiles %}
 {% block body %}
 
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"> </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://railwayapi.com/jquery-ui-1.8.2.custom.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/humanity/jquery-ui.css">
-<script type="text/javascript" src="http://railwayapi.com/autocomplete.js"></script>
+{% include 'userpanal/station_file_link.html' %}
 
 <style>
-  .ui-autocomplete {
-    max-height: 300px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
-	width: 300px;
-	cursor: pointer;
-
-	font-weight: bolder;
-	color: gray;
-	list-style-position: inside;
-	font-size: 1.2em
-
-  }
-
 table#myTable,#myTable2 {
     align:"left";
     border: 1px solid black;
