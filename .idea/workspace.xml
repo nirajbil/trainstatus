@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="978a93d4-50e6-4e37-8304-c61cad444156" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability - Copy.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" afterPath="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" afterPath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" afterPath="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Arrivals_At_Station/templates/Train_Arrivals_At_Station/trainArrivalsAtStation.html" afterPath="$PROJECT_DIR$/Train_Arrivals_At_Station/templates/Train_Arrivals_At_Station/trainArrivalsAtStation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" afterPath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Fair_Enquiry/templates/Train_Fair_Enquiry/trainFairEnquiry.html" afterPath="$PROJECT_DIR$/Train_Fair_Enquiry/templates/Train_Fair_Enquiry/trainFairEnquiry.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRoute.html" afterPath="$PROJECT_DIR$/Train_Route/templates/Train_Route/trainRoute.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/static/userpanal/style.css" afterPath="$PROJECT_DIR$/userpanal/static/userpanal/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/templates/userpanal/Detail.html" afterPath="$PROJECT_DIR$/userpanal/templates/userpanal/Detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/templates/userpanal/base.html" afterPath="$PROJECT_DIR$/userpanal/templates/userpanal/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/templates/userpanal/index.html" afterPath="$PROJECT_DIR$/userpanal/templates/userpanal/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html" afterPath="$PROJECT_DIR$/userpanal/templates/userpanal/pnr.html" />
     </list>
     <ignored path="trainstatus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +27,8 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61409795">
-              <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.43130228">
+              <caret line="80" column="63" selection-start-line="80" selection-start-column="63" selection-end-line="80" selection-end-column="63" />
               <folding>
                 <element signature="n#style#0;n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -1035,8 +1021,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61409795">
-          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.43130228">
+          <caret line="80" column="63" selection-start-line="80" selection-start-column="63" selection-end-line="80" selection-end-column="63" />
           <folding>
             <element signature="n#style#0;n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
