@@ -15,92 +15,76 @@
     </style>
     -->
 
-<div class="col-xs-9 img-responsive loading_Img">
+{% if user and not user.is_anonymous %}
+{% else %}
 
-    {% if user and not user.is_anonymous %}
-    {% else %}
+  <div class="jumbotron">
+        <h3> Free Login</h3>
+        <p><a href="/accounts/facebook/login/?process=login"  class="btn btn-success btn-lg center-block">Log In With Facebook</a></p>
+  </div>
+{% endif %}
 
-        <div class="jumbotron">
-            <div class="container-fluid">
-                <h3> Free Login</h3>
-                <p><a href="/accounts/facebook/login/?process=login"  class="btn btn-success btn-lg center-block">Log In With Facebook</a></p>
-            </div>
+<form id="pnrstatus">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="input-group form-group">
+            <span class="input-group-btn">
+                <button class="btn btn-primary  center-block " type="button" ><strong>PNR Status</strong></button>
+            </span>
+            <input class="form-control dd_user_input"  id="pnrno" type="text" placeholder="10 Digit PNR Number">
+            <span class="input-group-btn">
+                <button type = "submit" class = "btn btn-info">Submit</button>
+            </span>
         </div>
-    {% endif %}
-
-    <div class="container-fluid  img-responsive">
-        <div class="row">
-            <div class="col-md-9">
-                <form id="pnrstatus">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group form-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary  center-block " type="button" ><strong>PNR Status</strong></button>
-                            </span>
-
-                            <input class="form-control dd_user_input"  id="pnrno" type="text" placeholder="10 Digit PNR Number">
-                            <div id="pnr_error" class="val_error"></div>
-
-                            <span class="input-group-btn ">
-                                <button class ="btn btn-info center-block" type = "submit" >Submit</button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-
     </div>
-    <div id="pnr_status_html"></div>
+</form>
+<div id="pnr_status_html"></div>
+
+<div class="row">
+
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Seat_Availability:seatAvailability' %}"  class="btn btn-primary btn-lg center-block">Seat Availability</a></p>
+    </div><!--/span-->
+
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Train_Fair_Enquiry:trainFairEnquiry' %}"  class="btn btn-primary btn-lg center-block">Train Fair Enquiry</a></p>
+    </div><!--/span-->
 
 
-    <div class="container-fluid img-responsive ">
-        <div class="row">
-            <div class="col-xs-4">
-                <a href="{% url 'Seat_Availability:seatAvailability' %}" class="btn btn-primary  center-block"><h4>Seat Availability</h4></a></p>
-            </div>
-            <div class="col-xs-4">
-                <a href="{% url 'Live_Train_Status:liveTrainStatus' %}" class="btn btn-primary  center-block"><h4>Live Train Status</h4></a></p>
-            </div>
-            <div class="col-xs-4">
-                <a href="{% url 'Train_Between_Stations:trainBetweenStations' %}" class="btn btn-primary  center-block"><h4>Trains Between Stations</h4></a></p>
-            </div>
 
-        </div>
-        <hr>
-    </div>
-    <div class="container-fluid img-responsive ">
-        <div class="row">
-            <div class="col-xs-4">
-                <a href="{% url 'Train_Fair_Enquiry:trainFairEnquiry' %}" class="btn btn-primary  center-block"><h4>Train Fair Enquiry</h4></a></p>
-            </div>
-            <div class="col-xs-4">
-                <a href="{% url 'Train_Arrivals_At_Station:trainArrivalsAtStation' %}" class="btn btn-primary  center-block"><h4>Train Arrivals At Station</h4></a></p>
-            </div>
-            <div class="col-xs-4">
-                <a href="{% url 'Train_Route:trainRoute' %}" class="btn btn-primary  center-block"><h4>Train Route</h4></a></p>
-            </div>
 
-        </div>
-        <hr>
-    </div>
-    <div class="container-fluid img-responsive ">
-        <div class="row">
-            <div class="col-xs-4">
-                <a href="{% url 'Cancelled_Trains:cancelledTrains' %}" class="btn btn-primary  center-block"><h4>Cancelled Trains</h4></a></p>
-            </div>
-            <div class="col-xs-4">
-                <a href="{% url 'Train_Name_Number:trainNameNumber' %}" class="btn btn-primary  center-block"><h4>Train Name/Number</h4></a></p>
-            </div>
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Train_Route:trainRoute' %}"  class="btn btn-primary btn-lg center-block">Train Route</a></p>
+    </div><!--/span-->
 
-        </div>
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Live_Train_Status:liveTrainStatus' %}"  class="btn btn-primary btn-lg center-block">Live Train Status</a></p>
+    </div><!--/span-->
 
-    </div>
 
-</div>
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Train_Arrivals_At_Station:trainArrivalsAtStation' %}"  class="btn btn-primary btn-lg center-block">Train Arrivals At Station</a></p>
+    </div><!--/span-->
+
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Train_Between_Stations:trainBetweenStations' %}"  class="btn btn-primary btn-lg center-block">Trains Between Stations</a></p>
+    </div><!--/span-->
+
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Cancelled_Trains:cancelledTrains' %}"  class="btn btn-primary btn-lg center-block">Cancelled Trains</a></p>
+    </div><!--/span-->
+
+    <!--
+    <div class="col-xs-4 col-lg-4">
+        <p><a href="{% url 'Train_Name_Number:trainNameNumber' %}"  class="btn btn-primary btn-lg center-block">Train Name/Number</a></p>
+    </div>--><!--/span-->
+
+</div><!--/row-->
+
+
+
+
+
 
 
 <script src="{% static 'userpanal/js/userpanal.js' %}"></script>

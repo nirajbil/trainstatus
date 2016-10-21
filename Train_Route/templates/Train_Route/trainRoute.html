@@ -6,52 +6,47 @@
     <style>
         form{
             border-collapse: collapse;
-            width: 70%;
+            #width: 70%;
         }
     table#myTable {
         align:"left";
         border: 1px solid black;
         height: 8px;
-        width: 80%;
+        width: 100%;
         text-align: left;
         border-collapse: collapse;
         font-size: 10px;
     }
     </style>
 
+
+
+<div class="col-xs-18 col-sm-12">
     {% include 'userpanal/Detail.html' %}
 
-    <div class="col-xs-9">
-        <div class="col-sm-10 form-group">
-            <p align="center"><font size="5">Train Route</font></p>
-        </div>
+
+    <div class="row">
+        <p align="center"><font size="5">Train Route</font></p>
     </div>
 
-    <div class="container-fluid  img-responsive">
-        <div class="row">
-            <div class="col-md-9">
-                <form id="trainRoute">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group form-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary  center-block " type="button" ><strong>Train Number</strong></button>
-                            </span>
-                            <input class="form-control dd_user_input"  id="trainNumber" type="text" placeholder="Enter Train Number">
-                            <span class="input-group-btn">
-                                <button type = "submit" class = "btn btn-info">Submit</button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-
+    <div class="row">
+        <form id="trainRoute">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group form-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary  center-block " type="button" ><strong>Train Number</strong></button>
+                    </span>
+                    <input class="form-control dd_user_input"  id="trainNumber" type="text" placeholder="Enter Train Number">
+                    <span class="input-group-btn">
+                        <button type = "submit" class = "btn btn-info">Submit</button>
+                    </span>
+                </div>
             </div>
-
-        </div>
-
+        </form>
+        <div id="train_Route_html"></div>
     </div>
-    <div id="train_Route_html"></div>
-
+</div>
 
 
 

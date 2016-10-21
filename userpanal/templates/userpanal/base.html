@@ -31,16 +31,8 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!--
-                <div class="fb_img">
-                    <img src={% static "images/login-with-facebook.png" %} alt="" >
-                </div>
-                -->
-                <a class="navbar-brand" href="{% url 'userpanal:index' %}">
-
-                    Train Status Online </a>
+                <a class="navbar-brand" href="{% url 'userpanal:index' %}">Train Status Online </a>
             </div>
-
             <ul class="nav navbar-nav navbar-right">
                   {% if user and not user.is_anonymous %}
                     <li class = "dropdown">
@@ -66,34 +58,61 @@
 
 
 
+<div class="container-fluid">
+	<div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-12 col-sm-9">
+			{% block body %}
+			{% endblock %}
+		</div>
 
-    <div class="col-xs-12">
-        <div class="container-fluid img-responsive">
-            {% block body %}
-            {% endblock %}
-        </div>
-    </div>
+		<div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">
+              <div class="fb-like" data-href="http://www.trainstatusonline.in/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+              <hr>
+			  <div class="list-group">
+				<a href="#" class="list-group-item active">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+				<a href="#" class="list-group-item">Link</a>
+			  </div>
+		</div><!--/span-->
+	</div><!--/row-->
 
 
+	<hr>
 
-    <div class="col-xs-3 " id="add_space">
-        <div class="container-fluid img-responsive">
-            <!--
-            <h3> space for adds</h3>
-            <img src={% static "images/login-with-facebook.png" %} alt="" class="img-responsive center-block">
-            -->
-        </div>
-    </div>
+    <footer style="bottom:0;height: auto;">
 
+    </footer>
+
+</div>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=525702034300871";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    
 
 
 <script src="{% static 'userpanal/js/DisableRightClick.js' %}"></script>
+
+
+
 </body>
 
-<!--
-<div class="footer container-fluid ">
-  <p>© 2016. All Rights Reserved.</p>
-</div>
--->
+
+
+
 
 </html>

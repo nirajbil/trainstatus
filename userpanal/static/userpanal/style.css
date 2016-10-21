@@ -74,19 +74,33 @@ ul.errorlist > li {
 
 
 
+/*
+footer {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right: 0;
+    background-color: #d6d6d6;
+    text-align: center;
+    padding: 1rem;
+}
 
-.footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #d6d6d6;
-  text-align: center;
+.box {
+	width:800px;
+	margin:0 auto;
 }
 
 
-
+.footer {
+    position:fixed;
+    bottom:0;
+    left:0;
+    right: 0;
+    background-color: #d6d6d6;
+    text-align: center;
+    padding: 1rem;
+}
+*/
 
 .loader,.loader_1{
     position: fixed;
@@ -98,16 +112,3 @@ ul.errorlist > li {
 }
 
 
-.ui-autocomplete {
-    max-height: 300px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
-    width: 300px;
-    cursor: pointer;
-
-    font-weight: bolder;
-    color: gray;
-    list-style-position: inside;
-    font-size: 1.2em
-}

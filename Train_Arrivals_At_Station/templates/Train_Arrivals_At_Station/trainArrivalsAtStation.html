@@ -10,39 +10,37 @@ table#myTable,#myTable2 {
     align:"left";
     border: 1px solid black;
     height: 8px;
-    width: 95%;
+    width: 100%;
     text-align: left;
     border-collapse: collapse;
     font-size: 10px;
 }
 </style>
-    {% include 'userpanal/Detail.html' %}
 
-    <div class="col-xs-9 col-md-9">
-      		<div class="col-sm-10 form-group">
+
+    <div class="col-xs-18 col-sm-12">
+    {% include 'userpanal/Detail.html' %}
+      		<div class="row">
                 <p align="center"><font size="5">Train Arrivals At Station</font></p>
             </div>
-            <div class="container-fluid  img-responsive">
-                <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <form id="trainArrival">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <div class="input-group form-group">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary  center-block " type="button" ><strong>Station Name</strong></button>
-                                    </span>
-                                    <input class="form-control dd_user_input"  id="source" type="text" placeholder="Enter Station Name">
-                                    <span class="input-group-btn">
-                                        <button type = "submit" class = "btn btn-info">Submit</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
+
+            <div class="row">
+                <form id="trainArrival">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group form-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary  center-block " type="button" ><strong>Station Name</strong></button>
+                            </span>
+                            <input class="form-control dd_user_input"  id="source" type="text" placeholder="Enter Station Name">
+                            <span class="input-group-btn">
+                                <button type = "submit" class = "btn btn-info">Submit</button>
+                            </span>
+                        </div>
                     </div>
+                </form>
+                <div id="train_Arrival_Detail"></div>
                 </div>
-            </div>
-            <div id="train_Arrival_Detail"></div>
     </div>
 
 <script src="{% static 'Train_Arrivals_At_Station/js/trainArr.js' %}"></script>

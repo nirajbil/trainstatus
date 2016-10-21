@@ -10,39 +10,38 @@ table#myTable,#myTable2 {
     align:"left";
     border: 1px solid black;
     height: 8px;
-    width: 95%;
+    width: 100%;
     text-align: left;
     border-collapse: collapse;
     font-size: 10px;
 }
 </style>
 
-{% include 'userpanal/Detail.html' %}
 
 
-<div class="container-fluid text-center">
-  <div class="row content">
+
+<div class="col-xs-18 col-sm-12">
+  {% include 'userpanal/Detail.html' %}
+  <div class="row">
   <form  id="train_station">
   {% csrf_token %}
-  <table width="85%" border="0">
+  <table >
   <tbody>
     <tr>
       <td class="eform" >
-      		<div class="col-md-10 form-group">
-                <p><font size="5">Trains Between Stations</font></p>
-            </div>
+            <p align="center"><font size="5">Trains Between Stations</font></p>
 
-      		<div class="col-md-4 form-group">
+      		<div class="col-xs-6 col-sm-4 form-group">
               <input type="text" class="form-control dd_user_input" id="source" name="Source_station_code" placeholder="Source Station" >
             </div>
-            <div class="col-md-4 form-group">
+            <div class="col-xs-6 col-sm-4 form-group">
               <input type="text" class="form-control dd_user_input " id="dest" name="Destination_station_code" placeholder="Destination Station" >
             </div>
-            <div class="col-md-2 form-group">
+            <div class="col-xs-4 col-sm-3 form-group">
               <input type="date" class="form-control dd_user_input " id="date" name="date" placeholder="DD-MM-YYYY" >
             </div>
 
-            <div class="col-md-1 form-group">
+            <div class="col-xs-2 col-sm-1 form-group">
                 <button type = "submit" class = "btn btn-info">Submit</button>
             </div>
       </td>
@@ -51,16 +50,10 @@ table#myTable,#myTable2 {
   </tbody>
   </table>
 </form>
-      <div class="col-sm-10" id="train_station_output"></div>
+      <div id="train_station_output"></div>
 </div>
 </div>
 
-
-
-
-<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-<!-- Include jQuery -->
-<!--<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
 
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>

@@ -10,7 +10,7 @@ table#myTable,#myTable2 {
     align:"left";
     border: 1px solid black;
     height: 10px;
-    width: 90%;
+    width: 100%;
     text-align: left;
     border-collapse: collapse;
     font-size: 10px;
@@ -18,35 +18,31 @@ table#myTable,#myTable2 {
 </style>
 
 
-{% include 'userpanal/Detail.html' %}
-
-
-<div class="container-fluid text-center">
+<div class="col-xs-18 col-sm-12">
+  {% include 'userpanal/Detail.html' %}
   <div class="row content">
   <form  id="train_fair">
   {% csrf_token %}
-  <table width="85%" border="0">
+  <table >
   <tbody>
     <tr>
       <td class="eform" >
-      		<div class="col-sm-10 form-group">
-                <p><font size="5">Train Fair Enquiry</font></p>
-            </div>
+            <p align="center"><font size="5">Train Fair Enquiry</font></p>
 
-      		<div class="col-sm-5 form-group">
+      		<div class="col-xs-9 col-sm-6 form-group">
               <input type="text" class="form-control dd_user_input" id="source" name="Source_station_code" placeholder="Source Station" >
             </div>
-            <div class="col-sm-5 form-group">
+            <div class="col-xs-9 col-sm-6 form-group">
               <input type="text" class="form-control dd_user_input " id="dest" name="Destination_station_code" placeholder="Destination Station" >
             </div>
-            <div class="col-sm-3 form-group">
-              <input type="date" class="form-control dd_user_input " id="date" name="date" placeholder="mm/dd/yyyy" >
+            <div class="col-xs-6 col-sm-3 form-group">
+              <input type="date" class="form-control dd_user_input " id="date" name="date" placeholder="dd/mm/yyyy" >
             </div>
-            <div class="col-sm-3 form-group">
+            <div class="col-xs-3 col-sm-3 form-group">
               <input type="date" class="form-control dd_user_input " id="Passenger_Age" name="Passenger_Age" placeholder="Passenger Age" >
             </div>
 
-            <div class="col-sm-3 form-group">
+            <div class="col-xs-6 col-sm-4 form-group">
                   <select class="form-control" id="train_quota" name="train_quota">
                     <option value="GN">General Quota</option>
                     <option value="LD">Ladies Quota</option>
@@ -62,7 +58,7 @@ table#myTable,#myTable2 {
                   </select>
             </div>
 
-            <div class="col-sm-1 form-group">
+            <div class="col-xs-3 col-sm-1 form-group">
                 <button type = "submit" class = "btn btn-info">Submit</button>
             </div>
       </td>
@@ -73,8 +69,8 @@ table#myTable,#myTable2 {
 </form>
 </div>
 
-<div class="col-sm-10" id="trainFairDetail"></div>
-<div class="col-sm-10" id="output"></div>
+<div id="trainFairDetail"></div>
+<div id="output"></div>
 
 </div>
 

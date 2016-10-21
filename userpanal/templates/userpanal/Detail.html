@@ -1,22 +1,13 @@
-
-<div class="col-xs-9">
-    <div class="container-fluid">
-        <div class="row">
-            <a href="{% url 'userpanal:index' %}" class="btn btn-primary">Home</a>
-            <a href="{% url 'userpanal:pnr_status' %}" class="btn btn-primary">PNR Status</a>
-            <a href="{% url 'Train_Route:trainRoute' %}" class="btn btn-primary">Train Route</a>
-            <a href="{% url 'Live_Train_Status:liveTrainStatus' %}" class="btn btn-primary">Live Train Status</a>
-            <a href="{% url 'Seat_Availability:seatAvailability' %}" class="btn btn-primary">Seat Availability</a>
-            <a href="{% url 'Train_Between_Stations:trainBetweenStations' %}" class="btn btn-primary">Train Between Stations</a>
-
-        </div>
-         <hr>
-        <div class="row">
-            <a href="{% url 'Cancelled_Trains:cancelledTrains' %}" class="btn btn-primary">Cancelled Trains</a>
-            <a href="{% url 'Train_Name_Number:trainNameNumber' %}" class="btn btn-primary">Train Name/Number</a>
-            <a href="{% url 'Train_Fair_Enquiry:trainFairEnquiry' %}" class="btn btn-primary">Train Fair Enquiry</a>
-            <a href="{% url 'Train_Arrivals_At_Station:trainArrivalsAtStation' %}" class="btn btn-primary">Train Arrivals At Station</a>
-        </div>
-        <hr>
-    </div>
+<div class="row">
+		<a href="{% url 'userpanal:index' %}"  class="btn btn-primary">Home</a>
+		<a href="{% url 'userpanal:pnr_status' %}"  class="btn btn-primary">PNR Status</a>
+		<a href="{% url 'Train_Route:trainRoute' %}"  class="btn btn-primary">Train Route</a>
+		<a href="{% url 'Live_Train_Status:liveTrainStatus' %}"  class="btn btn-primary">Live Train Status</a>
+		<a href="{% url 'Seat_Availability:seatAvailability' %}"  class="btn btn-primary">Seat Availability</a>
+		<a href="{% url 'Train_Between_Stations:trainBetweenStations' %}"  class="btn btn-primary">Train Between Stations</a></p>
+		<a href="{% url 'Cancelled_Trains:cancelledTrains' %}"  class="btn btn-primary">Cancelled Trains</a>
+		<!--<a href="{% url 'Train_Name_Number:trainNameNumber' %}"  class="btn btn-primary">Train Name/Number</a>-->
+		<a href="{% url 'Train_Fair_Enquiry:trainFairEnquiry' %}"  class="btn btn-primary">Train Fair Enquiry</a>
+		<a href="{% url 'Train_Arrivals_At_Station:trainArrivalsAtStation' %}"  class="btn btn-primary">Train Arrivals At Station</a>
 </div>
+<hr>

@@ -10,7 +10,7 @@ table#myTable,#myTable2 {
     align:"left";
     border: 1px solid black;
     height: 10px;
-    width: 80%;
+    width: 100%;
     text-align: left;
     border-collapse: collapse;
     font-size: 10px;
@@ -18,78 +18,72 @@ table#myTable,#myTable2 {
 </style>
 
 
+<div class="col-xs-18 col-sm-12">
+    {% include 'userpanal/Detail.html' %}
 
+   <div class="row content">
+      <form  id="train_between_station">
+      {% csrf_token %}
+      <table width="100%"  border="0">
+      <tbody>
+        <tr>
+          <td class="eform" >
+                <p align="center"><font size="5">Seat Availability</font></p>
 
+                <div class="col-xs-9 col-sm-6 form-group">
+                  <input type="text" class="form-control dd_user_input" id="source" name="Source_station_code" placeholder="Source Station" >
+                </div>
+                <div class="col-xs-9 col-sm-6 form-group">
+                  <input type="text" class="form-control dd_user_input " id="dest" name="Destination_station_code" placeholder="Destination Station" >
+                </div>
+                <div class="col-xs-9 col-sm-6 form-group">
+                  <input type="date" class="form-control dd_user_input " id="date" name="date" placeholder="mm/dd/yyyy" >
+                </div>
+                <!--
+                <div class="col-sm-5 form-group">
+                      <select class="form-control"  name="train_class" placeholder="Class">
+                        <option value="SL">SLEEPER CLASS</option>
+                        <option value="1A">FIRST AC</option>
+                        <option value="2A">SECOND AC</option>
+                        <option value="3A">THIRD AC</option>
+                        <option value="3E">3 AC Economy</option>
+                        <option value="FC">FIRST CLASS</option>
+                        <option value="CC">AC CHAIR CAR</option>
+                        <option value="2S">SECOND SEATING</option>
+                      </select>
+                </div>
+                -->
+                <div class="col-xs-6 col-sm-4 form-group">
+                      <select class="form-control" id="train_quota" name="train_quota">
+                        <option value="GN">General Quota</option>
+                        <option value="LD">Ladies Quota</option>
+                        <option value="DF">Defence Quota</option>
+                        <option value="PH">Parliament house Quota</option>
+                        <option value="FT">Foreign Tourist Quota</option>
+                        <option value="DP">Duty Pass Quota</option>
+                        <option value="CK">Tatkal Quota</option>
+                        <option value="PT">Premium Tatkal Quota</option>
+                        <option value="HP">Physically Handicapped Quota</option>
+                        <option value="LB">Lower Berth</option>
+                        <option value="YU">Yuva</option>
+                      </select>
+                </div>
 
+                <div class="col-xs-3 col-sm-2 form-group">
+                    <button type = "submit" class = "btn btn-info">Submit</button>
+                </div>
+          </td>
+        </tr>
 
-{% include 'userpanal/Detail.html' %}
-<div class="container-fluid text-center">
-  <div class="row content">
-  <form  id="train_between_station">
-  {% csrf_token %}
-  <table width="85%" border="0">
-  <tbody>
-    <tr>
-      <td class="eform" >
-      		<div class="col-sm-10 form-group">
-                <p><font size="5">Seat Availability</font></p>
-            </div>
+      </tbody>
+      </table>
+    </form>
+  </div>
 
-      		<div class="col-sm-5 form-group">
-              <input type="text" class="form-control dd_user_input" id="source" name="Source_station_code" placeholder="Source Station" >
-            </div>
-            <div class="col-sm-5 form-group">
-              <input type="text" class="form-control dd_user_input " id="dest" name="Destination_station_code" placeholder="Destination Station" >
-            </div>
-            <div class="col-sm-4 form-group">
-              <input type="date" class="form-control dd_user_input " id="date" name="date" placeholder="mm/dd/yyyy" >
-            </div>
-            <!--
-            <div class="col-sm-5 form-group">
-                  <select class="form-control"  name="train_class" placeholder="Class">
-                    <option value="SL">SLEEPER CLASS</option>
-                    <option value="1A">FIRST AC</option>
-                    <option value="2A">SECOND AC</option>
-                    <option value="3A">THIRD AC</option>
-                    <option value="3E">3 AC Economy</option>
-                    <option value="FC">FIRST CLASS</option>
-                    <option value="CC">AC CHAIR CAR</option>
-                    <option value="2S">SECOND SEATING</option>
-                  </select>
-            </div>
-            -->
-            <div class="col-sm-4 form-group">
-                  <select class="form-control" id="train_quota" name="train_quota">
-                    <option value="GN">General Quota</option>
-                    <option value="LD">Ladies Quota</option>
-                    <option value="DF">Defence Quota</option>
-                    <option value="PH">Parliament house Quota</option>
-                    <option value="FT">Foreign Tourist Quota</option>
-                    <option value="DP">Duty Pass Quota</option>
-                    <option value="CK">Tatkal Quota</option>
-                    <option value="PT">Premium Tatkal Quota</option>
-                    <option value="HP">Physically Handicapped Quota</option>
-                    <option value="LB">Lower Berth</option>
-                    <option value="YU">Yuva</option>
-                  </select>
-            </div>
-
-            <div class="col-sm-1 form-group">
-                <button type = "submit" class = "btn btn-info">Submit</button>
-            </div>
-      </td>
-    </tr>
-
-  </tbody>
-  </table>
-</form>
-</div>
-
-<div class="col-sm-10" id="seatAvailableoutput"></div>
-<div class="col-sm-10" id="output"></div>
+    <div id="seatAvailableoutput"></div>
+    <div id="output"></div>
 
 </div>
-
 
 
 

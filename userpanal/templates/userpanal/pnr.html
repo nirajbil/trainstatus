@@ -4,42 +4,34 @@
 {% load staticfiles %}
 {% block body %}
 
-    <style>
-        form{
-            border-collapse: collapse;
-            #width: 50%;
-        }
-    </style>
-
+<div class="col-xs-18 col-sm-12">
     {% include 'userpanal/Detail.html' %}
-    <div class="col-xs-9 col-md-9">
-      		<div class="col-sm-10 form-group">
-                <p align="center"><font size="5">PNR Status</font></p>
-            </div>
 
 
-            <div class="container-fluid  img-responsive">
-                <div class="row">
-                    <div class="col-xs-9 col-md-9">
-                        <form id="pnrstatus">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <div class="input-group form-group">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-primary  center-block " type="button" ><strong>PNR Number</strong></button>
-                                    </span>
-                                    <input class="form-control dd_user_input"  id="pnrno" type="text" placeholder="10 Digit PNR Number">
-                                    <span class="input-group-btn">
-                                        <button type = "submit" class = "btn btn-info">Submit</button>
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+    <div class="row">
+        <p align="center"><font size="5">PNR Status</font></p>
+    </div>
+
+    <div class="row">
+        <form id="pnrstatus">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group form-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary  center-block " type="button" ><strong>PNR Number</strong></button>
+                    </span>
+                    <input class="form-control dd_user_input"  id="pnrno" type="text" placeholder="10 Digit PNR Number">
+                    <span class="input-group-btn">
+                        <button type = "submit" class = "btn btn-info">Submit</button>
+                    </span>
                 </div>
             </div>
-            <div id="pnr_status_html"></div>
+        </form>
+        <div id="pnr_status_html"></div>
     </div>
+
+</div>
+
 
 <script src="{% static 'userpanal/js/userpanal.js' %}"></script>
 
