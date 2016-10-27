@@ -6,7 +6,7 @@ import json
 def seatAvailability(request):
     template_name = 'Seat_Availability/seatAvailability.html'
     context = {}
-
+    context['info_page'] = "seatAvailability"
     """
     if request.method == "GET":
         #trainno = request.POST.get('trainno')

@@ -23,7 +23,7 @@ from django.db.models import Q
 from pnrapi import pnrapi
 from pnr_utils import get_pnr_status, caluclate_timedelta, get_pnr_status_Niraj, send_Email,get_pnr_status_for_alert_Niraj
 from .tasks import send_pnr_notification
-from .models import PNRNotification, RecentPNR, UserProfile
+from .models import PNRNotification, RecentPNR, UserProfile, API_Key
 from django.shortcuts import render, get_object_or_404
 
 
@@ -32,7 +32,7 @@ def ReadDataBase(request):
     context = {}
     list = []
     print "ReadDataBase request.user=%s" %request.user
-    if request.user.is_authenticated and not request.user.is_anonymous:
+    if request.user.is_authenticated:
         username = get_object_or_404(UserProfile, user=request.user)
         print "ReadDataBase username=%s" %username
 
@@ -58,9 +58,10 @@ def ReadDataBase(request):
 
 
 def index(request):
-    print "== def index(request): == "
-    template_name = 'userpanal/index.html'
+    print "== index =="
     context = {}
+    template_name = 'userpanal/index.html'
+    context['info_page'] = "index"
     return render(request,template_name, context)
 
 
@@ -116,6 +117,7 @@ def pnr_status(request):
                 if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=context['pnr']))):
                     pass
                 else:
+                    print "== user is online ===== "
                     Recentpnr = RecentPNR()
                     Recentpnr.RecentPnrNo = context['pnr']
                     Recentpnr.Srcdest = context['boarding_point']['code'] + '->' + context['reservation_upto']['code']
@@ -132,6 +134,7 @@ def pnr_status(request):
         #    print "=== Return from else part with response_code=%d" %context['response_code']
         #    return render(request,'userpanal/pnr_status.html', context)
 
+    context['info_page'] = "pnr_status"
     return render(request,template_name, context)
 
 def database_pnr(request ):

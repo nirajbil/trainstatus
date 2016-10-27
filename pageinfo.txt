@@ -1,0 +1,54 @@
+What is PNR number?
+PNR (passenger name record) number in Indian railways ticket is a 10 digit number (a combination of 3 and 7 digits).
+A typical PNR number is like  214-1215305.
+
+
+The PNR – Passenger Name Record: It’s Meaning And Status In Journey
+
+In the airline and travel industries, a passenger name record (PNR) is a record in the database of a computer reservation system (CRS) that has the itinerary for a passenger, or a group of passengers travelling together.
+The concept of a PNR was first introduced by airlines that needed to exchange reservation information in case passengers required flights of multiple airlines to reach their destination (‘interlining’).
+
+Talking in the context of Indian Railways, PNR number is a unique pointer to a record in the railway database.
+The record pointed by PNR contains comprehensive journey details.
+
+The details may include:
+Passenger Details (Name, Age, Sex, Birth Preference)
+Ticket Details (Train No, Date, From, To, Boarding Station, Reservation Upto, Class, Birth, Quota)
+Transaction / Payment Details (Transaction ID, Payment Mode, Ticket Charge)
+
+
+First 3 Digits
+They tell us from which PRS the ticket has been booked.
+(PRS: Passenger Reservation System. Developed by CRIS, PRS is a total networking solution to Indian
+Railways Passenger Reservation System.)
+
+The PNR numbers’ starting digit does not depend on the PRS from which it has been booked.
+It depends upon: Zone of the Train, w.r.t. starting station of the train.
+
+Number	Code	Zone
+1	SCR	Secunderabad PRS
+2, 3	NR, NCR, NWR, NER	New Delhi PRS
+4, 5	SR, SWR, SCR	Chennai PRS
+6, 7	NFR, ECR, ER, ECoR, SER, SECR	Calcutta PRS
+8, 9	CR, WCR, WR	Mumbai PRS
+
+e.g. If a ticket is booked in Rajdhani Express (Mumbai to New Delhi), as the starting station is Mumbai, PNR will start from 8.
+The subsequent 2 digits detail specific PRS in the zone.
+e.g. If you book from Dadar PRS center, it can be 57 (For an example only). For Ahmedabad, it may be 24.
+To sum up, if the first 3 digits are 824, then it says that the zone is either CR, WCR or WR and the PRS center is Ahmedabad.
+
+Last 7 Digits
+They are randomly generated numbers using the Rand() function. They represent no information about the ticket or journey. This is done to make the PNR number unique.
+One can check status of PNR number of http://www.indianrail.gov.in website. Also at every major stations, PNR stats checking counters are available.
+Passanger name record number lasts minimum 9 month as the TDR filed can take maximum of 9 months. It then flushed out from the database.
+(Normally) The digits of PNR become meaningless. However, PNR details may not be available for the general public once the journey gets over for privacy and security concerns of passengers
+
+What do you mean by RAC?
+A Reservation Against Cancellation (RAC) is technically a train ticket with confirmed seat but wait listed berth.
+In other words, if your train ticket shows RAC as its status (with an RAC status number),
+you can board the train and occupy the seat allowed, instead of a sleeping berth at night
+A berth is split into 2 seats for 2 RAC ticket holders.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+

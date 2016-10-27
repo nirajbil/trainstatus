@@ -9,12 +9,12 @@ from allauth.socialaccount.models import SocialAccount
 import hashlib
 
 
+class API_Key(models.Model):
+    RailwayAPI_APIKEY = models.CharField(max_length=20)
 
 
 
 class UserProfile(models.Model):
-    #user = models.ForeignKey(User, default=1)
-    #user = models.OneToOneField(User, related_name='profile')
     user = models.OneToOneField(User, related_name='profile')
     about_me = models.TextField(null=True, blank=True)
 

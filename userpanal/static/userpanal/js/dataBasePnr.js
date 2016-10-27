@@ -6,7 +6,7 @@
 function calltimer(){
     console.log('calltimer==================');
     refresh();
-    var int = setInterval("refresh()", 200000);
+    var int = setInterval("refresh()", 100000);
 
 }
 
@@ -31,6 +31,7 @@ function refresh() {
 
             if(data.all_pnr_db.length != 0){
                 $('#recent_search').html(upload_pnr(data));
+
             }
 
         },

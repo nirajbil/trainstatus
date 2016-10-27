@@ -7,9 +7,9 @@ from pprint import pprint
 
 from pnrapi import pnrapi
 from .exception_handler import log_exception
-from .models import PNRStatus
+from .models import PNRStatus, API_Key
 
-RailwayAPI_APIKEY = "joymo1655"
+RailwayAPI_APIKEY = API_Key.objects.get().RailwayAPI_APIKEY#"joymo1655"
 
 def check_if_passengers_cnf(passengers):
     for passenger in passengers:

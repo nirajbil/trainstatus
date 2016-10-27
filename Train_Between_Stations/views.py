@@ -6,6 +6,7 @@ import json
 def trainBetweenStations(request):
     template_name = 'Train_Between_Stations/trainBetweenStations.html'
     context = {}
+    context['info_page'] = "trainBetweenStations"
 
     """
     if request.method == "POST":

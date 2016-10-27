@@ -86,10 +86,22 @@
                     <div class="col-xs-6 col-sm-4">
                         <div id="#"></div>
                     </div>
-
                  {% endif %}
 
             </div>
+
+            <div class="row ">
+                <div class="col-xs-18 col-sm-12">
+                        {% if info_page == 'index'  or info_page == 'pnr_status'%}
+                            {% include 'userpanal/pnr_info.html' %}
+                        {% endif %}
+                        {% if info_page == 'seatAvailability'  or info_page == 'trainBetweenStations' or info_page == 'trainFairEnquiry'%}
+                            {% include 'Seat_Availability/Quotas_in_ Indian_Railways.html' %}
+                        {% endif %}
+                </div>
+            </div>
+
+
 		</div>
 
 		<div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">

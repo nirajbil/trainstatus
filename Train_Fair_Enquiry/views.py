@@ -6,6 +6,7 @@ import json
 def trainFairEnquiry(request):
     template_name = 'Train_Fair_Enquiry/trainFairEnquiry.html'
     context = {}
+    context['info_page'] = "trainFairEnquiry"
     return render(request,template_name, context)
 
 
