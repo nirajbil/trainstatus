@@ -2,13 +2,8 @@
 
 {% load staticfiles %}
 {% block body %}
+{% include 'userpanal/station_file_link.html' %}
 
-    <style>
-        form{
-            border-collapse: collapse;
-            #width: 50%;
-        }
-    </style>
 
     <script type="text/javascript">
             $(document).ready(function(){
@@ -34,31 +29,37 @@
     .background-color-yellow { background-color: palegreen; }
     </style>
 
+
+
 <div class="col-xs-18 col-sm-12">
-    {% include 'userpanal/Detail.html' %}
+  {% include 'userpanal/Detail.html' %}
+  <div class="row">
+  <form  id="livetrainstatus">
+  {% csrf_token %}
+  <table >
+  <tbody>
+    <tr>
+      <td class="eform" >
+            <p align="center"><font size="5">Live Train Status</font></p>
 
-
-    <div class="row">
-        <p align="center"><font size="5">Live Train Status</font></p>
-    </div>
-
-    <div class="row">
-        <form id="livetrainstatus">
-            {% csrf_token %}
-            <div class="form-group">
-                <div class="input-group form-group">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary  center-block " type="button" ><strong>Train Number</strong></button>
-                    </span>
-                    <input class="form-control dd_user_input"  id="trainNumber" type="text" placeholder="Enter Train Number">
-                    <span class="input-group-btn">
-                        <button type = "submit" class = "btn btn-info">Submit</button>
-                    </span>
-                </div>
+      		<div class="col-xs-12 col-sm-6 form-group">
+              <input type="text" class="form-control dd_user_input" id="trainNumber" placeholder="Enter Train Number" >
             </div>
-        </form>
-        <div id="live_train_status_html"></div>
-    </div>
+            <div class="col-xs-4 col-sm-4 form-group">
+              <input type="text" class="form-control dd_user_input " id="livedate" placeholder="dd-mm-yyyy" >
+            </div>
+
+            <div class="col-xs-2 col-sm-2 form-group">
+                <button type = "submit" class = "btn btn-info">Submit</button>
+            </div>
+      </td>
+    </tr>
+
+  </tbody>
+  </table>
+</form>
+      <div id="live_train_status_html"></div>
+</div>
 </div>
 
 

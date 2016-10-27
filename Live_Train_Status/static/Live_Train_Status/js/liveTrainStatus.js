@@ -8,13 +8,22 @@ $(document).on('submit','#livetrainstatus', function (e) {
         alert('Train Number Should be Digit');
         return false;
     }
+    console.log(trainNumber);
 
+    var livedate = $('#livedate').val();
+    if(livedate.length == 0){
+        alert('Please Enter Date');
+        return false;
+    }
+
+    console.log(livedate);
     e.preventDefault();
     $.ajax({
         type: 'POST',
         url : '/live_train_status_detail/',
         data:{
             trainNumber:$('#trainNumber').val(),
+            livedate:$('#livedate').val(),
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
         },
 
@@ -28,7 +37,7 @@ $(document).on('submit','#livetrainstatus', function (e) {
             }
             else
             {
-                alert(data.response_code);
+                alert(data.error);
             }
         },
         failure: function() {
@@ -99,6 +108,35 @@ $(document).on('submit','#livetrainstatus', function (e) {
                   httpresonce += '        </tr>';
               }
           }
+          else if(data.current_station.no == data.route.length){
+              if(this.no == data.current_station.no){
+                  httpresonce += '        <tr  class="blinkYellow">';
+                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                  httpresonce += '          <td>' + this.station_.name + '</td>';
+                  httpresonce += '          <td>' + this.station_.code + '</td>';
+                  httpresonce += '          <td>' + this.scharr + '</td>';
+                  httpresonce += '          <td>' + this.schdep + '</td>';
+                  httpresonce += '          <td>' + this.actarr + '</td>';
+                  httpresonce += '          <td>' + this.actdep + '</td>';
+                  httpresonce += '          <td>' + this.latemin + '</td>';
+                  httpresonce += '          <td>' + this.distance + '</td>';
+                  httpresonce += '        </tr>';
+              }
+              else{
+                  httpresonce += '        <tr>';
+                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                  httpresonce += '          <td>' + this.station_.name + '</td>';
+                  httpresonce += '          <td>' + this.station_.code + '</td>';
+                  httpresonce += '          <td>' + this.scharr + '</td>';
+                  httpresonce += '          <td>' + this.schdep + '</td>';
+                  httpresonce += '          <td>' + this.actarr + '</td>';
+                  httpresonce += '          <td>' + this.actdep + '</td>';
+                  httpresonce += '          <td>' + this.latemin + '</td>';
+                  httpresonce += '          <td>' + this.distance + '</td>';
+                  httpresonce += '        </tr>';
+              }
+
+            }
           else {
               if (this.no == data.current_station.no) {
                   httpresonce += '        <tr  class="blinkYellow">';

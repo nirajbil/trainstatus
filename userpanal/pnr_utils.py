@@ -422,6 +422,7 @@ def get_train_live_status_Niraj(train_no,train_date):
     route = request_data['route']
     start_date = request_data['start_date']
     train_number = request_data['train_number']
+    error = request_data['error']
 
 
     """
@@ -441,6 +442,7 @@ def get_train_live_status_Niraj(train_no,train_date):
                'route': route,
                'start_date': start_date,
                'train_number': train_number,
+                'error':error,
 
                }
 
