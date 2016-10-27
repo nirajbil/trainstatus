@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
+from .models import RecentPNR
 
 """
 class PnrForms(forms.ModelForm):
@@ -7,5 +8,13 @@ class PnrForms(forms.ModelForm):
 
     class Meta:
          fields = ['pnr_number']
+
+"""
+
+"""
+class RecentPnrForm(forms.ModelForm):
+    class Meta:
+        model = RecentPNR
+        fields = ['RecentPnrNo']
 
 """

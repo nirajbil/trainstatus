@@ -167,7 +167,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+#LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 
 #SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'

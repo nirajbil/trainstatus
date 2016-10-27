@@ -9,22 +9,12 @@ from allauth.socialaccount.models import SocialAccount
 import hashlib
 
 
-class PNRNotification(models.Model):
-    pnr_no = models.CharField(max_length=20)
-    notification_type = models.CharField(max_length=10)
-    notification_type_value = models.CharField(max_length=50)
-    notification_frequency = models.CharField(max_length=20)
-    notification_frequency_value = models.CharField(max_length=10)
-    next_schedule_time = models.DateTimeField()
-    notify_on_status_change = models.BooleanField(default=False)
 
-
-class PNRStatus(models.Model):
-    pnr_no = models.CharField(max_length=20)
-    status = JSONField()
 
 
 class UserProfile(models.Model):
+    #user = models.ForeignKey(User, default=1)
+    #user = models.OneToOneField(User, related_name='profile')
     user = models.OneToOneField(User, related_name='profile')
     about_me = models.TextField(null=True, blank=True)
 
@@ -57,5 +47,29 @@ class UserProfile(models.Model):
             return result[0].verified
         return False
 
-
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+
+
+class PNRNotification(models.Model):
+    userprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=1)
+    pnr_no = models.CharField(max_length=20)
+    notification_type = models.CharField(max_length=10)
+    notification_type_value = models.CharField(max_length=50)
+    notification_frequency = models.CharField(max_length=20)
+    notification_frequency_value = models.CharField(max_length=10)
+    next_schedule_time = models.DateTimeField()
+    notify_on_status_change = models.BooleanField(default=False)
+
+
+class PNRStatus(models.Model):
+    userprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=1)
+    pnr_no = models.CharField(max_length=20)
+    status = JSONField()
+
+
+class RecentPNR(models.Model):
+    userprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=1)
+    RecentPnrNo = models.CharField(max_length=20)
+    Srcdest = models.CharField(max_length=20)
+    DateOfJourney = models.CharField(max_length=20)
+

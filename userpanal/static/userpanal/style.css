@@ -102,6 +102,31 @@ footer {
 }
 */
 
+#RecentPnr tr {
+display: inline-table;
+height:7px;
+width: 100%;
+
+}
+
+#RecentPnr{
+ width: 100%;
+ height:300px;
+ display: -moz-groupbox;
+ font-size: 12px;
+
+}
+#RecentPnr tbody{
+  overflow-y: scroll;
+  height: 100px;
+  width: 100%;
+  position: absolute;
+}
+
+
+
+
+
 .loader,.loader_1{
     position: fixed;
     top:50px;

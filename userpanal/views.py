@@ -15,22 +15,51 @@ from django.http import HttpResponse
 import json
 
 from datetime import timedelta
-from exception_handler import log_exception
+from datetime import datetime
+import time
 
+from exception_handler import log_exception
+from django.db.models import Q
 from pnrapi import pnrapi
 from pnr_utils import get_pnr_status, caluclate_timedelta, get_pnr_status_Niraj, send_Email,get_pnr_status_for_alert_Niraj
 from .tasks import send_pnr_notification
-from .models import PNRNotification
+from .models import PNRNotification, RecentPNR, UserProfile
+from django.shortcuts import render, get_object_or_404
 
 
+
+def ReadDataBase(request):
+    context = {}
+    list = []
+    print "ReadDataBase request.user=%s" %request.user
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        username = get_object_or_404(UserProfile, user=request.user)
+        print "ReadDataBase username=%s" %username
+
+        all_pnr_db = RecentPNR.objects.filter(userprofile=username)
+        print "all_pnr_db=%s" %all_pnr_db
+
+        for db in all_pnr_db:
+            nowDate = datetime.now().date()
+            dataBaseDate = datetime.strptime(db.DateOfJourney, '%d-%m-%Y').date()
+
+            if dataBaseDate >= nowDate:
+                list.append({'RecentPnrNo': db.RecentPnrNo,
+                              'Srcdest': db.Srcdest,
+                              'DateOfJourney': db.DateOfJourney,
+                              })
+                print "True"
+            else:
+                RecentPNR.objects.filter(RecentPnrNo=db.RecentPnrNo).delete()
+                print "False"
+
+        context['all_pnr_db'] = list
+    return HttpResponse(json.dumps(context), content_type = "application/json")
 
 
 def index(request):
+    print "== def index(request): == "
     template_name = 'userpanal/index.html'
-    #context = {'request': request,'user': request.user}
-    #print "user=%s" %request.user.username
-    #print "site=%s" %request.__dict__
-    #print json.dumps(request.__dict__, separators=(',',':'))
     context = {}
     return render(request,template_name, context)
 
@@ -64,7 +93,37 @@ def pnr_status(request):
     if request.method == 'POST':
         pnr_no = request.POST.get('pnrno')
         print "pnr_no=%s" %pnr_no
+
         Error_Flag, context = get_pnr_status_Niraj(pnr_no)
+
+        if request.user.is_authenticated:
+            userprofile = get_object_or_404(UserProfile, user=request.user)
+            print "request.user=%s" %userprofile
+
+            """
+            if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=pnr_no))):
+                pass
+            else:
+                print "== user is online ===== "
+                Recentpnr = RecentPNR()
+                Recentpnr.RecentPnrNo = pnr_no
+                Recentpnr.Srcdest =  '->'
+                Recentpnr.DateOfJourney = '28-10-2016'
+                Recentpnr.userprofile = userprofile
+                Recentpnr.save()
+            """
+            if context['response_code'] == 200:
+                if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=context['pnr']))):
+                    pass
+                else:
+                    Recentpnr = RecentPNR()
+                    Recentpnr.RecentPnrNo = context['pnr']
+                    Recentpnr.Srcdest = context['boarding_point']['code'] + '->' + context['reservation_upto']['code']
+                    Recentpnr.DateOfJourney = context['doj']
+                    Recentpnr.userprofile = userprofile
+                    Recentpnr.save()
+
+
         #if Error_Flag == False:
             #return render(request,'userpanal/pnr_status.html', context)
         return HttpResponse(json.dumps(context), content_type = "application/json")
@@ -75,7 +134,14 @@ def pnr_status(request):
 
     return render(request,template_name, context)
 
+def database_pnr(request ):
+    context = {}
+    if request.method == 'POST':
+        database_Pnr = request.POST.get('database_Pnr')
+        print "database_Pnr=%s" %database_Pnr
 
+        Error_Flag, context = get_pnr_status_Niraj(database_Pnr)
+        return HttpResponse(json.dumps(context), content_type = "application/json")
 
 
 def pnrNotification(request):

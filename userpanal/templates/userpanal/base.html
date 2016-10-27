@@ -15,6 +15,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'userpanal/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'userpanal/one-page-wonder.css' %}" />
 
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
     <!--
     <meta http-equiv="refresh" content="30">
     -->
@@ -35,10 +40,11 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                   {% if user and not user.is_anonymous %}
-                    <li class = "dropdown">
+
+                    <li class = "dropdown" >
 
                           <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">
-                             <img src="{{ request.user.profile.profile_image_url }}"/> &nbsp;
+                             <img src="{{ request.user.profile.profile_image_url }}" onload="calltimer()"/> &nbsp;
                           </a>
 
                           <ul class = "dropdown-menu">
@@ -61,30 +67,50 @@
 <div class="container-fluid">
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-xs-12 col-sm-9">
-			{% block body %}
-			{% endblock %}
+            <div class="row ">
+                <div class="col-xs-18 col-sm-12">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            <div class="row ">
+                 {% if user and not user.is_anonymous %}
+                    <br><hr>
+                    <div class="col-xs-6 col-sm-4">
+                        <div id="recent_search"></div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4">
+                        <div id="#"></div>
+                    </div>
+                    <div class="col-xs-6 col-sm-4">
+                        <div id="#"></div>
+                    </div>
+
+                 {% endif %}
+
+            </div>
 		</div>
 
 		<div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">
               <div class="fb-like" data-href="http://www.trainstatusonline.in/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
               <hr>
 			  <div class="list-group">
-				<!--<a href="#" class="list-group-item active">Link</a>
+				<a href="#" class="list-group-item active">Link</a>
 				<a href="#" class="list-group-item">Link</a>
 				<a href="#" class="list-group-item">Link</a>
 				<a href="#" class="list-group-item">Link</a>
 				<a href="#" class="list-group-item">Link</a>
 				<a href="#" class="list-group-item">Link</a>
 				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>
-				<a href="#" class="list-group-item">Link</a>-->
+
 			  </div>
 		</div><!--/span-->
 	</div><!--/row-->
 
+    <br><hr><br><br><br>
 
-	<hr>
+
 
     <footer style="bottom:0;height: auto;">
 
@@ -104,7 +130,7 @@
 
 
 
-
+<script  src="{% static 'userpanal/js/dataBasePnr.js' %}"></script>
 <script src="{% static 'userpanal/js/DisableRightClick.js' %}"></script>
 
 

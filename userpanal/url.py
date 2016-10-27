@@ -12,4 +12,7 @@ urlpatterns = [
     url(r'pnr_status/$', views.pnr_status,name="pnr_status" ),
     url(r'pnrNotification/$', views.pnrNotification,name="pnrNotification" ),
     url(r'stop_notifications/', views.stop_notifications, name='stop_notifications'),
+
+    url(r'^database_pnr/', views.database_pnr),
+    url(r'ReadDataBase/$', views.ReadDataBase),
 ]

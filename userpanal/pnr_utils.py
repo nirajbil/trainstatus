@@ -251,7 +251,7 @@ def get_pnr_status_Niraj(pnrno):
     data_file = response.read()
     print "data_file=%s " %data_file
     request_data = json.loads(data_file)
-    pprint(request_data)
+    #pprint(request_data)
     Error_Flag = False
 
     response_code = request_data['response_code']
