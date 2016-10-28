@@ -54,6 +54,8 @@ def ReadDataBase(request):
                 print "False"
 
         context['all_pnr_db'] = list
+        return HttpResponse(json.dumps(context), content_type = "application/json")
+
     return HttpResponse(json.dumps(context), content_type = "application/json")
 
 
@@ -101,23 +103,19 @@ def pnr_status(request):
             userprofile = get_object_or_404(UserProfile, user=request.user)
             print "request.user=%s" %userprofile
 
-            """
-            if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=pnr_no))):
-                pass
-            else:
-                print "== user is online ===== "
-                Recentpnr = RecentPNR()
-                Recentpnr.RecentPnrNo = pnr_no
-                Recentpnr.Srcdest =  '->'
-                Recentpnr.DateOfJourney = '28-10-2016'
-                Recentpnr.userprofile = userprofile
-                Recentpnr.save()
-            """
+            all_pnr_db = RecentPNR.objects.filter(userprofile=userprofile)
+            pnr_in_database = False
+            for db in all_pnr_db:
+                if db.RecentPnrNo == context['pnr']:
+                    pnr_in_database = True
+
             if context['response_code'] == 200:
-                if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=context['pnr']))):
+                #if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=context['pnr']))):
+                if pnr_in_database == True:
+                    print "== PNR %s in data base == " %pnr_no
                     pass
                 else:
-                    print "== user is online ===== "
+                    print "== user is online, add pnr in data base ===== "
                     Recentpnr = RecentPNR()
                     Recentpnr.RecentPnrNo = context['pnr']
                     Recentpnr.Srcdest = context['boarding_point']['code'] + '->' + context['reservation_upto']['code']

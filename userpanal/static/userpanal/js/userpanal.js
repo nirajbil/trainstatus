@@ -2,11 +2,6 @@
  * Created by Niraj on 10/10/2016.
  */
 
-var res = {
-    loader: $('<div />', {class: 'loader'}),
-    loading_Img: $('.loading_Img')
-}
-
 
 $(document).on('submit','#pnrstatus', function (e) {
     var pnrno = $('#pnrno').val();
@@ -16,10 +11,9 @@ $(document).on('submit','#pnrstatus', function (e) {
         return false;
     }
 
-   /* alert('*********** correct ************');*/
-
     e.preventDefault();
-    $('button:submit').attr("disabled", true);
+
+
     $.ajax({
         type : 'POST',
         url : '/get_pnr_status/',
@@ -29,13 +23,11 @@ $(document).on('submit','#pnrstatus', function (e) {
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
         },
 
-        beforeSend: function(){
-            res.loading_Img.append(res.loader);
-        },
+
 
         success: function (data) {
             console.log(data.response_code);
-            res.loading_Img.find(res.loader).remove();
+
             if (data.response_code == 200) {
                 $('#pnr_status_html').html(get_pnr_status_html(data));
 
@@ -52,7 +44,7 @@ $(document).on('submit','#pnrstatus', function (e) {
 
     })
 
-    $('button:submit').attr("disabled", false);
+
 
     function get_pnr_status_html(data){
         var httpresonce="";
