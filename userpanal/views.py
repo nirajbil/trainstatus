@@ -105,9 +105,11 @@ def pnr_status(request):
 
             all_pnr_db = RecentPNR.objects.filter(userprofile=userprofile)
             pnr_in_database = False
+
             for db in all_pnr_db:
                 if db.RecentPnrNo == context['pnr']:
                     pnr_in_database = True
+                    break
 
             if context['response_code'] == 200:
                 #if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=context['pnr']))):
