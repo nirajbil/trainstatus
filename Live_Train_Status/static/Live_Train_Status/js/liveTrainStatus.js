@@ -1,179 +1,185 @@
 /**
  * Created by Niraj on 10/10/2016.
  */
-$(document).on('submit','#livetrainstatus', function (e) {
-    var trainNumber = $('#trainNumber').val();
 
-    if(isNaN(trainNumber) || trainNumber.length != 5){
-        alert('Train Number Should be Digit');
-        return false;
-    }
-    console.log(trainNumber);
+require(["jquery","jquery-mloading"],function($){
+    $("#livetrainstatus").click(function(e) {
+        var trainNumber = $('#trainNumber').val();
 
-    var livedate = $('#livedate').val();
-    if(livedate.length == 0){
-        alert('Please Enter Date');
-        return false;
-    }
+        if(isNaN(trainNumber) || trainNumber.length != 5){
+            alert('Train Number Should be Digit');
+            return false;
+        }
+        console.log(trainNumber);
 
-    console.log(livedate);
-    e.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url : '/live_train_status_detail/',
-        data:{
-            trainNumber:$('#trainNumber').val(),
-            livedate:$('#livedate').val(),
-            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-        },
+        var livedate = $('#livedate').val();
+        if(livedate.length == 0){
+            alert('Please Enter Date');
+            return false;
+        }
 
-        success:function(data){
+        console.log(livedate);
+        e.preventDefault();
+        $("body").mLoading();
 
-            console.log(data.response_code);
-            if(data.response_code == 200)
-            {
+        $.ajax({
+            type: 'POST',
+            url : '/live_train_status_detail/',
+            data:{
+                trainNumber:$('#trainNumber').val(),
+                livedate:$('#livedate').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
 
-                $('#live_train_status_html').html(liveTrainStatus(data));
-            }
-            else
-            {
-                alert(data.error);
-            }
-        },
-        failure: function() {
-                alert('Got an error dude');
-        },
+            success:function(data){
 
-    })
+                console.log(data.response_code);
+                if(data.response_code == 200)
+                {
 
-    function liveTrainStatus(data){
-        /*alert(data.response_code);*/
-        var httpresonce="";
-        /*httpresonce += '<div class="container">';*/
+                    $('#live_train_status_html').html(liveTrainStatus(data));
+                }
+                else
+                {
+                    alert(data.error);
+                }
+                setTimeout(function(){ $("body").mLoading('hide'); }, 10);
+            },
+            failure: function() {
+                    alert('Got an error dude');
+            },
 
-        httpresonce += '<table class="table table-bordered" id="myTable">';
+        })
 
-        httpresonce += '  <thead>';
-        httpresonce += '    <tr>';
-        httpresonce += '      <th colspan="5"><h5>Train : ' + data.train_number + '</h5></th>';
-        httpresonce += '      <th colspan="5"><h5>Start Date: ' + data.start_date + '</h5></th>';
-        httpresonce += '    </tr>';
+        function liveTrainStatus(data){
+            /*alert(data.response_code);*/
+            var httpresonce="";
+            /*httpresonce += '<div class="container">';*/
 
-        httpresonce += '    <tr>';
-        httpresonce += '      <th colspan="10"><h5>' +  data.position + '</h5></th>';
-        httpresonce += '    </tr>';
+            httpresonce += '<table class="table table-bordered" id="myTable">';
 
-        httpresonce += '    <tr>';
-        /*httpresonce += '      <th>No</th>';*/
-        httpresonce += '      <th>Station Name</th>';
-        httpresonce += '      <th>Station code</th>';
-        httpresonce += '      <th>Sch. Arrival</th>';
-        httpresonce += '      <th>Sch. Departure</th>';
-        httpresonce += '      <th>Actual Arrival</th>';
-        httpresonce += '      <th>Actual Departure</th>';
-        httpresonce += '      <th>Late min</th>';
-        httpresonce += '      <th>Distance</th>';
+            httpresonce += '  <thead>';
+            httpresonce += '    <tr>';
+            httpresonce += '      <th colspan="5"><h5>Train : ' + data.train_number + '</h5></th>';
+            httpresonce += '      <th colspan="5"><h5>Start Date: ' + data.start_date + '</h5></th>';
+            httpresonce += '    </tr>';
 
-        httpresonce += '    </tr>';
-        httpresonce += '  </thead>';
-        httpresonce += '  <tbody>';
+            httpresonce += '    <tr>';
+            httpresonce += '      <th colspan="10"><h5>' +  data.position + '</h5></th>';
+            httpresonce += '    </tr>';
 
-        $.each(data.route, function () {
+            httpresonce += '    <tr>';
+            /*httpresonce += '      <th>No</th>';*/
+            httpresonce += '      <th>Station Name</th>';
+            httpresonce += '      <th>Station code</th>';
+            httpresonce += '      <th>Sch. Arrival</th>';
+            httpresonce += '      <th>Sch. Departure</th>';
+            httpresonce += '      <th>Actual Arrival</th>';
+            httpresonce += '      <th>Actual Departure</th>';
+            httpresonce += '      <th>Late min</th>';
+            httpresonce += '      <th>Distance</th>';
 
-          if(this.no == 1 && data.current_station.no==1){
-              if(this.no == 1){
-                  httpresonce += '        <tr  class="blinkYellow">';
-                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
-                  httpresonce += '          <td>' + this.station_.name + '</td>';
-                  httpresonce += '          <td>' + this.station_.code + '</td>';
-                  httpresonce += '          <td>' + this.scharr + '</td>';
-                  httpresonce += '          <td>' + this.schdep + '</td>';
-                  httpresonce += '          <td>' + this.actarr + '</td>';
-                  httpresonce += '          <td>' + this.actdep + '</td>';
-                  httpresonce += '          <td>' + this.latemin + '</td>';
-                  httpresonce += '          <td>' + this.distance + '</td>';
-                  httpresonce += '        </tr>';
+            httpresonce += '    </tr>';
+            httpresonce += '  </thead>';
+            httpresonce += '  <tbody>';
+
+            $.each(data.route, function () {
+
+              if(this.no == 1 && data.current_station.no==1){
+                  if(this.no == 1){
+                      httpresonce += '        <tr  class="blinkYellow">';
+                      /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                      httpresonce += '          <td>' + this.station_.name + '</td>';
+                      httpresonce += '          <td>' + this.station_.code + '</td>';
+                      httpresonce += '          <td>' + this.scharr + '</td>';
+                      httpresonce += '          <td>' + this.schdep + '</td>';
+                      httpresonce += '          <td>' + this.actarr + '</td>';
+                      httpresonce += '          <td>' + this.actdep + '</td>';
+                      httpresonce += '          <td>' + this.latemin + '</td>';
+                      httpresonce += '          <td>' + this.distance + '</td>';
+                      httpresonce += '        </tr>';
+                  }
+                  else{
+                      httpresonce += '        <tr>';
+                      /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                      httpresonce += '          <td>' + this.station_.name + '</td>';
+                      httpresonce += '          <td>' + this.station_.code + '</td>';
+                      httpresonce += '          <td>' + this.scharr + '</td>';
+                      httpresonce += '          <td>' + this.schdep + '</td>';
+                      httpresonce += '          <td>' + this.actarr + '</td>';
+                      httpresonce += '          <td>' + this.actdep + '</td>';
+                      httpresonce += '          <td>' + this.latemin + '</td>';
+                      httpresonce += '          <td>' + this.distance + '</td>';
+                      httpresonce += '        </tr>';
+                  }
               }
-              else{
-                  httpresonce += '        <tr>';
-                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
-                  httpresonce += '          <td>' + this.station_.name + '</td>';
-                  httpresonce += '          <td>' + this.station_.code + '</td>';
-                  httpresonce += '          <td>' + this.scharr + '</td>';
-                  httpresonce += '          <td>' + this.schdep + '</td>';
-                  httpresonce += '          <td>' + this.actarr + '</td>';
-                  httpresonce += '          <td>' + this.actdep + '</td>';
-                  httpresonce += '          <td>' + this.latemin + '</td>';
-                  httpresonce += '          <td>' + this.distance + '</td>';
-                  httpresonce += '        </tr>';
+              else if(data.current_station.no == data.route.length){
+                  if(this.no == data.current_station.no){
+                      httpresonce += '        <tr  class="blinkYellow">';
+                      /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                      httpresonce += '          <td>' + this.station_.name + '</td>';
+                      httpresonce += '          <td>' + this.station_.code + '</td>';
+                      httpresonce += '          <td>' + this.scharr + '</td>';
+                      httpresonce += '          <td>' + this.schdep + '</td>';
+                      httpresonce += '          <td>' + this.actarr + '</td>';
+                      httpresonce += '          <td>' + this.actdep + '</td>';
+                      httpresonce += '          <td>' + this.latemin + '</td>';
+                      httpresonce += '          <td>' + this.distance + '</td>';
+                      httpresonce += '        </tr>';
+                  }
+                  else{
+                      httpresonce += '        <tr>';
+                      /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                      httpresonce += '          <td>' + this.station_.name + '</td>';
+                      httpresonce += '          <td>' + this.station_.code + '</td>';
+                      httpresonce += '          <td>' + this.scharr + '</td>';
+                      httpresonce += '          <td>' + this.schdep + '</td>';
+                      httpresonce += '          <td>' + this.actarr + '</td>';
+                      httpresonce += '          <td>' + this.actdep + '</td>';
+                      httpresonce += '          <td>' + this.latemin + '</td>';
+                      httpresonce += '          <td>' + this.distance + '</td>';
+                      httpresonce += '        </tr>';
+                  }
+
+                }
+              else {
+                  if (this.no == data.current_station.no) {
+                      httpresonce += '        <tr  class="blinkYellow">';
+                      /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                      httpresonce += '          <td>' + data.current_station.station_.name + '</td>';
+                      httpresonce += '          <td>' + data.current_station.station_.code + '</td>';
+                      httpresonce += '          <td>' + data.current_station.scharr + '</td>';
+                      httpresonce += '          <td>' + data.current_station.schdep + '</td>';
+                      httpresonce += '          <td>' + data.current_station.actarr + '</td>';
+                      httpresonce += '          <td>' + data.current_station.actdep + '</td>';
+                      httpresonce += '          <td>' + data.current_station.latemin + '</td>';
+                      httpresonce += '          <td>' + data.current_station.distance + '</td>';
+                      httpresonce += '        </tr>';
+                  }
+                  {
+                      httpresonce += '        <tr>';
+                      /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
+                      httpresonce += '          <td>' + this.station_.name + '</td>';
+                      httpresonce += '          <td>' + this.station_.code + '</td>';
+                      httpresonce += '          <td>' + this.scharr + '</td>';
+                      httpresonce += '          <td>' + this.schdep + '</td>';
+                      httpresonce += '          <td>' + this.actarr + '</td>';
+                      httpresonce += '          <td>' + this.actdep + '</td>';
+                      httpresonce += '          <td>' + this.latemin + '</td>';
+                      httpresonce += '          <td>' + this.distance + '</td>';
+                      httpresonce += '        </tr>';
+                  }
               }
-          }
-          else if(data.current_station.no == data.route.length){
-              if(this.no == data.current_station.no){
-                  httpresonce += '        <tr  class="blinkYellow">';
-                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
-                  httpresonce += '          <td>' + this.station_.name + '</td>';
-                  httpresonce += '          <td>' + this.station_.code + '</td>';
-                  httpresonce += '          <td>' + this.scharr + '</td>';
-                  httpresonce += '          <td>' + this.schdep + '</td>';
-                  httpresonce += '          <td>' + this.actarr + '</td>';
-                  httpresonce += '          <td>' + this.actdep + '</td>';
-                  httpresonce += '          <td>' + this.latemin + '</td>';
-                  httpresonce += '          <td>' + this.distance + '</td>';
-                  httpresonce += '        </tr>';
-              }
-              else{
-                  httpresonce += '        <tr>';
-                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
-                  httpresonce += '          <td>' + this.station_.name + '</td>';
-                  httpresonce += '          <td>' + this.station_.code + '</td>';
-                  httpresonce += '          <td>' + this.scharr + '</td>';
-                  httpresonce += '          <td>' + this.schdep + '</td>';
-                  httpresonce += '          <td>' + this.actarr + '</td>';
-                  httpresonce += '          <td>' + this.actdep + '</td>';
-                  httpresonce += '          <td>' + this.latemin + '</td>';
-                  httpresonce += '          <td>' + this.distance + '</td>';
-                  httpresonce += '        </tr>';
-              }
 
-            }
-          else {
-              if (this.no == data.current_station.no) {
-                  httpresonce += '        <tr  class="blinkYellow">';
-                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
-                  httpresonce += '          <td>' + data.current_station.station_.name + '</td>';
-                  httpresonce += '          <td>' + data.current_station.station_.code + '</td>';
-                  httpresonce += '          <td>' + data.current_station.scharr + '</td>';
-                  httpresonce += '          <td>' + data.current_station.schdep + '</td>';
-                  httpresonce += '          <td>' + data.current_station.actarr + '</td>';
-                  httpresonce += '          <td>' + data.current_station.actdep + '</td>';
-                  httpresonce += '          <td>' + data.current_station.latemin + '</td>';
-                  httpresonce += '          <td>' + data.current_station.distance + '</td>';
-                  httpresonce += '        </tr>';
-              }
-              {
-                  httpresonce += '        <tr>';
-                  /*httpresonce += '          <th scope="row">' + this.no + '</th>';*/
-                  httpresonce += '          <td>' + this.station_.name + '</td>';
-                  httpresonce += '          <td>' + this.station_.code + '</td>';
-                  httpresonce += '          <td>' + this.scharr + '</td>';
-                  httpresonce += '          <td>' + this.schdep + '</td>';
-                  httpresonce += '          <td>' + this.actarr + '</td>';
-                  httpresonce += '          <td>' + this.actdep + '</td>';
-                  httpresonce += '          <td>' + this.latemin + '</td>';
-                  httpresonce += '          <td>' + this.distance + '</td>';
-                  httpresonce += '        </tr>';
-              }
-          }
-
-          });
+              });
 
 
-        httpresonce += '  </tbody>';
-        httpresonce += '</table>';
-        /*httpresonce += '</div>';*/
+            httpresonce += '  </tbody>';
+            httpresonce += '</table>';
+            /*httpresonce += '</div>';*/
 
 
-        return httpresonce;
-    }
+            return httpresonce;
+        }
+    });
 });

@@ -3,7 +3,9 @@
  */
 
 
-$(document).on('submit','#pnrstatus', function (e) {
+
+require(["jquery","jquery-mloading"],function($){
+$("#pnrstatus").click(function(e) {
     var pnrno = $('#pnrno').val();
 
     if(isNaN(pnrno) || pnrno.length != 10){
@@ -12,7 +14,7 @@ $(document).on('submit','#pnrstatus', function (e) {
     }
 
     e.preventDefault();
-
+    $("body").mLoading();
 
     $.ajax({
         type : 'POST',
@@ -30,11 +32,11 @@ $(document).on('submit','#pnrstatus', function (e) {
 
             if (data.response_code == 200) {
                 $('#pnr_status_html').html(get_pnr_status_html(data));
-
             }
             else {
                 alert(data.response_code);
             }
+            setTimeout(function(){ $("body").mLoading('hide'); }, 10);
         },
 
 
@@ -137,4 +139,5 @@ $(document).on('submit','#pnrstatus', function (e) {
         return httpresonce;
     }
 
+});
 });

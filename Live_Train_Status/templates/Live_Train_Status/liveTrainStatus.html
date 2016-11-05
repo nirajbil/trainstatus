@@ -34,7 +34,7 @@
 <div class="col-xs-18 col-sm-12">
   {% include 'userpanal/Detail.html' %}
   <div class="row">
-  <form  id="livetrainstatus">
+  <form>
   {% csrf_token %}
   <table >
   <tbody>
@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-xs-2 col-sm-2 form-group">
-                <button type = "submit" class = "btn btn-info">Submit</button>
+                <button type = "button" id="livetrainstatus" class = "btn btn-info">Submit</button>
             </div>
       </td>
     </tr>
@@ -63,6 +63,15 @@
 </div>
 
 
+<script src="http://cdn.bootcss.com/require.js/2.2.0/require.js"></script>
+<script>
+    requirejs.config({
+        paths:{
+            'jquery':"http://cdn.bootcss.com/jquery/1.12.4/jquery.min",
+            'jquery-mloading':"{% static 'userpanal/js/jquery.mloading' %}"
+        }
+    });
+</script>
 <script src="{% static 'Live_Train_Status/js/liveTrainStatus.js' %}"></script>
 
 {% endblock %}
