@@ -25,16 +25,14 @@ $("#pnrstatus").click(function(e) {
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
         },
 
-
-
         success: function (data) {
-            console.log(data.response_code);
+            console.log(data.Error_str);
 
             if (data.response_code == 200) {
                 $('#pnr_status_html').html(get_pnr_status_html(data));
             }
             else {
-                alert(data.response_code);
+                alert(data.Error_str);
             }
             setTimeout(function(){ $("body").mLoading('hide'); }, 10);
         },

@@ -13,36 +13,44 @@ table#myTable,#myTable2 {
     width: 100%;
     text-align: left;
     border-collapse: collapse;
-    font-size: 10px;
+    font-size: 12px;
 }
 </style>
 
-
-    <div class="col-xs-18 col-sm-12">
-    {% include 'userpanal/Detail.html' %}
-      		<div class="row">
-                <p align="center"><font size="5">Train Arrivals At Station</font></p>
-            </div>
-
-            <div class="row">
-                <form id="trainArrival">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <div class="input-group form-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary  center-block " type="button" ><strong>Station Name</strong></button>
-                            </span>
-                            <input class="form-control dd_user_input"  id="source" type="text" placeholder="Enter Station Name">
-                            <span class="input-group-btn">
-                                <button type = "submit" class = "btn btn-info">Submit</button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-                <div id="train_Arrival_Detail"></div>
-                </div>
+<div class="col-xs-18 col-sm-12">
+{% include 'userpanal/Detail.html' %}
+    <div class="row">
+        <p align="center"><font size="5">Train Arrivals At Station</font></p>
     </div>
 
+    <div class="row">
+        <form>
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group form-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary  center-block " type="button" ><strong>Station Name</strong></button>
+                    </span>
+                    <input class="form-control dd_user_input"  id="source" type="text" placeholder="Enter Station Name">
+                    <span class="input-group-btn">
+                        <button type = "button"  id="trainArrival" class = "btn btn-info">Submit</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+        <div id="train_Arrival_Detail"></div>
+    </div>
+</div>
+
+<script src="http://cdn.bootcss.com/require.js/2.2.0/require.js"></script>
+<script>
+    requirejs.config({
+        paths:{
+            'jquery':"http://cdn.bootcss.com/jquery/1.12.4/jquery.min",
+            'jquery-mloading':"{% static 'userpanal/js/jquery.mloading' %}"
+        }
+    });
+</script>
 <script src="{% static 'Train_Arrivals_At_Station/js/trainArr.js' %}"></script>
 
 

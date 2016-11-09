@@ -239,6 +239,14 @@ def send_ticket_cancelled_sms(passengers, pnr_notify):
 
 #+++++++++++++++++++++++++++++++ Niraj Code ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+"""
+    content='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"> \
+    <title>500 Internal Server Error</title> \
+    <h1>Internal Server Error</h1> \
+    <p>The server encountered an internal error and was unable to complete your request.  Either the server is overloaded or there is an error in the \
+     application.</p>'
+"""
+
 def get_pnr_status_Niraj(pnrno):
     url_pnr = "http://api.railwayapi.com/pnr_status/pnr/"
     url_pnr = url_pnr + pnrno + '/apikey/' + RailwayAPI_APIKEY + '/'
@@ -246,13 +254,25 @@ def get_pnr_status_Niraj(pnrno):
 
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'Error_str': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
-    print "data_file=%s " %data_file
+    #print "data_file=%s " %data_file
     request_data = json.loads(data_file)
     #pprint(request_data)
-    Error_Flag = False
 
     response_code = request_data['response_code']
     error = request_data['error']
@@ -297,21 +317,21 @@ def get_pnr_status_Niraj(pnrno):
                    'response_code': response_code,
                    'error': error,
                    }
-        return Error_Flag,context
+        return context
 
     else:
          if response_code == 404:
-            Error_str = 'Service Down / Source not responding'
+            Error_str = ' Error:404 \n\n Service Down / Source not responding'
          elif response_code == 410:
-             Error_str='Flushed PNR / PNR not yet generated'
+             Error_str=' Error:410 \n\n Flushed PNR / PNR not yet generated'
          elif response_code == 204:
-             Error_str='Empty response. Not able to fetch required data.'
+             Error_str=' Error:204 \n\n Empty response. Not able to fetch required data.'
          elif response_code == 401:
-            Error_str='Authentication Error. You passed an unknown API Key.'
+            Error_str=' Error:401 \n\n Authentication Error. You passed an unknown API Key.'
          elif response_code == 403:
-             Error_str='Quota for the day exhausted. Applicable only for FREE users.'
+             Error_str=' Error:403 \n\n Quota for the day exhausted. Applicable only for FREE users.'
          elif response_code == 405:
-            Error_str='Account Expired. Renewal was not completed on time.'
+            Error_str=' Error:405 \n\n Account Expired. Renewal was not completed on time.'
          else:
              Error_str='Some Other Error...'
 
@@ -319,13 +339,10 @@ def get_pnr_status_Niraj(pnrno):
                    'response_code': response_code,
                    'error': error,
                    'Error_str': Error_str,
-
                    }
 
-         Error_Flag = True
-         print "Error in communication response_code=%d" %response_code
-         return Error_Flag,context
-
+         print "get_pnr_status_Niraj Error in communication response_code=%d" %response_code
+         return context
 
 """
 {u'boarding_point': {u'code': u'GDR', u'name': u'GUDUR JN'},
@@ -372,7 +389,19 @@ def get_train_route_Niraj(train_no):
     print "url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'Error_str': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
     #print "data_file=%s " %data_file
@@ -402,14 +431,25 @@ def get_train_route_Niraj(train_no):
     return context
 
 
-
 def get_train_live_status_Niraj(train_no,train_date):
     url_pnr = "http://api.railwayapi.com/live/train/"
     url_pnr = url_pnr + train_no + "/doj/" + train_date + "/apikey/" + RailwayAPI_APIKEY +"/"
     print "url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'Error_str': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
     #print "data_file=%s " %data_file
@@ -443,10 +483,9 @@ def get_train_live_status_Niraj(train_no,train_date):
                'start_date': start_date,
                'train_number': train_number,
                 'error':error,
-
                }
-
     return context
+
 
 
 """
@@ -1165,7 +1204,6 @@ def get_train_live_status_Niraj(train_no,train_date):
 
 
 
-
 def get_seat_availability_Niraj(trainno,Source_station_code,
                                 Destination_station_code,train_date,
                                 train_class,train_quota):
@@ -1182,10 +1220,23 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
     url_pnr = "http://api.railwayapi.com/check_seat/train/"
     url_pnr = url_pnr + trainno + "/source/" + Source_station_code + "/dest/" + Destination_station_code + "/date/" + train_date + "/class/" + train_class + "/quota/" + train_quota + "/apikey/" + RailwayAPI_APIKEY + "/"
 
-    print "url_pnr=%s " %url_pnr
+    print "get_seat_availability_Niraj url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'error': Error_str,
+                   }
+         return context
+
+    print "response=%s" %response
     headers = response.info()
     data_file = response.read()
     #print "data_file=%s " %data_file
@@ -1217,7 +1268,6 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
     else:
         error = request_data['error']
 
-
     context = {
                'response_code': response_code,
                'from_station': from_station,
@@ -1229,11 +1279,10 @@ def get_seat_availability_Niraj(trainno,Source_station_code,
                'last_updated': last_updated,
                'quota' : quota,
                'error' : error,
-
-
-
                }
     return context
+
+
 
 """
 url_pnr=http://api.railwayapi.com/check_seat/train/12771/source/sc/dest/ngp/date/30-09-2016/class/SL/quota/GN/apikey/joymo1655/
@@ -1270,15 +1319,24 @@ def get_Train_Between_Stations_Niraj(Source_station_code,Destination_station_cod
     print "url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'error': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
-    #print "data_file=%s " %data_file
+    print "data_file=%s " %data_file
     request_data = json.loads(data_file)
-
-    print "==============="
     pprint(request_data)
-    print "==============="
 
     train = {}
     total = {}
@@ -1541,7 +1599,19 @@ def get_train_Name_Number_Niraj(train_Name_Number):
     print "url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'Error_str': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
     #print "data_file=%s " %data_file
@@ -1593,7 +1663,19 @@ def get_Train_Fair_Enquiry_Niraj(Source_station_code,Destination_station_code,
     print "url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'Error_str': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
     #print "data_file=%s " %data_file
@@ -1608,7 +1690,6 @@ def get_Train_Fair_Enquiry_Niraj(Source_station_code,Destination_station_code,
     quota = request_data['quota']
     to_train = request_data['to']
 
-
     context = {
                'response_code': response_code,
                'train': train,
@@ -1616,7 +1697,6 @@ def get_Train_Fair_Enquiry_Niraj(Source_station_code,Destination_station_code,
                'from_train':from_train,
                'quota':quota,
                'to_train':to_train,
-
                }
     return context
 
@@ -1641,7 +1721,19 @@ def get_train_Arrivals_At_Station_Niraj(stationCode):
     print "url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'Error_str': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
     #print "data_file=%s " %data_file
@@ -1920,7 +2012,19 @@ def get_cancelled_Trains_Niraj(train_date):
     print "url_pnr=%s " %url_pnr
     request_data = {}
     context = {}
-    response = urllib2.urlopen(url_pnr)
+    try:
+        response = urllib2.urlopen(url_pnr)
+    except urllib2.HTTPError as e:
+         content = e.read()
+         Error_str = content[content.find('<title>')+7:content.find('</title>')]
+         Error_str = Error_str + '\n' + content[content.find('<p>')+3:content.find('</p>')]
+         print "error_msg=%s" %Error_str
+         context = {
+                   'response_code': 500,
+                   'error': Error_str,
+                   }
+         return context
+
     headers = response.info()
     data_file = response.read()
     #print "data_file=%s " %data_file
@@ -1937,7 +2041,7 @@ def get_cancelled_Trains_Niraj(train_date):
         last_updated = request_data['last_updated']
         trains = request_data['trains']
     else:
-        error = request_data['error']
+        error = 'Error in Received Data'#request_data['error']
 
     context = {
                'response_code': response_code,

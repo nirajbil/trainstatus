@@ -66,7 +66,6 @@ def find_train(request):
         print "train_date=%s" %train_date
         print "train_quota=%s" %train_quota
 
-
         context = get_Train_Between_Stations_Niraj(Source_station_code,Destination_station_code,train_date)
 
         print "---- Return Data --------"
@@ -92,17 +91,12 @@ def find_seat(request):
         print "train_class=%s" %train_class
         print "trainno=%s" %trainno
 
-        context = get_seat_availability_Niraj(trainno,Source_station_code, \
+        context = get_seat_availability_Niraj(trainno,Source_station_code,
                                               Destination_station_code,train_date,
                                               train_class,train_quota)
 
-
-
-
         return HttpResponse(json.dumps(context), content_type = "application/json")
 
-
-    return HttpResponse('')
 
 
 

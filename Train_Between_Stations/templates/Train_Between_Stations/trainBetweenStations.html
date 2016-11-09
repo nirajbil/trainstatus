@@ -13,7 +13,7 @@ table#myTable,#myTable2 {
     width: 100%;
     text-align: left;
     border-collapse: collapse;
-    font-size: 10px;
+    font-size: 12px;
 }
 </style>
 
@@ -23,7 +23,7 @@ table#myTable,#myTable2 {
 <div class="col-xs-18 col-sm-12">
   {% include 'userpanal/Detail.html' %}
   <div class="row">
-  <form  id="train_station">
+  <form>
   {% csrf_token %}
   <table >
   <tbody>
@@ -42,7 +42,7 @@ table#myTable,#myTable2 {
             </div>
 
             <div class="col-xs-2 col-sm-1 form-group">
-                <button type = "submit" class = "btn btn-info">Submit</button>
+                <button type = "button"  id="train_station" class = "btn btn-info">Submit</button>
             </div>
       </td>
     </tr>
@@ -58,8 +58,15 @@ table#myTable,#myTable2 {
 
 
 
-
-
+<script src="http://cdn.bootcss.com/require.js/2.2.0/require.js"></script>
+<script>
+    requirejs.config({
+        paths:{
+            'jquery':"http://cdn.bootcss.com/jquery/1.12.4/jquery.min",
+            'jquery-mloading':"{% static 'userpanal/js/jquery.mloading' %}"
+        }
+    });
+</script>
 <script src="{% static 'Train_Between_Stations/js/trainBetweenStations.js' %}"></script>
 
 

@@ -97,7 +97,7 @@ def pnr_status(request):
         pnr_no = request.POST.get('pnrno')
         print "pnr_no=%s" %pnr_no
 
-        Error_Flag, context = get_pnr_status_Niraj(pnr_no)
+        context = get_pnr_status_Niraj(pnr_no)
 
         if request.user.is_authenticated:
             userprofile = get_object_or_404(UserProfile, user=request.user)
@@ -143,7 +143,7 @@ def database_pnr(request ):
         database_Pnr = request.POST.get('database_Pnr')
         print "database_Pnr=%s" %database_Pnr
 
-        Error_Flag, context = get_pnr_status_Niraj(database_Pnr)
+        context = get_pnr_status_Niraj(database_Pnr)
         return HttpResponse(json.dumps(context), content_type = "application/json")
 
 
