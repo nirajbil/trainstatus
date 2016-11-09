@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="978a93d4-50e6-4e37-8304-c61cad444156" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" afterPath="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Seat_Availability/static/Seat_Availability/js/seatAvailable.js" afterPath="$PROJECT_DIR$/Seat_Availability/static/Seat_Availability/js/seatAvailable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" afterPath="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" afterPath="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Seat_Availability/views.py" afterPath="$PROJECT_DIR$/Seat_Availability/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Arrivals_At_Station/static/Train_Arrivals_At_Station/js/trainArr.js" afterPath="$PROJECT_DIR$/Train_Arrivals_At_Station/static/Train_Arrivals_At_Station/js/trainArr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Arrivals_At_Station/templates/Train_Arrivals_At_Station/trainArrivalsAtStation.html" afterPath="$PROJECT_DIR$/Train_Arrivals_At_Station/templates/Train_Arrivals_At_Station/trainArrivalsAtStation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Between_Stations/static/Train_Between_Stations/js/trainBetweenStations.js" afterPath="$PROJECT_DIR$/Train_Between_Stations/static/Train_Between_Stations/js/trainBetweenStations.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" afterPath="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Fair_Enquiry/static/Train_Fair_Enquiry/js/trainFair.js" afterPath="$PROJECT_DIR$/Train_Fair_Enquiry/static/Train_Fair_Enquiry/js/trainFair.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train_Fair_Enquiry/templates/Train_Fair_Enquiry/trainFairEnquiry.html" afterPath="$PROJECT_DIR$/Train_Fair_Enquiry/templates/Train_Fair_Enquiry/trainFairEnquiry.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/pnr_utils.py" afterPath="$PROJECT_DIR$/userpanal/pnr_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/static/userpanal/js/userpanal.js" afterPath="$PROJECT_DIR$/userpanal/static/userpanal/js/userpanal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userpanal/views.py" afterPath="$PROJECT_DIR$/userpanal/views.py" />
     </list>
     <ignored path="trainstatus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,44 +26,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cancelledTrains.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html">
+      <file leaf-file-name="seatAvailability.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.269231">
-              <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.41099164">
+              <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Cancelled_Trains/views.py">
+      <file leaf-file-name="seatAvailable.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Seat_Availability/static/Seat_Availability/js/seatAvailable.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1478692950572" expanded="true" signature="1307:1362" placeholder="..." />
+                <marker date="1478692950572" expanded="true" signature="2789:3233" placeholder="..." />
+                <marker date="1478692950572" expanded="true" signature="2808:3213" placeholder="..." />
+                <marker date="1478692950572" expanded="true" signature="2829:3192" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pnr_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/userpanal/pnr_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2043" column="39" selection-start-line="2043" selection-start-column="39" selection-end-line="2043" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="liveTrainStatus.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6296296">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -110,7 +81,6 @@
         <option value="$PROJECT_DIR$/userpanal/static/userpanal/js/ajax_libs_jquery_1.11.2_jquery.min.js" />
         <option value="$PROJECT_DIR$/userpanal/static/userpanal/js/jquery-1.7.1.min.js" />
         <option value="$PROJECT_DIR$/userpanal/static/userpanal/js/DisableRightClick.js" />
-        <option value="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" />
         <option value="$PROJECT_DIR$/userpanal/templates/userpanal/Detail.html" />
         <option value="$PROJECT_DIR$/userpanal/templates/userpanal/database_pnr.html" />
         <option value="$PROJECT_DIR$/userpanal/url.py" />
@@ -141,14 +111,15 @@
         <option value="$PROJECT_DIR$/Train_Fair_Enquiry/templates/Train_Fair_Enquiry/trainFairEnquiry.html" />
         <option value="$PROJECT_DIR$/Train_Arrivals_At_Station/static/Train_Arrivals_At_Station/js/trainArr.js" />
         <option value="$PROJECT_DIR$/Train_Arrivals_At_Station/templates/Train_Arrivals_At_Station/trainArrivalsAtStation.html" />
-        <option value="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" />
         <option value="$PROJECT_DIR$/Train_Between_Stations/templates/Train_Between_Stations/trainBetweenStations.html" />
         <option value="$PROJECT_DIR$/userpanal/static/userpanal/js/userpanal.js" />
         <option value="$PROJECT_DIR$/Seat_Availability/static/Seat_Availability/js/seatAvailable.js" />
         <option value="$PROJECT_DIR$/Train_Between_Stations/static/Train_Between_Stations/js/trainBetweenStations.js" />
         <option value="$PROJECT_DIR$/Train_Fair_Enquiry/static/Train_Fair_Enquiry/js/trainFair.js" />
-        <option value="$PROJECT_DIR$/userpanal/pnr_utils.py" />
         <option value="$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html" />
+        <option value="$PROJECT_DIR$/userpanal/pnr_utils.py" />
+        <option value="$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html" />
+        <option value="$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html" />
       </list>
     </option>
   </component>
@@ -301,6 +272,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Seat_Availability" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Seat_Availability" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Seat_Availability" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Seat_Availability" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Seat_Availability" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Live_Train_Status" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -324,6 +357,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Live_Train_Status" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cancelled_Trains" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trainstatus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cancelled_Trains" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cancelled_Trains" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -926,13 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/userpanal/templates/userpanal/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -972,19 +1034,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Seat_Availability/static/Seat_Availability/js/seatAvailable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="47" selection-end-column="21" />
-          <folding>
-            <marker date="1478692950572" expanded="true" signature="1307:1362" placeholder="..." />
-            <marker date="1478692950572" expanded="true" signature="2789:3233" placeholder="..." />
-            <marker date="1478692950572" expanded="true" signature="2808:3213" placeholder="..." />
-            <marker date="1478692950572" expanded="true" signature="2829:3192" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1028,36 +1077,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cancelled_Trains/views.py">
+    <entry file="file://$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.32497013">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Cancelled_Trains/templates/Cancelled_Trains/cancelledTrains.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.269231">
-          <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.62485063">
+          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cancelled_Trains/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15758981">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/userpanal/pnr_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2043" column="39" selection-start-line="2043" selection-start-column="39" selection-end-line="2043" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.58864427">
+          <caret line="2046" column="0" selection-start-line="2046" selection-start-column="0" selection-end-line="2046" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Live_Train_Status/templates/Live_Train_Status/liveTrainStatus.html">
+    <entry file="file://$PROJECT_DIR$/Seat_Availability/static/Seat_Availability/js/seatAvailable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6296296">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding>
+            <marker date="1478692950572" expanded="true" signature="1307:1362" placeholder="..." />
+            <marker date="1478692950572" expanded="true" signature="2789:3233" placeholder="..." />
+            <marker date="1478692950572" expanded="true" signature="2808:3213" placeholder="..." />
+            <marker date="1478692950572" expanded="true" signature="2829:3192" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Seat_Availability/templates/Seat_Availability/seatAvailability.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41099164">
+          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
           <folding />
         </state>
       </provider>

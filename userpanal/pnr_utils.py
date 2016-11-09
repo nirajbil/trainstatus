@@ -2042,6 +2042,8 @@ def get_cancelled_Trains_Niraj(train_date):
         trains = request_data['trains']
     else:
         error = 'Error in Received Data'#request_data['error']
+        last_updated = request_data['last_updated']
+        trains = request_data['trains']
 
     context = {
                'response_code': response_code,
