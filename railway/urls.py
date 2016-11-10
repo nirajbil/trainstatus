@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^', include('Train_Fair_Enquiry.url',namespace='Train_Fair_Enquiry')),
     url(r'^', include('Train_Arrivals_At_Station.url',namespace='Train_Arrivals_At_Station')),
     url(r'^',include('Cancelled_Trains.url',namespace='Cancelled_Trains')),
+    url(r'^',include('Database.url',namespace='Database')),
 
     url(r'^accounts/social/login/cancelled/$', login_cancelled),
     url(r'^accounts/', include('allauth.urls')),

@@ -67,6 +67,7 @@ def index(request):
     return render(request,template_name, context)
 
 
+
 def login_cancelled(request):
     template_name = 'userpanal/index.html'
     context = {}
@@ -120,7 +121,7 @@ def pnr_status(request):
                     print "== user is online, add pnr in data base ===== "
                     Recentpnr = RecentPNR()
                     Recentpnr.RecentPnrNo = context['pnr']
-                    Recentpnr.Srcdest = context['boarding_point']['code'] + '->' + context['reservation_upto']['code']
+                    Recentpnr.Srcdest = context['boarding_point']['code'] + ' -> ' + context['reservation_upto']['code']
                     Recentpnr.DateOfJourney = context['doj']
                     Recentpnr.userprofile = userprofile
                     Recentpnr.save()
@@ -137,7 +138,7 @@ def pnr_status(request):
     context['info_page'] = "pnr_status"
     return render(request,template_name, context)
 
-def database_pnr(request ):
+def database_pnr(request):
     context = {}
     if request.method == 'POST':
         database_Pnr = request.POST.get('database_Pnr')

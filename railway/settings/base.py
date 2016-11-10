@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Database.apps.DatabaseConfig',
     'Cancelled_Trains.apps.CancelledTrainsConfig',
     'Train_Arrivals_At_Station.apps.TrainArrivalsAtStationConfig',
     'Train_Fair_Enquiry.apps.TrainFairEnquiryConfig',

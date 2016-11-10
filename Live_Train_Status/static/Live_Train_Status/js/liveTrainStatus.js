@@ -36,12 +36,17 @@ require(["jquery","jquery-mloading"],function($){
                 console.log(data.response_code);
                 if(data.response_code == 200)
                 {
-
                     $('#live_train_status_html').html(liveTrainStatus(data));
                 }
                 else
                 {
-                    alert(data.error);
+                    if(data.error.length == 0){
+                        alert(data.response_code);
+                    }
+                    else{
+                        alert(data.error);
+                    }
+
                 }
                 setTimeout(function(){ $("body").mLoading('hide'); }, 10);
             },
