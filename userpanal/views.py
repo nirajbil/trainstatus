@@ -100,40 +100,34 @@ def pnr_status(request):
 
         context = get_pnr_status_Niraj(pnr_no)
 
-        if request.user.is_authenticated:
-            userprofile = get_object_or_404(UserProfile, user=request.user)
-            print "request.user=%s" %userprofile
+        if context['response_code'] == 200:
+            if request.user.is_authenticated:
+                userprofile = get_object_or_404(UserProfile, user=request.user)
+                print "request.user=%s" %userprofile
 
-            all_pnr_db = RecentPNR.objects.filter(userprofile=userprofile)
-            pnr_in_database = False
+                all_pnr_db = RecentPNR.objects.filter(userprofile=userprofile)
+                pnr_in_database = False
 
-            for db in all_pnr_db:
-                if db.RecentPnrNo == context['pnr']:
-                    pnr_in_database = True
-                    break
+                for db in all_pnr_db:
+                    if db.RecentPnrNo == context['pnr']:
+                        pnr_in_database = True
+                        break
 
-            if context['response_code'] == 200:
-                #if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=context['pnr']))):
-                if pnr_in_database == True:
-                    print "== PNR %s in data base == " %pnr_no
-                    pass
-                else:
-                    print "== user is online, add pnr in data base ===== "
-                    Recentpnr = RecentPNR()
-                    Recentpnr.RecentPnrNo = context['pnr']
-                    Recentpnr.Srcdest = context['boarding_point']['code'] + ' -> ' + context['reservation_upto']['code']
-                    Recentpnr.DateOfJourney = context['doj']
-                    Recentpnr.userprofile = userprofile
-                    Recentpnr.save()
+                if context['response_code'] == 200:
+                    #if(RecentPNR.objects.filter(Q(RecentPnrNo__contains=context['pnr']))):
+                    if pnr_in_database == True:
+                        print "== PNR %s in data base == " %pnr_no
+                        pass
+                    else:
+                        print "== user is online, add pnr in data base ===== "
+                        Recentpnr = RecentPNR()
+                        Recentpnr.RecentPnrNo = context['pnr']
+                        Recentpnr.Srcdest = context['boarding_point']['code'] + ' -> ' + context['reservation_upto']['code']
+                        Recentpnr.DateOfJourney = context['doj']
+                        Recentpnr.userprofile = userprofile
+                        Recentpnr.save()
 
-
-        #if Error_Flag == False:
-            #return render(request,'userpanal/pnr_status.html', context)
         return HttpResponse(json.dumps(context), content_type = "application/json")
-        #else:
-            #context = {'Error':'Error in Getting PRN status'}##
-        #    print "=== Return from else part with response_code=%d" %context['response_code']
-        #    return render(request,'userpanal/pnr_status.html', context)
 
     context['info_page'] = "pnr_status"
     return render(request,template_name, context)

@@ -7,19 +7,18 @@
 display: inline-table;
 height:7px;
 width: 100%;
-
 }
 
 #PnrDatabase{
  width: 100%;
- height:300px;
+ height: 170px;
  display: -moz-groupbox;
  font-size: 14px;
-
 }
+
 #PnrDatabase tbody{
   overflow-y: scroll;
-  height: 100px;
+  height: 150px;
   width: 96%;
   position: absolute;
 }
@@ -27,35 +26,39 @@ width: 100%;
 
 <div class="col-xs-18 col-sm-12">
     {% include 'userpanal/Detail.html' %}
-    <h3>DataBase</h3><hr>
-    <h4>PNR DataBase</h4><hr>
+    <a href="{% url 'Database:Database' %}"  class="btn btn-primary" style="float: right;">Refresh</a><h3>DataBase</h3><hr>
+    <div>
+        <h4>PNR DataBase</h4>
 
-    {% if not all_pnr_db %}
-        Zero Entry For PNR Number
-    {% else %}
-        <table id="PnrDatabase" class="table table-striped ">
-            <thead >
-                <tr>
-                    <th>PNR</th>
-                    <th>Src-Dest</th>
-                    <th>DOJ</th>
-                </tr>
-            </thead>
-            <tbody>
+        {% if not all_pnr_db %}
+            Zero Entry For PNR Number
+        {% else %}
+            <table id="PnrDatabase" class="table table-striped ">
+                <thead >
+                    <tr>
+                        <th>PNR</th>
+                        <th>Src-Dest</th>
+                        <th>DOJ</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            {% for i in all_pnr_db %}
-                <tr>
-                    <td><a href="{% url 'Database:pnr'%}?pnrNo={{ i.RecentPnrNo }}"  target="_blank" name="pnrNo" >{{ i.RecentPnrNo }}</a></td>
-                    <td> {{ i.Srcdest }} </td>
-                    <td> {{ i.DateOfJourney }} </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+                {% for i in all_pnr_db %}
+                    <tr>
+                        <td><a href="{% url 'Database:pnr'%}?pnrNo={{ i.RecentPnrNo }}"  target="_blank" name="pnrNo" >{{ i.RecentPnrNo }}</a></td>
+                        <td> {{ i.Srcdest }} </td>
+                        <td> {{ i.DateOfJourney }} </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-
-
+        {% endif %}
+    </div>
+    <hr>
+    <div>
+        <h4></h4>
+    </div>
 
 </div>
 
